@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RpaCmm">
+
+	<typeAlias  alias="RpaCmmVO" type="egovframework.rpa.cmm.vo.RpaCmmVO"/>
+
+	<resultMap id="sapBktxtList" class="egovframework.rpa.cmm.vo.RpaCmmVO">
+		<result property="bktxt" column="H_BL_NO" columnIndex="1"/>
+	</resultMap>
+	
+	<resultMap id="sapLifnrList" class="egovframework.rpa.cmm.vo.RpaCmmVO">
+		<result property="bl_company" column="BL_COMPANY" columnIndex="1"/>
+	</resultMap>
+	
+	<resultMap id="sapFileList" class="egovframework.rpa.cmm.vo.RpaCmmVO">
+		<result property="atch_file_id" column="ATCH_FILE_ID" columnIndex="1"/>
+		<result property="blno" column="BLNO" columnIndex="2"/>
+		<result property="file_gubun" column="FILE_GUBUN" columnIndex="3"/>
+		<result property="file_gubun_nm" column="FILE_GUBUN_NM" columnIndex="4"/>
+		<result property="file_extsn" column="FILE_EXTSN" columnIndex="6"/>
+		<result property="file_size" column="FILE_SIZE" columnIndex="7"/>
+		<result property="file_stre_cours" column="FILE_STRE_COURS" columnIndex="9"/>
+		<result property="orignl_file_nm" column="ORIGNL_FILE_NM" columnIndex="10"/>
+		<result property="stre_file_nm" column="STRE_FILE_NM" columnIndex="11"/>
+		<result property="creat_dt" column="CREAT_DT" columnIndex="12"/>
+	</resultMap>
+	
+	<resultMap id="sapFileSubList" class="egovframework.rpa.cmm.vo.RpaCmmVO">
+		<result property="atch_file_id" column="ATCH_FILE_ID" columnIndex="1"/>
+		<result property="blno" column="BLNO" columnIndex="2"/>
+		<result property="file_cn" column="FILE_CN" columnIndex="5"/>
+		<result property="file_extsn" column="FILE_EXTSN" columnIndex="6"/>
+		<result property="file_size" column="FILE_SIZE" columnIndex="7"/>
+		<result property="file_sn" column="FILE_SN" columnIndex="8"/>
+		<result property="file_stre_cours" column="FILE_STRE_COURS" columnIndex="9"/>
+		<result property="orignl_file_nm" column="ORIGNL_FILE_NM" columnIndex="10"/>
+		<result property="stre_file_nm" column="STRE_FILE_NM" columnIndex="11"/>
+	</resultMap>
+
+	
+	<select id="RpaCmmDAO.selectBLNoInfs" parameterClass="RpaCmmVO" resultMap="sapBktxtList" remapResults="true">
+
+		<![CDATA[
+			WITH T1 AS (
+			SELECT DISTINCT IV_NO FROM  IMS_RPA_IMPORT_NOTIFY
+			WHERE DEL_YN IS  NULL
+			),
+			T2 AS (
+				SELECT DISTINCT VAL IV_NO FROM
+				(
+					SELECT DISTINCT IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9
+					 FROM [MOT_RPQ].[dbo].[IMS_RPA_CARGO_INSURANCE]
+					 WHERE DEL_YN is null
+				 ) as ST
+				UNPIVOT
+				(
+				  VAL FOR COL IN ( IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9 )
+				 ) as PT
+				WHERE LEN(VAL) > 0 
+			),
+			T3 AS (
+			SELECT DISTINCT * FROM IMS_RPA_FORWARDER
+			WHERE H_BL_NO+IN_NO IN (SELECT DISTINCT H_BL_NO + MAX(IN_NO) FROM  IMS_RPA_FORWARDER
+									WHERE  DEL_YN IS  NULL
+									AND CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_SEONJEOG_DT)),'.','')) > '20190930'
+									GROUP BY H_BL_NO)
+									
+			AND DEL_YN IS  NULL
+			),
+			T4 AS (
+			SELECT DISTINCT d23 as BL_COMPANY, d52 BL_NO FROM  IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			)  
+			SELECT T3.H_BL_NO
+				
+			FROM T3  LEFT OUTER JOIN T2 
+			ON T3.IN_NO = T2.IV_NO
+			LEFT OUTER JOIN T1 
+			ON T3.IN_NO = T1.IV_NO
+			LEFT OUTER JOIN T4 
+			ON T3.H_BL_NO = T4.BL_NO
+			WHERE T3.CONFIRM_YN = 'Y'
+		]]>
+			<isNotEmpty  property="searchKeyword">
+				<![CDATA[ AND  UPPER(T3.H_BL_NO) like UPPER('%'+#searchKeyword#+'%') ]]>
+			</isNotEmpty>
+			
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty  property="searchEndDe">
+					<![CDATA[	AND CONVERT(INT,REPLACE(RTRIM(LTRIM(T3.BL_DT_1)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+			
+		<![CDATA[
+			ORDER BY T4.BL_COMPANY
+		]]>	
+			
+	</select>
+
+	<select id="RpaCmmDAO.selectCompanyInfs" parameterClass="RpaCmmVO" resultMap="sapLifnrList" remapResults="true">
+
+		<![CDATA[
+			SELECT distinct
+			      [NAME1]  as BL_COMPANY
+			  FROM [dbo].[V_LFA1]
+
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchKeyword">
+				<![CDATA[  UPPER(NAME1) like  UPPER('%'+#searchKeyword#+'%') ]]>
+			</isNotEmpty>
+		</dynamic>
+			
+		<![CDATA[
+			ORDER BY NAME1
+		]]>	
+			
+	</select>		
+	
+		
+	<insert id="RpaCmmDAO.insertFileSapMaster" parameterClass="java.util.HashMap" >
+		<![CDATA[
+			INSERT INTO LETTNFILE (
+				ATCH_FILE_ID,
+				DIR_GUBUN,
+				BLNO, 
+				FILE_GUBUN,
+				FILE_GUBUN_NM,
+				FILE_STRE_COURS, 
+				STRE_FILE_NM, 
+			  	ORIGNL_FILE_NM, 
+			  	FILE_EXTSN, 
+			  	FILE_SIZE, 
+				CREAT_DT, 
+				USE_AT
+			)
+			VALUES ( 
+				#atch_file_id#,
+				#dir_gubun#,
+				#blno#, 
+				#file_gubun#, 
+				#file_gubun_nm#, 
+				#file_stre_cours#, 
+				#stre_file_nm#, 
+				#orignl_file_nm#, 
+				#file_extsn#, 
+				#file_size#, 
+				getdate(), 
+				'Y'
+			)			
+		]]>
+	</insert>
+	
+	<insert id="RpaCmmDAO.insertFileSapDetail" parameterClass="RpaCmmVO" >
+		<![CDATA[
+			INSERT INTO LETTNFILEDETAIL (
+				ATCH_FILE_ID,
+				BLNO, 
+				FILE_SN, 
+				FILE_STRE_COURS, 
+				STRE_FILE_NM, 
+			  	ORIGNL_FILE_NM, 
+			  	FILE_EXTSN, 
+			  	FILE_SIZE, 
+			  	FILE_CN 
+			)
+			VALUES (
+				#atch_file_id#,
+				#blno#, 
+				#file_sn#, 
+				#file_stre_cours#, 
+				#stre_file_nm#, 
+			  	#orignl_file_nm#, 
+			  	#file_extsn#, 
+			  	#file_size#, 
+			  	#file_cn# 
+			)			
+		]]>
+	</insert>
+	
+	<insert id="RpaCmmDAO.insertFileSapDetailMulti" parameterClass="java.util.HashMap" >
+		<![CDATA[
+			INSERT INTO LETTNFILEDETAIL (
+				ATCH_FILE_ID,
+				BLNO, 
+				FILE_SN, 
+				FILE_STRE_COURS, 
+				STRE_FILE_NM, 
+			  	ORIGNL_FILE_NM, 
+			  	FILE_EXTSN, 
+			  	FILE_SIZE, 
+			  	FILE_CN 
+			)
+		]]>
+			
+		<dynamic>
+			<iterate prepend="VALUES" conjunction=", " property="fileList">
+				<![CDATA[
+					(
+						#atch_file_id#,
+						#blno#, 
+						#fileList[].file_sn#, 
+						#file_stre_cours#, 
+						#stre_file_nm#, 
+					  	#orignl_file_nm#, 
+					  	#file_extsn#, 
+					  	#file_size#, 
+					  	#file_cn# 
+					)
+				]]>
+			</iterate>
+		</dynamic>				
+	</insert>			
+	
+	<select id="RpaCmmDAO.selectFileSapMax" parameterClass="java.util.Map" resultClass="java.lang.String" >
+        <![CDATA[
+            SELECT
+                #blno# + '_' + RIGHT('000' + CONVERT(varchar,ISNULL(MAX(RIGHT(ATCH_FILE_ID,3)),0) + 1),3) as atch_file_id
+            FROM
+                LETTNFILE
+            WHERE
+                BLNO = #blno#
+        ]]>            
+    </select>
+    
+    <select id="RpaCmmDAO.selectFileSapCnt" parameterClass="RpaCmmVO" resultClass="java.lang.Integer" >
+        <![CDATA[
+            SELECT
+                count(*)
+            FROM
+                LETTNFILE
+            WHERE
+                BLNO = #blno# and FILE_GUBUN like '%'+#file_gubun#+'%'
+        ]]>            
+    </select>
+    
+    <select id="RpaCmmDAO.selectFileSap" parameterClass="RpaCmmVO" resultMap="sapFileList" remapResults="true">
+
+		<![CDATA[
+			SELECT [ATCH_FILE_ID]
+		      ,[BLNO]
+		      ,[FILE_GUBUN]
+		      ,[FILE_GUBUN_NM]
+		      ,[FILE_STRE_COURS]
+		      ,[STRE_FILE_NM]
+		      ,[ORIGNL_FILE_NM]
+		      ,[FILE_EXTSN]
+		      ,[FILE_SIZE]
+		      ,[CREAT_DT]
+		  FROM [dbo].[LETTNFILE]
+		  WHERE BLNO = #searchBlNo# and FILE_GUBUN like '%'+#searchFileCn#+'%'
+		]]>			
+		<![CDATA[
+			ORDER BY ATCH_FILE_ID
+		]]>	
+			
+	</select>
+	
+	<select id="RpaCmmDAO.selectFileSapDetail" parameterClass="RpaCmmVO" resultMap="sapFileList" remapResults="true">
+
+		<![CDATA[
+			SELECT [ATCH_FILE_ID]
+		      ,[BLNO]
+		      ,[FILE_GUBUN]
+		      ,[FILE_GUBUN_NM]
+		      ,[FILE_STRE_COURS]
+		      ,[STRE_FILE_NM]
+		      ,[ORIGNL_FILE_NM]
+		      ,[FILE_EXTSN]
+		      ,[FILE_SIZE]
+		      ,[CREAT_DT]
+		  FROM [dbo].[LETTNFILE]
+		  WHERE ATCH_FILE_ID = #searchAtchFileId#
+		]]>	
+			
+	</select>
+	
+	<delete id="RpaCmmDAO.deleteFileSap" parameterClass="RpaCmmVO">
+
+		<![CDATA[
+			DELETE FROM [dbo].[LETTNFILE]
+		 	WHERE ATCH_FILE_ID = #atch_file_id# 
+		]]>	
+					
+	</delete>
+	
+</sqlMap>

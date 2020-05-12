@@ -1,0 +1,1087 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RpaImporter">
+
+	<typeAlias  alias="RpaImporterVO" type="egovframework.rpa.importer.vo.RpaImporterVO"/>
+	
+	<resultMap id="extraList" class="egovframework.rpa.importer.vo.RpaImporterVO">
+		<result property="extra_company" column="extra_company" columnIndex="1"/>
+		<result property="extra_detail" column="extra_detail" columnIndex="2"/>
+		<result property="extra_custom" column="extra_custom" columnIndex="2"/>
+		<result property="extra_price" column="extra_price" columnIndex="3"/>
+		<result property="extra_tax" column="extra_tax" columnIndex="4"/>
+		<result property="extra_total" column="extra_total" columnIndex="5"/>
+		<result property="extra_style" column="extra_style" columnIndex="6"/>
+		<result property="income_gubun" column="income_gubun" columnIndex="7"/>
+		<result property="income_gubun1" column="income_gubun1" columnIndex="8"/>
+		<result property="income_gubun2" column="income_gubun2" columnIndex="9"/>
+		<result property="income_gubun3" column="income_gubun3" columnIndex="10"/>
+	</resultMap>
+	
+	<resultMap id="extra1List" class="egovframework.rpa.importer.vo.RpaImporterVO">
+		<result property="extra1_company" column="extra1_company" columnIndex="1"/>
+		<result property="extra1_detail" column="extra1_detail" columnIndex="2"/>
+		<result property="extra1_custom" column="extra1_custom" columnIndex="2"/>
+		<result property="extra1_price" column="extra1_price" columnIndex="3"/>
+		<result property="extra1_tax" column="extra1_tax" columnIndex="4"/>
+		<result property="extra1_total" column="extra1_total" columnIndex="5"/>
+		<result property="extra1_style" column="extra1_style" columnIndex="6"/>
+		<result property="income1_gubun" column="income1_gubun" columnIndex="7"/>
+		<result property="income1_gubun1" column="income1_gubun1" columnIndex="8"/>
+		<result property="income1_gubun2" column="income1_gubun2" columnIndex="9"/>
+		<result property="income1_gubun3" column="income1_gubun3" columnIndex="10"/>
+	</resultMap>
+	
+	<resultMap id="extraListExcel" class="egovframework.rpa.importer.vo.RpaImporterVO">
+		<result property="extra_company" column="extra_company" columnIndex="1"/>
+		<result property="extra_detail" column="extra_detail" columnIndex="2"/>
+		<result property="extra_custom" column="extra_custom" columnIndex="2"/>
+		<result property="extra_price" column="extra_price" columnIndex="3"/>
+		<result property="extra_tax" column="extra_tax" columnIndex="4"/>
+		<result property="extra_total" column="extra_total" columnIndex="5"/>
+		<result property="extra_style" column="extra_style" columnIndex="6"/>
+	</resultMap>
+	
+	<resultMap id="extra1ListExcel" class="egovframework.rpa.importer.vo.RpaImporterVO">
+		<result property="extra1_company" column="extra1_company" columnIndex="1"/>
+		<result property="extra1_detail" column="extra1_detail" columnIndex="2"/>
+		<result property="extra1_custom" column="extra1_custom" columnIndex="2"/>
+		<result property="extra1_price" column="extra1_price" columnIndex="3"/>
+		<result property="extra1_tax" column="extra1_tax" columnIndex="4"/>
+		<result property="extra1_total" column="extra1_total" columnIndex="5"/>
+		<result property="extra1_style" column="extra1_style" columnIndex="6"/>
+	</resultMap>
+	
+	<resultMap id="extra1ListExcelDown" class="egovframework.rpa.importer.vo.RpaImporterVO">
+		<result property="income_key" column="income_key" columnIndex="1"/>
+		<result property="name1" column="name1" columnIndex="9"/>
+		<result property="lifnr" column="lifnr" columnIndex="2"/>
+		<result property="extra_detail" column="extra_detail" columnIndex="2"/>
+		<result property="extra_price" column="extra_price" columnIndex="3"/>
+		<result property="extra_tax" column="extra_tax" columnIndex="4"/>
+		<result property="extra_bldate" column="extra_bldate" columnIndex="5"/>
+		<result property="waers" column="waers" columnIndex="6"/>
+	</resultMap>
+	
+	<resultMap id="statementList" class="egovframework.rpa.importer.vo.RpaImporterVO">
+		<result property="statement_key" column="STATEMENT_KEY" columnIndex="1"/>
+		<result property="yyyymm" column="YYYYMM" columnIndex="2"/>
+		<result property="gubun" column="GUBUN" columnIndex="3"/>
+		<result property="num" column="NUM" columnIndex="4"/>
+		<result property="zfacdo" column="ZFACDO" columnIndex="5"/>
+		<result property="zfimdno" column="ZFIMDNO" columnIndex="6"/>
+		<result property="zfidrno" column="ZFIDRNO" columnIndex="7"/>
+		<result property="zfinrc" column="ZFINRC" columnIndex="8"/>
+		<result property="name1" column="NAME1" columnIndex="9"/>
+		<result property="extra_total" column="extra_total" columnIndex="10"/>
+		<result property="lifnr" column="LIFNR" columnIndex="11"/>
+		<result property="stcd2" column="STCD2" columnIndex="12"/>
+		<result property="zfblno" column="ZFBLNO" columnIndex="13"/>
+		<result property="zfapnm" column="ZFAPNM" columnIndex="14"/>
+		<result property="twrbtr" column="TWRBTR" columnIndex="15"/>
+		<result property="wrbtr_tax" column="WRBTR_TAX" columnIndex="16"/>
+		<result property="waers1" column="WAERS1" columnIndex="17"/>
+		<result property="swrbtr" column="SWRBTR" columnIndex="18"/>
+		<result property="waers2" column="WAERS2" columnIndex="19"/>
+		<result property="budat" column="BUDAT" columnIndex="20"/>
+		<result property="zfcstgrp" column="ZFCSTGRP" columnIndex="21"/>
+		<result property="zfcarnm" column="ZFCARNM" columnIndex="22"/>
+		<result property="mwskz" column="MWSKZ" columnIndex="23"/>
+		<result property="bldat" column="BLDAT" columnIndex="24"/>
+		<result property="confirm_yn" column="CONFIRM_YN" columnIndex="25"/>
+		<result property="reg_flag" column="REG_FLAG" columnIndex="26"/>
+		<result property="reg_dt" column="REG_DT" columnIndex="27"/>
+		<result property="gubun_nm" column="GUBUN_NM" columnIndex="28"/>
+		<result property="sapcolor" column="SAPCOLOR" columnIndex="29"/>
+		<result property="filecnt" column="filecnt" columnIndex="30"/>
+		
+	</resultMap>
+		
+	<parameterMap id="extraParam" class="java.util.Map">
+        <parameter property="chkmonth" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	
+	<procedure id="RpaImporterDAO.selectExtraSPList" parameterMap="extraParam"  resultMap="extraList,extra1List" remapResults="true">
+		<![CDATA[
+			{call dbo.rpa_GetExtraList1(?)} 
+		]]>
+			
+	</procedure>
+
+	<procedure id="RpaImporterDAO.selectExtraSPList1" parameterMap="extraParam"  resultMap="extraListExcel,extra1ListExcel" remapResults="true">
+		<![CDATA[
+			{call dbo.rpa_GetExtraList(?)} 
+		]]>
+			
+	</procedure>
+	
+	<select id="RpaImporterDAO.selectExtraSPFinishList" parameterClass="RpaImporterVO" resultMap="extraListExcel" remapResults="true">
+		<![CDATA[
+			select
+				case
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 3 then ISNULL(ZFAPNM, '합계')
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 7 then ISNULL(ZFAPNM, '총계')
+			        else ZFAPNM
+			    end extra_custom,
+			    case
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 3 then ISNULL(CUSTOM_NAME, '합계')
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 7 then ISNULL(CUSTOM_NAME, '총계')
+			        else CUSTOM_NAME
+			    end extra_company,
+			    case
+			    	when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 1 then ISNULL(ZFCDNM, '소계')
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 3 then ISNULL(ZFCDNM, '')
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 7 then ISNULL(ZFCDNM, '총계')
+			        else ZFCDNM
+			    end extra_detail,
+			    sum(WRBTR) as extra_price,
+			    sum(WRBTR_TAX) as extra_tax,
+			    sum(WRBTR) + sum(WRBTR_TAX) as extra_total,
+			    case
+			    	when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 1 then 'itemtotal'
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 3 then 'subtotal'
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 7 then 'alltotal'
+			        else 'normaltr'
+			    end extra_style
+			from
+			    (
+			        select
+			            main.ZFAPNM ,
+			            sub.CUSTOM_NAME COLLATE Korean_Wansung_CI_AS as CUSTOM_NAME,
+			            main.ZFCDNM,
+			            main.WRBTR,
+			            main.WRBTR_TAX
+			        from
+			            (
+			                select
+			                    f.ZFAPNM,
+			                    a.LIFNR,
+			                    a.MWSKZ,
+			                    e.ZFCDNM,
+			                    sum(FLOOR(a.WRBTR * 100)) as WRBTR,
+			                    case
+			                        when a.MWSKZ != 'VH' then 0
+			                        else sum(FLOOR(a.WRBTR * 10))
+			                    end WRBTR_TAX,
+			                    b.COND_TYPE
+			                from
+			                    [ERP_DL].[WJP].[wjp].[ZIMTBKPF] a
+			                    inner join [ERP_DL].[WJP].[wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR] and a.[GJAHR] = b.[GJAHR]
+			                    inner join [ERP_DL].[WJP].[wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+			                    	and a.[ZFCSTGRP] = e.ZFCDTY and e.[ZFCD] = b.[ZFCD]
+			                    left outer join [ERP_DL].[WJP].[wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = '7' then f.ZFIVNO else f.ZFBLNO end and b.[ZFDOCNO] = f.[ZFDOCNO]
+			                where a.ZFPOSYN = 'Y'
+			                    and b.[COND_TYPE] != 'FR02'
+			                    and e.[ZFCDTY] in ('004','005','006')
+		]]>
+		<isEqual property="searchGubun" compareValue="BT">
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty prepend="AND"  property="searchEndDe">
+					<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BLDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  
+								AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</isEqual>
+		<isEqual property="searchGubun" compareValue="BL">
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty prepend="AND"  property="searchEndDe">
+					<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  
+							AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</isEqual>
+		<![CDATA[
+					                    
+			                group by
+			                    f.ZFAPNM,
+			                    a.LIFNR,
+			                    e.ZFCDNM,
+			                    a.MWSKZ,
+			                    b.COND_TYPE
+			            ) main
+			            inner join [dbo].[RPA_CUSTOM_TB] sub on main.LIFNR = sub.LIFNR COLLATE Korean_Wansung_CI_AS
+			            and sub.MWSKZ COLLATE SQL_Latin1_General_CP850_BIN2 in (main.MWSKZ)
+			        union all
+			        select
+			            main.ZFAPNM ,
+			            main.CUSTOM_NAME,
+			            main.ZFCDNM,
+			            main.WRBTR,
+			            main.WRBTR_TAX
+			        from
+			            (
+			                select
+			                    f.ZFAPNM,
+			                    a.LIFNR,
+			                    d.NAME1 as CUSTOM_NAME,
+			                    a.MWSKZ,
+			                    e.ZFCDNM,
+			                    sum(FLOOR(b.WRBTR * 100)) as WRBTR,
+			                    sum(FLOOR(b.WMWST * 100)) as WRBTR_TAX
+			                    ,b.COND_TYPE
+			                from
+			                    [ERP_DL].[WJP].[wjp].[ZIMTBKPF] a
+			                    inner join [ERP_DL].[WJP].[wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR] and a.[GJAHR] = b.[GJAHR]
+			                    inner join [ERP_DL].[WJP].[wjp].[T685T] c on c.KSCHL = b.COND_TYPE and c.SPRAS = '3'
+			                    inner join [ERP_DL].[WJP].[wjp].[LFA1] d on d.[LIFNR] = a.[LIFNR] and d.[SPRAS] = c.[SPRAS]
+			                    inner join [ERP_DL].[WJP].[wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+			                    		and a.[ZFCSTGRP] = e.ZFCDTY and e.[ZFCD] = b.[ZFCD]
+			                    left outer join [ERP_DL].[WJP].[wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = '7' then f.ZFIVNO else f.ZFBLNO end and b.[ZFDOCNO] = f.[ZFDOCNO]
+			                where
+			                    a.ZFPOSYN = 'Y'
+			                    and a.MWSKZ not in ('VG','VH')
+			                    and b.[COND_TYPE] != 'FR02'
+			                    and e.[ZFCDTY] in ('004','005','006')
+		]]>
+		<isEqual property="searchGubun" compareValue="BT">
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty prepend="AND"  property="searchEndDe">
+					<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BLDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  
+								AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</isEqual>
+		<isEqual property="searchGubun" compareValue="BL">
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty prepend="AND"  property="searchEndDe">
+					<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  
+							AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</isEqual>
+		<![CDATA[			                    
+			                group by
+			                    f.ZFAPNM,
+			                    a.LIFNR,
+			                    e.ZFCDNM,
+			                    d.NAME1,
+			                    a.MWSKZ,
+			                    b.COND_TYPE
+			            ) main
+			        where
+			            not exists (
+			                select
+			                    null
+			                from
+			                    [dbo].[RPA_CUSTOM_TB] sub
+			                where
+			                    sub.LIFNR COLLATE Korean_Wansung_CI_AS = main.LIFNR
+			                    and sub.MWSKZ COLLATE Korean_Wansung_CI_AS = main.MWSKZ
+			            )
+			    ) tot
+			group by
+			    rollup (ZFAPNM, CUSTOM_NAME, ZFCDNM)
+			order by
+			    ISNULL(ZFAPNM, '합계'),
+			    ISNULL(CUSTOM_NAME, '합계'),
+			    GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM),
+			    (
+			        case ZFCDNM
+			            when '해상 운임료' then 1
+			            when '항공 운임료' then 2
+			            when '이용료' then 3
+			            when '내륙운송료' then 4
+			            when '통관수수료' then 5
+			            when '보관료' then 6
+			            when '취급수수료' then 7
+			            when '보험료' then 7
+			            else 99
+			        end
+			    ) asc
+		]]>
+			
+	</select>
+	
+	
+	<update id="RpaImporterDAO.updateBBSMasterInf" parameterClass="RpaImporterVO" >
+		<![CDATA[
+			UPDATE IMS_RPA_FORWARDER 
+			   SET CONFIRM_YN = #confirmYn#
+			 WHERE H_BL_NO = #searchBlNo#
+			   AND DEL_YN IS  NULL
+		]]>
+		
+	</update>
+	
+	<update id="RpaImporterDAO.finishBBSMasterInf" parameterClass="RpaImporterVO" >
+		<![CDATA[
+			UPDATE IMS_RPA_FORWARDER 
+			   SET CONFIRM_YN = #t3_confirm#
+		]]>
+		<isNotEmpty  property="t3_preconfirm">
+				<![CDATA[  , PRECONFIRM_YN = #t3_preconfirm# ]]>
+		</isNotEmpty>
+		<![CDATA[
+			   
+			 WHERE H_BL_NO = #searchBlNo#
+			   AND DEL_YN IS  NULL
+		]]>
+	</update>
+	
+	
+	<insert id="RpaImporterDAO.insertBBSMasterSAPInf" parameterClass="RpaImporterVO" >
+		<![CDATA[
+			WITH T1 AS (
+				SELECT distinct
+					BKTXT,
+					ZFIMDNO,
+					ZFACDO,
+					BELNR,
+					COND_TYPE,
+					VTEXT,
+					SPRAS,
+					WRBTR,
+					DMBTR,
+					KURSF,
+					WAERS,
+					BLDAT,
+					BUDAT,
+					LIFNR,
+					ZFCSTGRP,
+					MWSKZ,
+					WMWST,
+					ZFCD,
+					ZTERM,
+					NAME1,
+					STCD2
+				FROM(
+					select
+						*
+					from
+						OPENQUERY(ERP_DL, '
+							select
+								A.BKTXT,
+								A.ZFIMDNO,
+								A.ZFACDO,
+								D.BELNR,
+								B.COND_TYPE,
+								C.VTEXT,
+								C.SPRAS,
+								case when A.WAERS in (''KRW'',''JPY'') then A.WRBTR * 100 else A.WRBTR end WRBTR,
+								case when A.WAERS in (''KRW'',''JPY'',''CNY'',''USD'') then A.DMBTR * 100 else A.DMBTR end DMBTR,
+								case when A.KURSF = 0 then 1.00 else A.KURSF end KURSF,
+								A.WAERS,
+								A.BLDAT,
+								A.BUDAT,
+								A.LIFNR,
+								A.ZFCSTGRP,
+								A.MWSKZ,
+								case when A.WAERS in (''KRW'',''JPY'') then A.WMWST * 100 else A.WMWST end WMWST,
+								B.ZFCD,
+								'''' ZTERM,
+								E.NAME1,
+								E.STCD2
+							from
+								[wjp].ZIMTBKPF A
+								inner join [wjp].ZIMTBSEG B on A.BELNR = B.BELNR
+								and A.GJAHR = B.GJAHR
+								and A.ZFPOSYN = ''Y''
+								left outer join [wjp].[BKPF] D on A.ZFACDO + A.GJAHR = D.AWKEY and left(D.BELNR,1) = ''5''
+								left outer join [wjp].T685T C on B.COND_TYPE = C.KSCHL
+								and C.SPRAS = ''3''
+								left outer join [wjp].[LFA1] E on A.LIFNR = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.BKTXT = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+						')
+					union all
+					select
+						*
+					from
+						OPENQUERY(ERP_DL, '
+							select
+								A.ZFCIVNO as BKTXT,
+								A.ZFCIVRN as ZFIMDNO,
+								B.BELNR as ZFACDO,
+								D.BELNR,
+								''FR00'' as COND_TYPE,
+								N''물대'' as VTEXT,
+								0 SPRAS,
+								case when A.ZFIVAMC in (''KRW'',''JPY'') then A.ZFIVAMP * 100 else A.ZFIVAMP end WRBTR,
+								case when A.ZFIVAMC in (''KRW'',''JPY'',''CNY'',''USD'') then A.ZFIVAMK * 100 else A.ZFIVAMK end DMBTR, 
+								case when A.ZFEXRT = 0 then 1.00 else A.ZFEXRT end KURSF,
+								A.ZFIVAMC as WAERS,
+								0 BLDAT,
+								A.ZFBUDAT as BUDAT,
+								A.ZFMAVN as LIFNR,
+								0 ZFCSTGRP,
+								'''' as MWSKZ,
+								0 as WMWST,
+								'''' as ZFCD,
+								A.ZTERM,
+								E.NAME1,
+								E.STCD2
+							from
+								[wjp].ZIMTCIVHD A
+								left outer join [wjp].ZIMTCIVHST B on A.ZFCIVRN = B.ZFCIVRN
+								left outer join [wjp].[BKPF] D on B.BELNR + B.GJAHR = D.AWKEY
+								left outer join [wjp].[LFA1] E on A.ZFMAVN = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.ZFCIVNO = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+						')
+					union all
+					SELECT [BKTXT] COLLATE Korean_Wansung_CI_AS as  [BKTXT] 
+						,[ZFIMDNO] COLLATE Korean_Wansung_CI_AS as  [ZFIMDNO] 
+						,[ZFACDO] COLLATE Korean_Wansung_CI_AS as  [ZFACDO] 
+						,[BELNR] COLLATE Korean_Wansung_CI_AS as  [BELNR] 
+						,[COND_TYPE] COLLATE Korean_Wansung_CI_AS as  [COND_TYPE] 
+						,[VTEXT] COLLATE Korean_Wansung_CI_AS as  [VTEXT] 
+						,[SPRAS] COLLATE Korean_Wansung_CI_AS as  [SPRAS] 
+						,[WRBTR] 
+						,[DMBTR] 
+						,[KURSF] 
+						,[WAERS] COLLATE Korean_Wansung_CI_AS as  [WAERS] 
+						,[BLDAT] COLLATE Korean_Wansung_CI_AS as  [BLDAT] 
+						,[BUDAT] COLLATE Korean_Wansung_CI_AS as  [BUDAT] 
+						,[LIFNR] COLLATE Korean_Wansung_CI_AS as  [LIFNR] 
+						,[ZFCSTGRP] COLLATE Korean_Wansung_CI_AS as  [ZFCSTGRP] 
+						,[MWSKZ]  COLLATE Korean_Wansung_CI_AS as  [MWSKZ] 
+						,[WMWST] 
+						,[ZFCD] COLLATE Korean_Wansung_CI_AS as  [ZFCD] 
+						,[ZTERM] COLLATE Korean_Wansung_CI_AS as  [ZTERM] 
+						,[NAME1] COLLATE Korean_Wansung_CI_AS as  [NAME1]
+						,[STCD2] COLLATE Korean_Wansung_CI_AS as  [STCD2] 
+					FROM [dbo].[RPA_SAP_TB]
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ BKTXT = #searchBlNo# ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+					) tot
+			]]>
+			<iterate property="nameVOList" prepend="WHERE BKTXT+COND_TYPE+'-'+BELNR IN" open="(" close=")" conjunction="," >
+		          #nameVOList[]#
+		   	</iterate>
+			<![CDATA[
+				) 
+	
+			    MERGE RPA_SAP_TB tgt
+				USING (
+					SELECT * FROM T1
+				) AS src
+				ON tgt.BKTXT COLLATE Korean_Wansung_CI_AS = src.BKTXT 
+					AND tgt.BELNR COLLATE Korean_Wansung_CI_AS = src.BELNR
+					AND tgt.COND_TYPE COLLATE Korean_Wansung_CI_AS = src.COND_TYPE
+				WHEN MATCHED THEN
+				  UPDATE SET COND_TYPE = src.COND_TYPE
+						   , VTEXT = src.VTEXT
+						   , SPRAS = src.SPRAS
+						   , WRBTR = src.WRBTR
+						   , DMBTR = src.DMBTR
+						   , KURSF = src.KURSF
+						   , WAERS = src.WAERS
+						   , BLDAT = src.BLDAT
+						   , BUDAT = src.BUDAT
+						   , LIFNR = src.LIFNR
+						   , ZFCSTGRP = src.ZFCSTGRP
+						   , MWSKZ = src.MWSKZ
+						   , WMWST = src.WMWST
+						   , ZFCD = src.ZFCD
+						   , ZTERM = src.ZTERM
+						   , NAME1 = src.NAME1
+						   , STCD2 = src.STCD2
+						   , DEL_FLAG = 'N'
+						   , MOD_DT = getdate()
+				WHEN NOT MATCHED THEN
+				  INSERT (BKTXT,ZFIMDNO,ZFACDO,BELNR,COND_TYPE,VTEXT,SPRAS,WRBTR,DMBTR,KURSF,WAERS,
+						  BLDAT,BUDAT,LIFNR,ZFCSTGRP,MWSKZ,WMWST,ZFCD,ZTERM,NAME1,STCD2,DEL_FLAG,MOD_DT)
+				  VALUES (src.BKTXT,src.ZFIMDNO,src.ZFACDO,src.BELNR,src.COND_TYPE,src.VTEXT,src.SPRAS,src.WRBTR,src.DMBTR,src.KURSF,src.WAERS,
+					      src.BLDAT,src.BUDAT,src.LIFNR,src.ZFCSTGRP,src.MWSKZ,src.WMWST,src.ZFCD,src.ZTERM,src.NAME1,src.STCD2,'N',getdate());
+
+		]]>
+		
+	</insert>
+
+	<delete id="RpaImporterDAO.updateBBSMasterSAPInf" parameterClass="RpaImporterVO" >
+		<![CDATA[
+			 UPDATE RPA_SAP_TB SET DEL_FLAG = 'Y'
+			 WHERE BKTXT = #searchBlNo#
+		]]>
+		
+	</delete>
+		
+	<delete id="RpaImporterDAO.deleteBBSMasterSAPInf" parameterClass="RpaImporterVO" >
+		<![CDATA[
+			DELETE FROM RPA_SAP_TB 
+			 WHERE DEL_FLAG = 'Y' AND BKTXT = #searchBlNo#
+		]]>
+		
+	</delete>
+	
+	
+	<insert id="RpaImporterDAO.insertForward" parameterClass="RpaImporterVO" >
+		<![CDATA[
+			INSERT INTO IMS_RPA_FORWARDER (
+				IN_NO,
+				H_BL_NO, 
+				BL_DT_1, 
+				BL_DT_2,
+				BL_SEONJEOG_DT,
+				REG_FLAG
+			)
+			VALUES (
+				#t3_inno#,
+				#t3_blno#, 
+				CONVERT(CHAR(10), CONVERT (DATE,#t3_sjdt#), 102),
+				CONVERT(CHAR(10), CONVERT (DATE,#t3_sjdt#), 102),
+				CONVERT(CHAR(10), getdate(), 102),
+				#t3_regflag#
+			)			
+		]]>
+	</insert>
+	
+	<select id="RpaImporterDAO.selectForwardCnt" parameterClass="RpaImporterVO" resultClass="java.lang.Integer" >
+        <![CDATA[
+            SELECT
+                count(*)
+            FROM
+                IMS_RPA_FORWARDER
+            WHERE
+                IN_NO = #t3_inno# AND H_BL_NO = #t3_blno# AND
+                CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_DT_1)),'.','')) = REPLACE(#t3_sjdt#,'-','') 
+        ]]>            
+    </select>
+    
+    <delete id="RpaImporterDAO.deleteForward" parameterClass="RpaImporterVO">
+
+		<![CDATA[
+			DELETE FROM [dbo].[IMS_RPA_FORWARDER]
+		 	WHERE SEQ = #t3_seq#
+		]]>	
+					
+	</delete>
+	
+	<insert id="RpaImporterDAO.insertRpaIncome" parameterClass="RpaImporterVO" >
+		<![CDATA[
+			INSERT INTO RPA_INCOME_TB (
+			  [INCOME_KEY]
+		      ,[YYYYMM]
+		      ,[GUBUN]
+		      ,[LIFNR]
+		      ,[CUSTOM_NAME]
+		      ,[COND_TYPE]
+		      ,[ZFCD]
+		      ,[ZFCDNM]
+		      ,[ZFCUT]
+		      ,[ZFAPNM]
+		      ,[WRBTR]
+		      ,[WRBTR_TAX]
+		      ,[WRBTR_TOTAL]
+			)
+			SELECT *
+			FROM (
+				select
+					#searchMonth# +'_'  + LIFNR +'_'  + ISNULL(ZFCD, '000') +'_'  + ISNULL(ZFCUT, '00000') as INCOME_KEY,
+					#searchMonth# as YYYYMM,
+					N'CLOSE' as GUBUN,
+					LIFNR,
+				    ISNULL(CUSTOM_NAME, '합계') as CUSTOM_NAME,
+					ISNULL(COND_TYPE, 'F000') as COND_TYPE,
+					ISNULL(ZFCD, '000') as ZFCD,
+				    ISNULL(ZFCDNM, '합계') as ZFCDNM,	
+					ISNULL(ZFCUT, '00000') as ZFCUT,
+				    ISNULL(ZFAPNM, '') as ZFAPNM,
+				    sum(WRBTR) as WRBTR,
+				    sum(WRBTR_TAX) as WRBTR_TAX,
+				    sum(WRBTR) + sum(WRBTR_TAX) as WRBTR_TOTAL
+				from
+				    (
+				        select
+							main.LIFNR,
+				            main.ZFCDNM,
+				            sub.CUSTOM_NAME,
+				            main.ZFAPNM,
+				            main.WRBTR,
+				            main.WRBTR_TAX,
+							main.COND_TYPE,
+							main.ZFCUT,
+							ZFCD
+				        from
+				            OPENQUERY(ERP_DL, '
+							select
+								e.ZFCDNM,
+								a.LIFNR,
+								a.MWSKZ,
+								f.ZFAPNM,
+								sum(FLOOR(a.WRBTR * 100)) as WRBTR,
+								case
+									when a.MWSKZ != ''VH'' then 0
+									else sum(FLOOR(a.WRBTR * 10))
+								end WRBTR_TAX,
+								b.[COND_TYPE]
+								,f.ZFCUT
+								,e.ZFCD
+							from
+								[wjp].[ZIMTBKPF] a
+								inner join [wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR]
+								and a.[GJAHR] = b.[GJAHR]
+								inner join [wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+								and a.[ZFCSTGRP] = e.ZFCDTY
+								and e.[ZFCD] = b.[ZFCD]
+								left outer join [wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = ''7'' then f.ZFIVNO else f.ZFBLNO end
+								and b.[ZFDOCNO] = f.[ZFDOCNO]
+							where
+								CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''')
+								and a.ZFPOSYN = ''Y''
+								and b.[COND_TYPE] != ''FR02''
+								and e.[ZFCDTY] in (
+									''004'',
+									''005'',
+									''006''
+								)
+							group by
+								e.ZFCDNM,
+								a.LIFNR,
+								f.ZFAPNM,
+								a.MWSKZ,
+								b.[COND_TYPE],
+								f.ZFCUT,
+								e.ZFCD
+							') main
+				            inner join [dbo].[RPA_CUSTOM_TB] sub on main.LIFNR = sub.LIFNR COLLATE Korean_Wansung_CI_AS
+				            and sub.MWSKZ COLLATE SQL_Latin1_General_CP850_BIN2 in (main.MWSKZ)
+				    ) tot
+				group by 
+				    CUSTOM_NAME, ZFCDNM, ZFAPNM,LIFNR,COND_TYPE,ZFCUT,ZFCD
+				
+				UNION ALL
+				
+				select
+					#searchMonth# +'_' + LIFNR +'_'  + ISNULL(ZFCD, '000') +'_'  + ISNULL(ZFCUT, '00000') as INCOME_KEY,
+					#searchMonth# as YYYYMM,
+					N'EACH' as GUBUN,
+					LIFNR,
+				    ISNULL(CUSTOM_NAME, '합계') as CUSTOM_NAME,
+					ISNULL(COND_TYPE, 'F000') as COND_TYPE,
+					ISNULL(ZFCD, '000') as ZFCD,
+				    ISNULL(ZFCDNM, '합계') as ZFCDNM,
+					ISNULL(ZFCUT, '00000') as ZFCUT,
+					ISNULL(ZFAPNM, '') as ZFAPNM,
+				    sum(WRBTR) as WRBTR,
+				    sum(WRBTR_TAX) as WRBTR_TAX,
+				    sum(WRBTR) + sum(WRBTR_TAX) as WRBTR_TOTAL
+				from
+				    (
+				        select
+							main.LIFNR,
+				            main.ZFCDNM,
+				            main.CUSTOM_NAME,
+				            main.ZFAPNM,
+				            main.WRBTR,
+				            main.WRBTR_TAX,
+							main.COND_TYPE,
+							main.ZFCUT,
+							main.ZFCD
+				        from
+				            OPENQUERY(ERP_DL, '
+								select
+									e.ZFCDNM,
+									a.LIFNR,
+									d.NAME1 COLLATE Korean_Wansung_CI_AS as CUSTOM_NAME,
+									a.MWSKZ,
+									f.ZFAPNM,
+									sum(FLOOR(b.WRBTR * 100)) as WRBTR,
+									sum(FLOOR(b.WMWST * 100)) as WRBTR_TAX,
+									b.[COND_TYPE],
+									f.ZFCUT,
+									e.ZFCD
+								from
+									[wjp].[ZIMTBKPF] a
+									inner join [wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR]
+									and a.[GJAHR] = b.[GJAHR]
+									inner join [wjp].[T685T] c on c.KSCHL = b.COND_TYPE
+									and c.SPRAS = ''3''
+									inner join [wjp].[LFA1] d on d.[LIFNR] = a.[LIFNR]
+									and d.[SPRAS] = c.[SPRAS]
+									inner join [wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+									and a.[ZFCSTGRP] = e.ZFCDTY
+									and e.[ZFCD] = b.[ZFCD]
+									left outer join [wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = ''7'' then f.ZFIVNO else f.ZFBLNO end
+									and b.[ZFDOCNO] = f.[ZFDOCNO]
+								where
+									CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''')
+									and a.ZFPOSYN = ''Y''
+									and a.MWSKZ not in (
+										''VG'',
+										''VH''
+									)
+									and b.[COND_TYPE] != ''FR02''
+									and e.[ZFCDTY] in (
+										''004'',
+										''005'',
+										''006''
+									)
+								group by
+									e.ZFCDNM,
+									a.LIFNR,
+									f.ZFAPNM,
+									d.NAME1,
+									a.MWSKZ,
+									b.[COND_TYPE],
+									f.ZFCUT,
+									e.ZFCD
+							') main
+				        where
+				            not exists (
+				                select
+				                    null
+				                from
+				                    [dbo].[RPA_CUSTOM_TB] sub
+				                where
+				                    sub.LIFNR COLLATE Korean_Wansung_CI_AS = main.LIFNR
+				                    and sub.MWSKZ COLLATE Korean_Wansung_CI_AS = main.MWSKZ
+				            )
+				    ) tot
+				group by
+				    CUSTOM_NAME, ZFCDNM, ZFAPNM,LIFNR,COND_TYPE,ZFCUT,ZFCD
+				) tot
+		
+		]]>
+	</insert>
+	
+	<delete id="RpaImporterDAO.deleteRpaIncome" parameterClass="RpaImporterVO">
+
+		<![CDATA[
+			DELETE FROM [dbo].[RPA_INCOME_TB]
+		 	WHERE YYYYMM = #searchMonth#
+		]]>	
+					
+	</delete>
+    
+    
+    <select id="RpaImporterDAO.selectExtraTax" parameterClass="RpaImporterVO" resultMap="extra1ListExcelDown" remapResults="true">
+        <![CDATA[
+            WITH T1 as(
+				select
+					#searchMonth# + '_' + LIFNR + '_' + ISNULL(ZFCD, '000') + '_' + ISNULL(ZFCUT, '00000') income_key,
+					CUSTOM_NAME as name1,
+					LIFNR as lifnr,
+					CONVERT(varchar(2), month (CONVERT(datetime, CONVERT(char(8), #searchBgnDe#)))) + N'월_' + ISNULL(ZFCDNM, '합계') as extra_detail,
+					sum(WRBTR) as extra_price,
+					sum(WRBTR_TAX) as extra_tax,
+					convert(varchar(10),DATEADD(DAY, -1, DATEADD(MONTH, 1, CONVERT(DATE, CONVERT(VARCHAR(6), #searchBgnDe#, 112) + '01'))),102) as extra_bldate,
+					'KRW' as waers,
+					case when ZFCD = 'CSC' then ZFCD else ZFCD + convert(varchar,ROW_NUMBER() OVER( ORDER BY LIFNR ASC)) end num
+				from
+					(
+						select
+							main.LIFNR,
+							main.ZFCDNM,
+							sub.CUSTOM_NAME,
+							main.ZFAPNM,
+							main.WRBTR,
+							main.WRBTR_TAX,
+							main.COND_TYPE,
+							main.ZFCUT,
+							main.ZFCD
+				        from
+				            OPENQUERY(ERP_DL, '
+							select
+								e.ZFCDNM,
+								a.LIFNR,
+								a.MWSKZ,
+								f.ZFAPNM,
+								sum(FLOOR(a.WRBTR * 100)) as WRBTR,
+								case
+									when a.MWSKZ != ''VH'' then 0
+									else sum(FLOOR(a.WRBTR * 10))
+								end WRBTR_TAX,
+								b.[COND_TYPE]
+								,f.ZFCUT
+								,e.ZFCD
+							from
+								[wjp].[ZIMTBKPF] a
+								inner join [wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR]
+								and a.[GJAHR] = b.[GJAHR]
+								inner join [wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+								and a.[ZFCSTGRP] = e.ZFCDTY
+								and e.[ZFCD] = b.[ZFCD]
+								left outer join [wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = ''7'' then f.ZFIVNO else f.ZFBLNO end
+								and b.[ZFDOCNO] = f.[ZFDOCNO]
+							where
+								left(CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),''.'','''')),6)  = ''$searchMonth$''
+								and a.ZFPOSYN = ''Y''
+								and b.[COND_TYPE] != ''FR02''
+								and e.[ZFCDTY] in (
+									''004'',
+									''005'',
+									''006''
+								)
+							group by
+								e.ZFCDNM,
+								a.LIFNR,
+								f.ZFAPNM,
+								a.MWSKZ,
+								b.[COND_TYPE],
+								f.ZFCUT,
+								e.ZFCD
+							') main
+				            inner join [dbo].[RPA_CUSTOM_TB] sub on main.LIFNR = sub.LIFNR COLLATE Korean_Wansung_CI_AS
+				            and sub.MWSKZ COLLATE SQL_Latin1_General_CP850_BIN2 in (main.MWSKZ)
+						WHERE main.WRBTR_TAX > 0
+				    ) tot
+				    where ZFCD != '00000' and ZFCD is not null
+				group by 
+				    CUSTOM_NAME, ZFCDNM, ZFAPNM,LIFNR,COND_TYPE,ZFCUT,ZFCD
+			)
+			select income_key,name1,lifnr,extra_detail,SUM(extra_price) as extra_price, SUM(extra_tax) as extra_tax, extra_bldate,waers
+			from T1
+			GROUP BY income_key,name1,lifnr,extra_detail,extra_bldate,waers, num
+        ]]>            
+    </select>
+    
+    <insert id="RpaImporterDAO.insertMultiStatement" parameterClass="java.util.HashMap">
+    	<![CDATA[
+			MERGE INTO RPA_STATEMENT_TB AS tar
+	    	USING (
+	    ]]>
+	    <dynamic>
+			<iterate prepend="VALUES" conjunction=", " property="List">
+			(
+				case when ISNULL(#List[].ZFIMDNO#,'') = '' then #List[].ZFCARNM# else ISNULL(#List[].ZFBLNO#,'') end
+	           ,#yyyymm#
+	           ,case when ISNULL(#List[].ZFIMDNO#,'') = '' then 'MON' else 'BL' end
+	           ,ISNULL(#List[].NUM#,0)
+	           ,ISNULL(#List[].ZFACDO#,'')
+	           ,ISNULL(#List[].ZFIMDNO#,'')
+	           ,ISNULL(#List[].ZFIDRNO#,'')
+	           ,ISNULL(#List[].ZFINRC#,'')
+	           ,ISNULL(#List[].NAME1#,'')
+	           ,ISNULL(#List[].LIFNR#,'')
+	           ,ISNULL(#List[].STCD2#,'')
+	           ,ISNULL(#List[].ZFBLNO#,'')
+	           ,ISNULL(#List[].ZFAPNM#,'')
+	           ,case when LTRIM(#List[].TWRBTR#) = '' then 0 else IIF(#List[].TWRBTR# is null , NULL,  CONVERT(decimal(20,0), #List[].TWRBTR#)) end
+	           ,case when LTRIM(#List[].WRBTR_TAX#) = '' then 0 else IIF(#List[].WRBTR_TAX# is null , NULL,  CONVERT(decimal(20,0), #List[].WRBTR_TAX#)) end
+	           ,ISNULL(#List[].WAERS1#,'')
+	           ,case when LTRIM(#List[].SWRBTR#) = '' then 0 else IIF(#List[].SWRBTR# is null , NULL,  CONVERT(decimal(20,0), #List[].SWRBTR#)) end
+	           ,ISNULL(#List[].WAERS2#,'')
+	           ,ISNULL(#List[].BUDAT#,'')
+	           ,ISNULL(#List[].ZFCSTGRP#,'')
+	           ,case when ISNULL(#List[].ZFIMDNO#,'') = '' then '' else ISNULL(#List[].ZFCARNM#,'') end
+	           ,ISNULL(#List[].BLDAT#,'')
+			)
+
+			</iterate>
+
+		</dynamic>
+		<![CDATA[
+			) AS src (
+       			[STATEMENT_KEY]
+	           ,[YYYYMM]
+	           ,[GUBUN]
+	           ,[NUM]
+	           ,[ZFACDO]
+	           ,[ZFIMDNO]
+	           ,[ZFIDRNO]
+	           ,[ZFINRC]
+	           ,[NAME1]
+	           ,[LIFNR]
+	           ,[STCD2]
+	           ,[ZFBLNO]
+	           ,[ZFAPNM]
+	           ,[TWRBTR]
+	           ,[WRBTR_TAX]
+	           ,[WAERS1]
+	           ,[SWRBTR]
+	           ,[WAERS2]
+	           ,[BUDAT]
+	           ,[ZFCSTGRP]
+	           ,[ZFCARNM]
+	           ,[BLDAT]
+			) ON
+        	tar.STATEMENT_KEY = src.STATEMENT_KEY
+	    	WHEN MATCHED THEN
+				UPDATE SET
+					NUM=src.NUM 
+					,ZFACDO=src.ZFACDO
+					,ZFIMDNO=src.ZFIMDNO
+	           		,ZFIDRNO=src.ZFIDRNO
+		           	,ZFINRC=src.ZFINRC
+		           	,NAME1=src.NAME1
+		           	,LIFNR=src.LIFNR
+		           	,STCD2=src.STCD2
+		           	,ZFBLNO=src.ZFBLNO
+		           	,ZFAPNM=src.ZFAPNM
+		           	,TWRBTR=src.TWRBTR
+		           	,WRBTR_TAX=src.WRBTR_TAX
+		           	,WAERS1=src.WAERS1
+		           	,SWRBTR=src.SWRBTR
+		           	,WAERS2=src.WAERS2
+		           	,BUDAT=src.BUDAT
+		           	,ZFCSTGRP=src.ZFCSTGRP
+		           	,ZFCARNM=src.ZFCARNM
+		           	,BLDAT=src.BLDAT
+				   	,REG_DT=getdate()
+			WHEN NOT MATCHED BY TARGET THEN
+				INSERT (
+					[STATEMENT_KEY]
+		           ,[YYYYMM]
+		           ,[GUBUN]
+		           ,[NUM]
+		           ,[ZFACDO]
+		           ,[ZFIMDNO]
+		           ,[ZFIDRNO]
+		           ,[ZFINRC]
+		           ,[NAME1]
+		           ,[LIFNR]
+		           ,[STCD2]
+		           ,[ZFBLNO]
+		           ,[ZFAPNM]
+		           ,[TWRBTR]
+		           ,[WRBTR_TAX]
+		           ,[WAERS1]
+		           ,[SWRBTR]
+		           ,[WAERS2]
+		           ,[BUDAT]
+		           ,[ZFCSTGRP]
+		           ,[ZFCARNM]
+		           ,[BLDAT]
+				) VALUES (
+					src.[STATEMENT_KEY]
+		           ,src.[YYYYMM]
+		           ,src.[GUBUN]
+		           ,src.[NUM]
+		           ,src.[ZFACDO]
+		           ,src.[ZFIMDNO]
+		           ,src.[ZFIDRNO]
+		           ,src.[ZFINRC]
+		           ,src.[NAME1]
+		           ,src.[LIFNR]
+		           ,src.[STCD2]
+		           ,src.[ZFBLNO]
+		           ,src.[ZFAPNM]
+		           ,src.[TWRBTR]
+		           ,src.[WRBTR_TAX]
+		           ,src.[WAERS1]
+		           ,src.[SWRBTR]
+		           ,src.[WAERS2]
+		           ,src.[BUDAT]
+		           ,src.[ZFCSTGRP]
+		           ,src.[ZFCARNM]
+		           ,src.[BLDAT]
+				);
+		]]>
+	</insert>
+	
+	<select id="RpaImporterDAO.selectStatement" parameterClass="RpaImporterVO" resultMap="statementList" remapResults="true">
+        <![CDATA[
+            SELECT [STATEMENT_KEY]
+		      ,[YYYYMM]
+		      ,[GUBUN]
+		      , case when GUBUN = 'BL' then '관,부가세' else '일반부가세' end GUBUN_NM
+		      ,[NUM]
+		      ,[ZFACDO]
+		      ,[ZFIMDNO]
+		      ,[ZFIDRNO]
+		      ,[ZFINRC]
+		      ,[NAME1]
+		      ,[LIFNR]
+		      ,[STCD2]
+		      ,case when GUBUN = 'BL' then ZFBLNO else '' end ZFBLNO
+		      ,[ZFAPNM]
+		      ,[TWRBTR]
+		      ,[WRBTR_TAX]
+		      ,TWRBTR + WRBTR_TAX as extra_total
+		      ,[WAERS1]
+		      ,[SWRBTR]
+		      ,[WAERS2]
+		      ,[BUDAT]
+		      ,[ZFCSTGRP]
+		      ,[ZFCARNM]
+		      ,[MWSKZ]
+		      ,[BLDAT]
+		      ,[CONFIRM_YN]
+		      ,[REG_FLAG]
+		      ,[REG_DT]
+		      ,case when CONFIRM_YN = 'Y' then 'E4F7BA' else 'FFFFFF' end SAPCOLOR
+		      , ISNULL(filecnt,0) as filecnt
+		  FROM [dbo].[RPA_STATEMENT_TB] main
+		  left outer join (
+		  	SELECT b.BLNO,count(b.ATCH_FILE_ID) as filecnt 
+			from [dbo].[LETTNFILE] a inner join [dbo].[LETTNFILEDETAIL] b on a.ATCH_FILE_ID = b.ATCH_FILE_ID
+			where a.DIR_GUBUN = 'EXTRA'
+			group by b.BLNO
+		  ) filesub on main.STATEMENT_KEY = filesub.BLNO
+        ]]>   
+        <dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchGubun">
+				<![CDATA[  GUBUN = #searchGubun# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchConfirm">
+				<![CDATA[  CONFIRM_YN = #searchConfirm# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchCom">
+				<![CDATA[ LTRIM(RTRIM(NAME1)) like UPPER('%'+#searchCom#+'%') ]]>
+			</isNotEmpty>
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty  prepend="AND"  property="searchEndDe">
+					<![CDATA[CONVERT(INT,REPLACE(RTRIM(LTRIM(BLDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</dynamic>  
+		<![CDATA[
+			order by BLDAT
+		]]>       
+    </select>
+    
+    <update id="RpaImporterDAO.updateStatementConfirm" parameterClass="RpaImporterVO" >
+		<![CDATA[
+			UPDATE RPA_STATEMENT_TB 
+			   SET CONFIRM_YN = #confirm_yn#
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchGubun">
+				<![CDATA[  GUBUN = #searchGubun# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchConfirm">
+				<![CDATA[  CONFIRM_YN = #searchConfirm# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchCom">
+				<![CDATA[ LTRIM(RTRIM(NAME1)) like UPPER('%'+#searchCom#+'%') ]]>
+			</isNotEmpty>
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty  prepend="AND"  property="searchEndDe">
+					<![CDATA[CONVERT(INT,REPLACE(RTRIM(LTRIM(BLDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</dynamic>  
+		
+	</update>
+	
+	<update id="RpaImporterDAO.updateMultiStatementConfirm" parameterClass="RpaImporterVO">
+		<![CDATA[
+			UPDATE RPA_STATEMENT_TB 
+			   SET CONFIRM_YN = #confirm_yn#
+		]]>
+		<iterate property="keyList" prepend="WHERE STATEMENT_KEY IN" open="(" close=")" conjunction="," >
+                #keyList[]#
+        </iterate>
+		
+	</update>
+
+    <delete id="RpaImporterDAO.deleteStatement" parameterClass="RpaImporterVO">
+
+		<![CDATA[
+			DELETE FROM RPA_STATEMENT_TB
+		]]>	
+		<iterate property="keyList" prepend="WHERE STATEMENT_KEY IN" open="(" close=")" conjunction="," >
+                #keyList[]#
+        </iterate>
+					
+	</delete>
+	
+</sqlMap>

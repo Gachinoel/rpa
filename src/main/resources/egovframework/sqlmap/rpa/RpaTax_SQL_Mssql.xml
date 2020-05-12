@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RpaTax">
+
+	<typeAlias  alias="RpaTaxVO" type="egovframework.rpa.tax.vo.RpaTaxVO"/>
+
+	<resultMap id="extraTaxSumList" class="egovframework.rpa.tax.vo.RpaTaxVO">
+		<result property="zfapnm" column="ZFAPNM" columnIndex="1"/>
+		<result property="name1" column="NAME1" columnIndex="2"/>
+		<result property="dmbtr" column="DMBTR" columnIndex="3"/>
+		<result property="wrbtr" column="WRBTR" columnIndex="4"/>
+		<result property="twrbtr" column="TWRBTR" columnIndex="5"/>
+		<result property="bldat" column="BLDAT" columnIndex="6"/>
+		<result property="extra_style" column="extra_style" columnIndex="7"/>
+	</resultMap>
+	
+	<select id="RpaTaxDAO.selectExtraTaxSum" parameterClass="RpaTaxVO" resultMap="extraTaxSumList" remapResults="true">
+		<![CDATA[	
+		with
+		    TT as (
+		        select
+				    BKTXT COLLATE Korean_Wansung_CI_AS as BKTXT
+		            ,ZFAPNM COLLATE Korean_Wansung_CI_AS as ZFAPNM
+					,NAME1 COLLATE Korean_Wansung_CI_AS as NAME1
+					,LIFNR COLLATE Korean_Wansung_CI_AS as LIFNR
+					,DMBTR
+					,WRBTR
+		        from
+		            OPENQUERY(ERP_DL, '     
+					select
+						A.BKTXT,
+						F.ZFAPNM,
+						E.NAME1,
+						A.LIFNR,
+						case
+							when A.WAERS in (
+								N''KRW'',
+								N''JPY'',
+								N''CNY'',
+								N''USD''
+							) then A.DMBTR * 100
+							else A.DMBTR
+						end DMBTR,
+						0 as WRBTR,
+						'''' as BLDAT
+					from
+						[wjp].ZIMTBKPF A
+						inner join [wjp].ZIMTBSEG B on A.BELNR = B.BELNR
+						and A.GJAHR = B.GJAHR
+						and A.ZFPOSYN = N''Y''
+						left outer join [wjp].[BKPF] D on A.ZFACDO + A.GJAHR = D.AWKEY
+						and left(D.BELNR, 1) = N''5''
+						left outer join [wjp].T685T C on B.COND_TYPE = C.KSCHL
+						and C.SPRAS = N''3''
+						left outer join [wjp].[LFA1] E on A.LIFNR = E.LIFNR
+						left outer join [wjp].[ZIMTIDS] F on A.BKTXT = F.ZFHBLNO
+					where
+						B.COND_TYPE = ''FR02''
+		]]>	
+		<isNotEmpty property="searchBgnDe">
+			<isNotEmpty prepend="AND"  property="searchEndDe">
+				<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.BLDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+			</isNotEmpty>
+		</isNotEmpty>
+		<![CDATA[						 
+					')
+				union
+				select
+					ZFBLNO as BKTXT
+					,ZFAPNM
+					,NAME1
+					,LIFNR
+					,0 as DMBTR
+					,WRBTR_TAX as WRBTR
+				from
+					[dbo].[RPA_STATEMENT_TB]
+				where
+					[GUBUN] = 'BL'
+		]]>
+		<isNotEmpty prepend="AND" property="searchExtraBgnDe">
+			<isNotEmpty  property="searchExtraEndDe">
+				<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(BLDAT)),'.',''))  BETWEEN  REPLACE(#searchExtraBgnDe#,'-','')  AND REPLACE(#searchExtraEndDe#,'-','') ]]>
+			</isNotEmpty>
+		</isNotEmpty>	
+		<![CDATA[ 
+		    ),
+			T1 as (
+				select
+					ZFBLNO,
+		            ZFAPNM,
+		            NAME1,
+		            LIFNR,
+					BLDAT
+		        from
+		            [dbo].[RPA_STATEMENT_TB]
+		        where
+		            [GUBUN] = 'BL'
+		]]>
+		<isNotEmpty prepend="AND" property="searchExtraBgnDe">
+			<isNotEmpty  property="searchExtraEndDe">
+				<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(BLDAT)),'.',''))  BETWEEN  REPLACE(#searchExtraBgnDe#,'-','')  AND REPLACE(#searchExtraEndDe#,'-','') ]]>
+			</isNotEmpty>
+		</isNotEmpty>	
+		<![CDATA[ 
+			)
+		select
+            case
+		        when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 7 then ISNULL(TT.ZFAPNM, '합계')
+		        when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 15 then ISNULL(TT.ZFAPNM, '총계')
+		        else TT.ZFAPNM
+		    end  ZFAPNM,
+		    case
+		        when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 7 then ISNULL(TT.NAME1, '합계')
+		        when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 15 then ISNULL(TT.NAME1, '총계')
+		        else TT.NAME1
+		    end  NAME1,
+			TT.LIFNR,
+            SUM(ISNULL(TT.DMBTR,0)) DMBTR,
+			SUM(ISNULL(TT.WRBTR,0)) WRBTR,
+			SUM(ISNULL(TT.DMBTR,0)) + SUM(ISNULL(TT.WRBTR,0)) as TWRBTR,
+            ISNULL(T1.BLDAT,'') as BLDAT,
+			GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) as gid,
+			case
+				when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 7 then 'subtotal'
+				when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 15 then 'alltotal'
+				else 'normaltr'
+			end extra_style
+        from TT left outer join T1 on  TT.BKTXT = T1.ZFBLNO and TT.ZFAPNM = T1.ZFAPNM and TT.LIFNR = T1.LIFNR and TT.NAME1 = T1.NAME1
+		group by rollup (TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT)
+		having
+		 GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) not in(1,3)
+		order by
+			ISNULL(TT.ZFAPNM, '합계'),
+			GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT),
+			case TT.LIFNR
+				when 'B0613A01' then 1
+				when 'B0439A01' then 2
+				when 'B0662A01' then 3
+				else 4
+			end asc
+		]]>	
+	</select> 	
+	
+	
+	 <insert id="RpaTaxDAO.insertExtraTax" parameterClass="RpaTaxVO">
+        <![CDATA[
+            WITH T1 as(
+				select
+					#searchMonth# + '_' + LIFNR + '_' + ISNULL(ZFCD, '000') + '_' + ISNULL(ZFCUT, '00000') income_key,
+					#searchMonth# as yyyymm,
+					'MON' as gubun,
+					LIFNR as lifnr,
+					CUSTOM_NAME as name1,
+					ZFAPNM as custom_nm,
+					CONVERT(varchar(2), month (CONVERT(datetime, CONVERT(char(8), #searchBgnDe#)))) + N'월_' + ISNULL(ZFCDNM, '합계') as extra_detail,
+					sum(WRBTR) as extra_price,
+					sum(WRBTR_TAX) as extra_tax,
+					convert(varchar(10),DATEADD(DAY, -1, DATEADD(MONTH, 1, CONVERT(DATE, CONVERT(VARCHAR(6), #searchBgnDe#, 112) + '01'))),102) as extra_bldate,
+					'KRW' as waers,
+					STCD2 as stcd2,
+					MWSKZ as mwskz,
+					case when ZFCD = 'CSC' then ZFCD else ZFCD + convert(varchar,ROW_NUMBER() OVER( ORDER BY LIFNR ASC)) end num
+					
+				from
+					(
+						select
+							main.LIFNR,
+							main.ZFCDNM,
+							sub.CUSTOM_NAME,
+							main.ZFAPNM,
+							main.WRBTR,
+							main.WRBTR_TAX,
+							main.COND_TYPE,
+							main.ZFCUT,
+							main.ZFCD,
+							main.STCD2,
+							case when main.MWSKZ = 'VG' then 'V0' 
+								when main.MWSKZ = 'VH' then 'V4'
+								else main.MWSKZ end MWSKZ
+				        from
+				            OPENQUERY(ERP_DL, '
+							select
+								e.ZFCDNM,
+								a.LIFNR,
+								a.MWSKZ,
+								f.ZFAPNM,
+								sum(FLOOR(a.WRBTR * 100)) as WRBTR,
+								case
+									when a.MWSKZ != ''VH'' then 0
+									else sum(FLOOR(a.WRBTR * 10))
+								end WRBTR_TAX,
+								b.[COND_TYPE]
+								,f.ZFCUT
+								,e.ZFCD
+								,c.STCD2    
+							from
+								[wjp].[ZIMTBKPF] a
+								inner join [wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR]
+								and a.[GJAHR] = b.[GJAHR]
+								inner join [wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+								and a.[ZFCSTGRP] = e.ZFCDTY
+								and e.[ZFCD] = b.[ZFCD]
+								left outer join [wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = ''7'' then f.ZFIVNO else f.ZFBLNO end
+								and b.[ZFDOCNO] = f.[ZFDOCNO]
+								left outer join [wjp].[LFA1] c on a.LIFNR = c.LIFNR
+							where
+								left(CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),''.'','''')),6)  = ''$searchMonth$''
+								and a.ZFPOSYN = ''Y''
+								and b.[COND_TYPE] != ''FR02''
+								and e.[ZFCDTY] in (
+									''004'',
+									''005'',
+									''006''
+								)
+							group by
+								e.ZFCDNM,
+								a.LIFNR,
+								f.ZFAPNM,
+								a.MWSKZ,
+								b.[COND_TYPE],
+								f.ZFCUT,
+								e.ZFCD,
+								c.STCD2,
+								STCD2
+							') main
+				            inner join [dbo].[RPA_CUSTOM_TB] sub on main.LIFNR = sub.LIFNR COLLATE Korean_Wansung_CI_AS
+				            and sub.MWSKZ COLLATE SQL_Latin1_General_CP850_BIN2 in (main.MWSKZ)
+				    ) tot
+				    where ZFCD != '00000' and ZFCD is not null and ZFAPNM is not null
+				group by 
+				    CUSTOM_NAME, ZFCDNM, ZFAPNM,LIFNR,COND_TYPE,ZFCUT,ZFCD,STCD2,MWSKZ
+			)
+			MERGE RPA_STATEMENT_TB tgt
+			USING (
+				select income_key,yyyymm,gubun,lifnr,name1,custom_nm,extra_detail,SUM(extra_price) as extra_price, SUM(extra_tax) as extra_tax,mwskz, extra_bldate,waers,stcd2
+				from T1
+				GROUP BY income_key,yyyymm,gubun,lifnr,name1,custom_nm, extra_detail,mwskz,extra_bldate,waers, num,stcd2
+			) AS src
+			ON tgt.STATEMENT_KEY = src.income_key COLLATE Korean_Wansung_CI_AS
+			WHEN MATCHED THEN
+				UPDATE SET 
+					    LIFNR=src.lifnr 
+					    ,STCD2=src.stcd2 
+					    ,ZFBLNO=src.extra_detail
+					    ,NAME1=src.name1
+					    ,ZFAPNM=src.custom_nm
+					    ,TWRBTR=src.extra_price
+					    ,WRBTR_TAX=src.extra_tax 
+					    ,WAERS1=src.waers
+					    ,SWRBTR=src.extra_price
+					    ,WAERS2=src.waers
+					    ,MWSKZ=src.mwskz					    
+					    ,BUDAT=src.extra_bldate
+					    ,BLDAT=src.extra_bldate
+						,REG_DT=getdate()
+			WHEN NOT MATCHED THEN
+				INSERT (STATEMENT_KEY,YYYYMM,GUBUN,NUM,LIFNR,STCD2
+						,ZFBLNO,NAME1,ZFAPNM,TWRBTR,WRBTR_TAX,WAERS1,SWRBTR,WAERS2,MWSKZ,BUDAT,BLDAT)
+				VALUES (src.income_key,src.yyyymm,src.gubun,0,src.lifnr,src.stcd2
+				,src.extra_detail,src.name1,src.custom_nm,0,src.extra_tax,src.waers,
+						src.extra_price,src.waers,src.mwskz,src.extra_bldate,src.extra_bldate);
+        ]]>            
+    </insert>
+
+</sqlMap>

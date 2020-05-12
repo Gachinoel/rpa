@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RpaBill">
+
+	<typeAlias  alias="RpaBillVO" type="egovframework.rpa.bill.RpaBillVO"/>
+
+	<resultMap id="rpaBillList" class="egovframework.rpa.bill.RpaBillVO">
+		<result property="belnr" column="BELNR" columnIndex="1"/>
+		<result property="appoint" column="APPOINT" columnIndex="2"/>
+		<result property="umskz" column="UMSKZ" columnIndex="3"/>
+		<result property="zfbdt" column="ZFBDT" columnIndex="4"/>
+		<result property="bldat" column="BLDAT" columnIndex="5"/>
+		<result property="pswbt" column="PSWBT" columnIndex="6"/>
+		<result property="pswsl" column="PSWSL" columnIndex="7"/>
+		<result property="lifnr" column="LIFNR" columnIndex="8"/>
+		<result property="augbl" column="AUGBL" columnIndex="9"/>
+		<result property="name1" column="NAME1" columnIndex="10"/>
+		<result property="stcd2" column="STCD2" columnIndex="11"/>
+		<result property="mcod3" column="MCOD3" columnIndex="12"/>
+		<result property="xragl" column="XRAGL" columnIndex="13"/>
+		<result property="bgcolor" column="BGCOLOr" columnIndex="14"/>
+		
+	</resultMap>
+
+
+	<select id="RpaBillDAO.selectBillList" parameterClass="RpaBillVO" resultMap="rpaBillList" remapResults="true">
+		<![CDATA[	
+			select tt.BELNR
+				,tt.APPOINT
+				,tt.UMSKZ
+				,case when len(tt.ZFBDT) = 8 then CONVERT(CHAR(10),CONVERT (DATE, tt.ZFBDT,112),102) else '' end ZFBDT
+				,case when len(tt.BLDAT) = 8 then CONVERT(CHAR(10),CONVERT (DATE, tt.BLDAT,112),102) else '' end BLDAT
+				,tt.PSWBT
+				,tt.PSWSL
+				,tt.LIFNR
+				,ISNULL(t1.NAME1,'') as NAME1
+				,ISNULL(t1.STCD2,'') as STCD2
+				,case when ISNULL(t1.PSTLZ,'') = '' then ISNULL(t1.MCOD3,'') else ISNULL(t1.PSTLZ,'') + ' ' +ISNULL(t1.MCOD3,'') end MCOD3
+				,tt.AUGBL
+				,tt.XRAGL
+				,case when BELNR = N'합계' then 'F4F4F4' else 'FFFFFF' end BGCOLOR
+			from OPENQUERY([192.9.200..231], '
+				select ISNULL(a.BELNR,N''합계'') as BELNR
+					,ISNULL(right(a.GJAHR,2) + a.BELNR,'''') as APPOINT
+					,ISNULL(a.UMSKZ,'''') as UMSKZ
+					,ISNULL(a.ZFBDT,'''') as ZFBDT
+					,ISNULL(a.BLDAT,'''') as BLDAT
+					,SUM(a.PSWBT) * (-1) as PSWBT
+					,ISNULL(a.PSWSL,'''') as PSWSL
+					,ISNULL(a.LIFNR,'''') as LIFNR
+					,ISNULL(a.AUGBL ,'''') as AUGBL
+					,ISNULL(b.XRAGL,'''') as XRAGL
+					,GROUPING_ID(a.BELNR,a.GJAHR,a.UMSKZ,a.ZFBDT,a.BLDAT,a.PSWSL,a.LIFNR,a.AUGBL,b.XRAGL) as GID
+				from [WMS].[dbo].[UTB_BSEG] a
+				left outer join(
+					select BELNR,XRAGL
+					from [WMS].[dbo].[UTB_BSEG]
+					where XRAGL = ''X'' 
+		]]>
+		<isNotEmpty prepend="AND" property="searchMonth">
+			<![CDATA[ left(BLDAT,6) = ''$searchMonth$'' ]]>
+		</isNotEmpty>
+		<![CDATA[					
+					
+				) b on a.BELNR = b.BELNR
+				where a.BSCHL = ''39''
+				AND a.KOART = ''K''
+				AND a.UMSKZ = ''X''
+				AND a.SHKZG = ''H'' 
+		]]>
+		<isNotEmpty prepend="AND" property="searchMonth">
+			<![CDATA[ left(a.BLDAT,6) = ''$searchMonth$'' ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="searchXragl">
+			<![CDATA[ ISNULL(b.XRAGL,'''') != ''$searchXragl$'' ]]>
+		</isNotEmpty>
+		
+		<![CDATA[					
+				GROUP BY ROLLUP(a.BELNR,a.GJAHR,a.UMSKZ,a.ZFBDT,a.BLDAT,a.PSWSL,a.LIFNR,a.AUGBL,b.XRAGL)
+				having GROUPING_ID(a.BELNR,a.GJAHR,a.UMSKZ,a.ZFBDT,a.BLDAT,a.PSWSL,a.LIFNR,a.AUGBL,b.XRAGL) in(0,511)
+			') tt
+			left outer join (
+				select * from OPENQUERY(ERP_DL,'
+					select LIFNR,NAME1,STCD2,MCOD3,PSTLZ
+					from WJP.wjp.LFA1
+				')
+			) t1 on tt.LIFNR COLLATE Korean_Wansung_CI_AS = t1.LIFNR
+			order by tt.GID, tt.BELNR
+		]]>	
+	</select> 	
+		
+</sqlMap>

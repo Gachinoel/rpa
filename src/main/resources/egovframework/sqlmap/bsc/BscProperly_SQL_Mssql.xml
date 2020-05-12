@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="BscProperly">
+
+	<typeAlias  alias="BscProperlyVO" type="egovframework.bsc.properly.vo.BscProperlyVO"/>
+
+	<resultMap id="selectProperyList" class="egovframework.bsc.properly.vo.BscProperlyVO">
+		<result property="item" column="ITEM" columnIndex="1"/>
+		<result property="item_nm" column="ITEM_NM" columnIndex="2"/>
+		<result property="spart_nm" column="SPART_NM" columnIndex="3"/>
+		<result property="mtart_nm" column="MTART_NM" columnIndex="4"/>
+		<result property="goal_amt" column="GOAL_AMT" columnIndex="5"/>
+		<result property="safe_amt" column="SAFE_AMT" columnIndex="6"/>		
+		<result property="use_amt" column="USE_AMT" columnIndex="7"/>
+		<result property="inven_amt" column="INVEN_AMT" columnIndex="8"/>
+		<result property="result" column="RESULT" columnIndex="9"/>
+		<result property="achieve_rate" column="ACHIEVE_RATE" columnIndex="10"/>
+		<result property="bgcolor" column="BGCOLOR" columnIndex="11"/>
+	</resultMap>
+	
+	<parameterMap id="properlyParam" class="java.util.Map">
+        <parameter property="searchMonth" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="searchGubun" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="searchItem" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<procedure id="BscProperlyDAO.selectProperyList" parameterMap="properlyParam"  resultMap="selectProperyList" remapResults="true">
+		<![CDATA[
+			{call dbo.getInvenProperly(?,?,?)} 
+		]]>
+			
+	</procedure>
+		
+</sqlMap>

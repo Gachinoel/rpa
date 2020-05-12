@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+
+	<sqlMap resource="egovframework/sqlmap/rpa/RpaCmm_SQL_Mssql.xml"/>
+	<sqlMap resource="egovframework/sqlmap/rpa/RpaImporter_SQL_Mssql.xml"/>
+	<sqlMap resource="egovframework/sqlmap/rpa/RpaSpa_SQL_Mssql.xml"/>
+	<sqlMap resource="egovframework/sqlmap/rpa/RpaTax_SQL_Mssql.xml"/>
+	<sqlMap resource="egovframework/sqlmap/rpa/RpaTTSend_SQL_Mssql.xml"/>
+	<sqlMap resource="egovframework/sqlmap/rpa/RpaYetarr_SQL_Mssql.xml"/>
+	<sqlMap resource="egovframework/sqlmap/rpa/RpaBill_SQL_Mssql.xml"/>
+ 	
+<!-- 
+
+ 	<sqlMap resource="egovframework/sqlmap/wj/EgovLoginUsr_SQL_Mssql.xml"/>
+ 	<sqlMap resource="egovframework/sqlmap/wj/wjRpaMaster_SQL_Mssql.xml"/>
+-->
+
+</sqlMapConfig>

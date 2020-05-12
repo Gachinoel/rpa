@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RpaTTSend">
+
+	<typeAlias  alias="RpaTTSendVO" type="egovframework.rpa.ttsend.vo.RpaTTSendVO"/>
+
+	<resultMap id="extraTTSendList" class="egovframework.rpa.ttsend.vo.RpaTTSendVO">
+		<result property="num" column="NUM" columnIndex="1"/>
+		<result property="bldat" column="BLDAT" columnIndex="2"/>
+		<result property="bktxt" column="BKTXT" columnIndex="3"/>
+		<result property="zfidrno" column="ZFIDRNO" columnIndex="4"/>
+		<result property="send_dt" column="SEND_DT" columnIndex="5"/>		
+		<result property="waers" column="WAERS" columnIndex="6"/>
+		<result property="wrbtr" column="WRBTR" columnIndex="7"/>
+		<result property="name1" column="NAME1" columnIndex="8"/>
+		<result property="kursf" column="KURSF" columnIndex="9"/>
+	</resultMap>
+
+	<select id="RpaTTSendDAO.selectTTSendList" parameterClass="RpaTTSendVO" resultMap="extraTTSendList" remapResults="true">
+		<![CDATA[	
+			WITH
+			    T1 as (
+			        select
+			            *
+			        from
+			            OPENQUERY(ERP_DL, '
+							select
+								F.ZFBLDT as BLDAT,
+								A.ZFBUDAT as BUDAT,
+								A.ZFCIVNO as BKTXT,
+								C.ZFIDRNO,
+								A.ZFIVAMC as WAERS,
+								case
+									when A.ZFIVAMC in (
+										''KRW'',
+										''JPY''
+									) then A.ZFIVAMP * 100
+									else A.ZFIVAMP
+								end WRBTR,
+								E.NAME1,
+								case
+									when A.ZFEXRT = 0 then 1.00
+									else A.ZFEXRT
+								end KURSF
+							from
+								[wjp].ZIMTCIVHD A
+								left outer join [wjp].ZIMTCIVHST B on A.ZFCIVRN = B.ZFCIVRN
+								left outer join [wjp].ZIMTIDS C on A.ZFCIVNO = C.ZFHBLNO
+								left outer join [wjp].[BKPF] D on B.BELNR + B.GJAHR = D.AWKEY
+								left outer join [wjp].[LFA1] E on A.ZFMAVN = E.LIFNR
+								left outer join [wjp].[ZIMTBL] F on A.ZFCIVNO = F.ZFHBLNO 
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.ZFCIVNO = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="searchCom">
+				<![CDATA[ LTRIM(RTRIM(E.NAME1)) like UPPER(''%''+N''$searchCom$''+''%'') ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchWaers">
+				<![CDATA[ LTRIM(RTRIM(A.ZFIVAMC)) = N''$searchWaers$'']]>
+			</isNotEmpty>
+			<isEqual property="searchGubun" compareValue="BT">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND" property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.ZFBUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual> 
+			<isEqual property="searchGubun" compareValue="BL">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND" property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(F.ZFBLDT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual>
+		</dynamic>
+		<![CDATA[
+						')
+			    )
+			
+			select
+				ROW_NUMBER() OVER( ORDER BY T1.NAME1,T1.BLDAT,T1.BKTXT,T1.ZFIDRNO,T1.WAERS) AS NUM,
+			    case when len(T1.BLDAT) = 8 then CONVERT (DATE, T1.BLDAT,112) else '' end BLDAT,
+			    T1.BKTXT,
+				ISNULL(T1.ZFIDRNO,'') as ZFIDRNO,
+				CONVERT (DATE, #searchSendDt#,112) as SEND_DT,
+			    T1.WAERS,
+			    SUM(T1.WRBTR) as WRBTR,
+			    T1.NAME1,
+				case T1.WAERS 
+					when 'KRW' then '' 
+					when 'JPY' then T1.WAERS + N'100 = ₩' +  convert(varchar,CAST(T1.KURSF AS DECIMAL(8,2)))
+					else  T1.WAERS + N'1 = ₩' +  convert(varchar,CAST(T1.KURSF AS DECIMAL(8,2))) 
+				end  KURSF
+			from
+			    T1 
+			GROUP BY T1.NAME1,T1.BLDAT,T1.BKTXT,T1.ZFIDRNO,T1.WAERS,T1.KURSF
+			order by
+			    T1.NAME1,T1.BLDAT,T1.BKTXT,T1.ZFIDRNO,T1.WAERS
+		
+		]]>	
+	</select> 	
+		
+</sqlMap>

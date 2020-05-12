@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RpaYetarr">
+
+	<resultMap id="yetArrivedList" class="egovframework.rpa.yetarr.vo.RpaYetarrVO">
+		<result property="bktxt" column="BKTXT" columnIndex="1"/>
+		<result property="item" column="ITEM" columnIndex="2"/>
+		<result property="wrbtr" column="WRBTR" columnIndex="3"/>
+		<result property="waers" column="WAERS" columnIndex="4"/>
+		<result property="wrbtrp" column="WRBTRP" columnIndex="5"/>
+		<result property="hwaer" column="HWAER" columnIndex="6"/>
+		<result property="cond_type" column="COND_TYPE" columnIndex="7"/>
+		<result property="vtext" column="VTEXT" columnIndex="8"/>
+		<result property="lifnr" column="LIFNR" columnIndex="9"/>
+		<result property="budat" column="BUDAT" columnIndex="10"/>
+		<result property="indat" column="INDAT" columnIndex="11"/>
+	</resultMap>
+	
+	<resultMap id="yetArrivedTotal" class="egovframework.rpa.yetarr.vo.RpaYetarrVO">
+		<result property="bktxt" column="BKTXT" columnIndex="1"/>
+		<result property="item" column="ITEM" columnIndex="2"/>
+		<result property="wrbtrp" column="WRBTRP" columnIndex="3"/>
+		<result property="taxamt" column="TAXAMT" columnIndex="4"/>
+		<result property="per" column="PER" columnIndex="5"/>
+		<result property="blamt" column="BLAMT" columnIndex="6"/>
+		<result property="dmbtr" column="DMBTR" columnIndex="7"/>
+		<result property="twrbtr" column="TWRBTR" columnIndex="8"/>
+		<result property="lastday" column="LASTDAY" columnIndex="9"/>
+	</resultMap>
+		
+	<parameterMap id="extraParam" class="java.util.Map">
+        <parameter property="chkmonth" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<procedure id="RpaYetarrDAO.selectYetArrivedList" parameterMap="extraParam"  resultMap="yetArrivedList,yetArrivedTotal" remapResults="true">
+		<![CDATA[
+			{call dbo.getUetarrived(?)} 
+		]]>
+			
+	</procedure>
+	
+</sqlMap>

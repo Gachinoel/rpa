@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ExcelMaster">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<!-- 
+	<typeAlias  alias="BoardMasterVO" type="egovframework.let.cop.bbs.service.BoardMasterVO"/>
+	<typeAlias  alias="BoardMaster" type="egovframework.let.cop.bbs.service.BoardMaster"/>
+ 	-->
+	<typeAlias  alias="ExcelMasterVO" type="wj.rpa.excel.service.ExcelMasterVO"/>
+ 	<typeAlias  alias="ExcelMaster" type="wj.rpa.excel.service.ExcelMaster"/>
+ 	
+	<resultMap id="boardMasterList" class="wj.rpa.excel.service.ExcelMasterVO">
+		<result property="t3_blno" column="T3_BLNO" columnIndex="1"/>
+		<result property="t3_sjdt" column="T3_SJDT" columnIndex="2"/>
+		<result property="t1_yn" column="T1_YN" columnIndex="3"/>
+		<result property="t2_yn" column="T2_YN" columnIndex="4"/>
+		<result property="t3_yn" column="T3_YN" columnIndex="5"/>
+		<result property="t4_yn" column="T4_YN" columnIndex="6"/>
+	</resultMap>
+	
+	<resultMap id="invoiceList" class="wj.rpa.excel.service.ExcelMasterVO">
+		<result property="t1InNo" column="T1INNO" columnIndex="1"/>
+		<result property="t1Carry" column="T1CARRY" columnIndex="2"/>
+		<result property="t3SSDt" column="T3SSDT" columnIndex="3"/>
+		
+		<result property="t1PoNo" column="T1PONO" columnIndex="4"/>
+		
+		<result property="t1PoLineNo" column="T1POLINENO" columnIndex="5"/>
+		<result property="t1ItemCd" column="T1ITEMCD" columnIndex="6"/>
+		
+		<result property="t1Qty" column="T1QTY" columnIndex="7"/>
+		<result property="t4DanGa" column="T4DANGA" columnIndex="8"/>
+		<result property="t4DanGa2" column="T4DANGA2" columnIndex="9"/>
+		
+		<result property="t4GeumAeg" column="T4GEUMAEG" columnIndex="10"/>
+		<result property="t4JeCurDw" column="T4JECURDW" columnIndex="11"/>
+		<result property="t4SebeonCd" column="T4SEBEONCD" columnIndex="12"/>
+		
+		<result property="t3GgCoCd2" column="T3GGCOCD2" columnIndex="13"/>
+		<result property="t3HBlNo" column="T3HBLNO" columnIndex="14"/>
+		<result property="t4IndoJk" column="T4INDOJK" columnIndex="15"/>
+		
+	</resultMap>
+
+	<resultMap id="cargoList" class="wj.rpa.excel.service.ExcelMasterVO">
+		<result property="t3BlDt" column="T3BLDT" columnIndex="1"/>
+		<result property="t3SSDt" column="T3SSDT" columnIndex="2"/>
+		<result property="t2StockNo" column="T2STOCKNO" columnIndex="3"/>
+		<result property="t2JyRt" column="T2JYRT" columnIndex="4"/>
+		<result property="t4AACUERt" column="T4AACUERT" columnIndex="5"/>
+		<result property="t4AACDw" column="T4AACDW" columnIndex="6"/>
+		<result property="t3SSDt" column="T3SSDT" columnIndex="7"/>
+		<result property="t2CKEIFee" column="T2CKEIFEE" columnIndex="8"/>
+		<result property="t3InNo" column="T3INNO" columnIndex="9"/>
+		<result property="t3HBlNo" column="T3HBLNO" columnIndex="10"/>
+	</resultMap>
+
+
+	<resultMap id="blList" class="wj.rpa.excel.service.ExcelMasterVO">
+		<result property="t3HblNo" column="T3HBLNO" columnIndex="1"/>
+		<result property="t3BSDt" column="T3BSDT" columnIndex="2"/>
+		<result property="t3EtdDt" column="T3ETDDT" columnIndex="3"/>
+		<result property="t3EtaDt" column="T3ETADT" columnIndex="4"/>
+		<result property="t3SJGCd" column="T3SJGCD" columnIndex="5"/>
+		<result property="t3DJGCd" column="T3DJGCD" columnIndex="6"/>
+		<result property="t3SJHCd" column="T3SJHCD" columnIndex="7"/>
+		<result property="t3DCHCd" column="T3DCHCD" columnIndex="8"/>
+		<result property="t3FVNm" column="T3FVNM" columnIndex="9"/>
+		<result property="t3C20Qt" column="T3C20QT" columnIndex="10"/>
+		
+		<result property="t3C40Qt" column="T3C40QT" columnIndex="11"/>
+		<result property="t3USgb" column="T3USGB" columnIndex="12"/>
+		<result property="t3CPJEa" column="T3CPJEA" columnIndex="13"/>
+		
+		<result property="t3NWg" column="T3NWG" columnIndex="14"/>
+		<result property="t3GWg" column="T3GWG" columnIndex="15"/>
+		<result property="t3SLSBDt" column="T3SLSBDT" columnIndex="16"/>
+		
+		<result property="t3SJSLSBCCd" column="T3SJSLSBCCD" columnIndex="17"/>
+		<result property="t3SIHDt" column="T3SIHDT" columnIndex="18"/>
+		<result property="t3IGYJDt" column="T3IGYJDT" columnIndex="19"/>
+		
+	</resultMap>
+	
+	
+	<resultMap id="passList" class="wj.rpa.excel.service.ExcelMasterVO">
+		<result property="t3HBlNo" column="T3HBLNO" columnIndex="1"/>
+		<result property="t4SingoNo" column="T4SINGONO" columnIndex="2"/>
+		<result property="t4SGSG" column="T4SGSG" columnIndex="3"/>
+		<result property="t4SingoDt" column="T4SINGODT" columnIndex="4"/>
+		<result property="t4CifUsd" column="T4CIFUSD" columnIndex="5"/>
+		
+		<result property="t4CifKrw" column="T4CIFKRW" columnIndex="6"/>
+		<result property="t4BGSGP" column="T4BGSGP" columnIndex="7"/>
+		<result property="t4GwanSe" column="T4GWANSE" columnIndex="8"/>
+		<result property="t4Bugase" column="T4BUGASE" columnIndex="9"/>
+		<result property="t1PoNo" column="T1PONO" columnIndex="10"/>
+		
+		<result property="t1PoLineNo" column="T1POLINENO" columnIndex="11"/>
+		<result property="t4LanNo2" column="T4LANNO2" columnIndex="12"/>
+		<result property="t4HeangNo" column="T4HEANGNO" columnIndex="13"/>
+		<result property="t4SJGSE" column="T4SJGSE" columnIndex="14"/>
+		
+	</resultMap>
+	
+	<select id="wjRpaManageDAO.selectPassList" parameterClass="ExcelMasterVO"  resultMap="passList" remapResults="true">
+		<![CDATA[
+		
+			SELECT 
+				H_BL_NO	 t3HBlNo		
+				,SINGO_NO	t4SingoNo
+				,singosegwan t4SGSG
+				,SINGO_DT	  t4SingoDt 	
+				,CIF_USD	     t4CifUsd
+				,CIF_KRW	     t4CifKrw
+				,bugasegwasegwapyo   t4BGSGP				
+				,gwanse	    t4GwanSe
+				,bugase		t4Bugase 
+				,PO_NO      t1PoNo	 
+				,PO_LINE_NO	 t1PoLineNo
+				,LAN_NO2   t4LanNo2
+				,HAENG_NO	 t4HeangNo
+				,gwanseyul	t4GSY
+				,siljegwanseaeg t4SJGSE
+			FROM IMS_RPA_FORWARDER T3
+					, IMS_RPA_CUSTOMS_AGENT T4
+					, IMS_RPA_IMPORT_NOTIFY T1
+			WHERE T3.H_BL_NO = T4.BL_NO
+			AND T3.IN_NO  = T1.IV_NO
+			AND T3.DEL_YN IS NULL
+			AND T4.DEL_YN IS NULL
+			AND T1.DEL_YN IS NULL
+			AND T3.H_BL_NO = #searchWrd#
+			 
+		]]>
+			
+	</select>
+	
+	
+	
+	<select id="wjRpaManageDAO.selectBlList" parameterClass="ExcelMasterVO"  resultMap="blList" remapResults="true">
+		<![CDATA[
+		
+			SELECT 
+				H_BL_NO               t3HblNo
+				,BL_SEONJEOG_DT    t3BSDt
+				,ETD_DT                t3EtdDt 
+				,ETA_DT				  t3EtaDt	
+				,SEONJEOG_GUG_CD     t3SJGCd 
+				,DOCHAG_GUG_CD       t3DJGCd
+				,SEONJEOG_HANG_CD   t3SJHCd
+				,DOCHAG_HANG_CD     t3DCHCd
+				,FLT_VSSL_NM           t3FVNm
+				,C_20FT_QT              t3C20Qt
+				,C_40FT_QT              t3C40Qt
+				,UNSONG_GB            t3USgb
+				,CHONG_POJANG_EA   t3CPJEa  
+				,NET_WG                 t3NWg
+				,GROSS_WG             t3GWg
+				,SEOLYU_SONGBU_DT  t3SLSBDt
+				,SEONJEOG_SEOLYU_SONGBUCHEO_CD  t3SJSLSBCCd
+				,SIL_IBHANG_DT          t3SIHDt
+				,IBGO_YEJEONG_DT     t3IGYJDt
+			FROM  IMS_RPA_FORWARDER
+			WHERE H_BL_NO = #searchWrd#
+			AND   DEL_YN IS  NULL
+			 
+		]]>
+			
+	</select>
+	
+	<select id="wjRpaManageDAO.selectCargoList" parameterClass="ExcelMasterVO"  resultMap="cargoList" remapResults="true">
+		<![CDATA[
+		
+			WITH T1 AS (
+					SELECT CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD,QTY
+					FROM  IMS_RPA_IMPORT_NOTIFY
+					WHERE DEL_YN IS  NULL
+					GROUP BY CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD,QTY
+			),
+			T2 AS (
+			SELECT DISTINCT STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_1  IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			WHERE DEL_YN IS  NULL
+			UNION
+			SELECT DISTINCT STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_2  IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			WHERE DEL_YN IS  NULL
+			UNION
+			SELECT DISTINCT STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_3 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			WHERE DEL_YN IS  NULL
+			UNION 
+			SELECT STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_4  IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			WHERE DEL_YN IS  NULL
+			UNION
+			SELECT STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_5 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			WHERE DEL_YN IS  NULL
+			UNION
+			SELECT STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_6 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			WHERE DEL_YN IS  NULL
+			UNION
+			SELECT STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_7 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			WHERE DEL_YN IS  NULL
+			UNION
+			SELECT STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_8  IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			WHERE DEL_YN IS  NULL
+			UNION
+			SELECT STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_9 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			WHERE DEL_YN IS  NULL
+			UNION
+			SELECT STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_10 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			WHERE DEL_YN IS  NULL
+			),
+			T3 AS (
+				SELECT * FROM  IMS_RPA_FORWARDER
+				WHERE  DEL_YN IS  NULL
+			),
+			T4 AS (
+			SELECT * FROM  IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			)  
+			SELECT 
+				  T3.BL_DT_1 t3BlDt 
+				 ,T3.SEOLYU_SONGBU_DT t3SSDt 				  
+				 ,T2.STOCK_NO t2StockNo				 
+				 ,T2.JEOGYONG_RT t2JyRt 
+
+				 ,T4.ADD_AMT_CUR_UNT_EXC_RT t4AACUERt
+				 ,T4.ADD_AMT_CUR_DW t4AACDw
+				 ,T3.SEOLYU_SONGBU_DT t3SSDt 
+				 ,T2.CO_KRW_EXCH_INSR_FEE t2CKEIFee 
+				 
+				 ,T3.IN_NO t3InNo 
+				 ,T3.H_BL_NO t3HBlNo     
+			FROM T1,T2,T3,T4 
+			WHERE T3.IN_NO = T1.IV_NO
+			AND   T1.IV_NO = T2.IV_NO
+			AND   T3.H_BL_NO = T4.BL_NO
+			AND   T3.H_BL_NO = #searchWrd#
+			 
+		]]>
+			
+	</select>
+	
+	<select id="wjRpaManageDAO.selectInvoiceList" parameterClass="ExcelMasterVO"  resultMap="invoiceList" remapResults="true">
+		<![CDATA[
+		
+			WITH T1 AS (
+					SELECT CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD,QTY
+					FROM  IMS_RPA_IMPORT_NOTIFY
+					WHERE DEL_YN IS  NULL
+					GROUP BY CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD,QTY
+			),
+			T3 AS (
+				SELECT * FROM  IMS_RPA_FORWARDER
+				WHERE  DEL_YN IS  NULL
+			),
+			T4 AS (
+			SELECT * FROM  IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			)  
+			SELECT 
+				  T1.IV_NO t1InNo 
+				 ,T1.CARRY t1Carry 				  
+				 ,T3.SEOLYU_SONGBU_DT t3SSDt				 
+				 ,T1.PO_NO t1PoNo 
+				 ,T1.PO_LINE_NO t1PoLineNo
+				 ,T1.ITEM_CD t1ItemCd 
+				 ,T1.QTY t1Qty 
+				 ,case when CHARINDEX('.',DANGA) = 0 then DANGA else case when len(substring(danga,CHARINDEX('.',DANGA)+1,len(danga)))  = 1 then round(DANGA,1) *10
+																						when len(substring(danga,CHARINDEX('.',DANGA)+1,len(danga)))  = 2 then round( DANGA,2)*100
+																				end  end t4DanGa
+				,case when CHARINDEX('.',DANGA) = 0 then 1 else case when len(substring(danga,CHARINDEX('.',DANGA)+1,len(danga)))  = 0 then 1 
+																						when len(substring(danga,CHARINDEX('.',DANGA)+1,len(danga)))  = 1 then 10 
+																						when len(substring(danga,CHARINDEX('.',DANGA)+1,len(danga)))  = 2 then 100 
+																				end  end t4DanGa2 
+				 ,T4.GEUM_AEG t4GeumAeg 
+				 ,T4.JE_CUR_DW t4JeCurDw 
+				 ,T4.SEBEON_CD t4SebeonCd     
+				 ,T3.GONGGEUB_CO_CD_2  t3GgCoCd2    
+				 ,T3.H_BL_NO t3HBlNo               
+				 ,T4.INDO_JK t4IndoJk               
+			FROM T1,T3,T4 
+			WHERE T3.IN_NO = T1.IV_NO
+			AND   T3.H_BL_NO = T4.BL_NO
+			AND   T3.H_BL_NO = #searchWrd#
+			 
+		]]>
+			
+	</select>
+	
+	
+	
+	
+	<select id="rpaMngDAO.selectRpalMasterList" parameterClass="ExcelMasterVO" resultMap="rpaMasterList" remapResults="true">
+		<![CDATA[
+			WITH T1 AS (
+			SELECT IV_NO FROM  IMS_RPA_IMPORT_NOTIFY
+			WHERE DEL_YN IS  NULL
+			),
+			T2 AS (
+			SELECT IV_NO_1 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			UNION
+			SELECT IV_NO_2  IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			UNION
+			SELECT IV_NO_3 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			UNION 
+			SELECT IV_NO_4  IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			UNION
+			SELECT IV_NO_5 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			UNION
+			SELECT IV_NO_6 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			UNION
+			SELECT IV_NO_7 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			UNION
+			SELECT IV_NO_8  IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			UNION
+			SELECT IV_NO_9 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			UNION
+			SELECT IV_NO_10 IV_NO
+			FROM IMS_RPA_CARGO_INSURANCE
+			),
+			T3 AS (
+			SELECT DISTINCT H_BL_NO,BL_SEONJEOG_DT,IN_NO FROM  IMS_RPA_FORWARDER
+			WHERE  DEL_YN IS  NULL
+			),
+			T4 AS (
+			SELECT DISTINCT BL_NO FROM  IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			)  
+			SELECT T3.H_BL_NO t3_blno, T3.BL_SEONJEOG_DT t3_sjdt
+				,case when  T3.IN_NO is not null and T2.IV_NO is not null  and T1.IV_NO is not null  and T4.BL_NO is not null then '확정' 
+						when  	T3.IN_NO is not null then '등록'
+							else '미등록' end t3_yn
+				,case when  T3.IN_NO is not null and T2.IV_NO is not null  and T1.IV_NO is not null  and T4.BL_NO is not null then '확정' 
+				       when T2.IV_NO is not null then '등록'
+							else '미등록' end t2_yn
+				,case when  T3.IN_NO is not null and T2.IV_NO is not null  and T1.IV_NO is not null  and T4.BL_NO is not null then '확정' 
+				       when T1.IV_NO is not null then '등록'
+							else '미등록' end t1_yn
+				,case when  T3.IN_NO is not null and T2.IV_NO is not null  and T1.IV_NO is not null  and T4.BL_NO is not null then '확정' 
+				       when T4.BL_NO is not null then '등록'
+							else '미등록' end t4_yn
+			FROM T3  LEFT OUTER JOIN T2 
+			ON T3.IN_NO = T2.IV_NO
+			LEFT OUTER JOIN T1 
+			ON T3.IN_NO = T1.IV_NO
+			LEFT OUTER JOIN T4 
+			ON T3.H_BL_NO = T4.BL_NO
+			WHERE 1 = 1
+		]]>
+			<isNotNull prepend="AND" property="searchWrd">
+				<![CDATA[	 T3.H_BL_NO = #searchWrd# OR CONVERT(INT,REPLACE(RTRIM(LTRIM(T3.BL_SEONJEOG_DT)),'.',''))  BETWEEN  ISNULL(REPLACE(#searchBgnDe#,'-',''),'20190101')  AND ISNULL(REPLACE(#searchEndDe#,'-',''),'20191231') ]]>
+			</isNotNull>
+			
+			
+			<isEqual prepend="AND" property="searchCnd" compareValue="0">
+				<![CDATA[	T1.IV_NO IS NOT NULL AND T2.IV_NO IS NOT NULL AND T3.H_BL_NO IS NOT NULL AND T4.BL_NO IS NOT NULL		]]>
+			</isEqual>
+			
+	</select>	
+	
+	
+</sqlMap>

@@ -1,0 +1,2982 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="BBSMaster">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="BoardMasterVO" type="egovframework.let.cop.bbs.service.BoardMasterVO"/>
+	<typeAlias  alias="BoardMaster" type="egovframework.let.cop.bbs.service.BoardMaster"/>
+	<typeAlias  alias="BoardSapFileVO" type="egovframework.let.cop.bbs.service.BoardSapFileVO"/>
+
+
+	<resultMap id="boardMasterList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="t3_blno" column="T3_BLNO" columnIndex="1"/>
+		<result property="t3_sjdt" column="T3_SJDT" columnIndex="2"/>
+		<result property="t1_yn" column="T1_YN" columnIndex="3"/>
+		<result property="t2_yn" column="T2_YN" columnIndex="4"/>
+		<result property="t3_yn" column="T3_YN" columnIndex="5"/>
+		<result property="t4_yn" column="T4_YN" columnIndex="6"/>
+		<result property="t1_color" column="T1_COLOR" columnIndex="7"/>
+		<result property="t2_color" column="T2_COLOR" columnIndex="8"/>
+		<result property="t3_color" column="T3_COLOR" columnIndex="9"/>
+		<result property="t4_color" column="T4_COLOR" columnIndex="10"/>
+		
+		<result property="c1yn" column="C1YN" columnIndex="11"/>
+		<result property="c2yn" column="C2YN" columnIndex="12"/>
+		<result property="c3yn" column="C3YN" columnIndex="13"/>
+		<result property="c4yn" column="C4YN" columnIndex="14"/>
+		<result property="c5yn" column="C5YN" columnIndex="15"/>
+		<result property="c6yn" column="C6YN" columnIndex="16"/>
+		<result property="c7yn" column="C7YN" columnIndex="17"/>
+		<result property="c8yn" column="C8YN" columnIndex="18"/>
+		<result property="c9yn" column="C9YN" columnIndex="19"/>
+		<result property="c10yn" column="C10YN" columnIndex="20"/>
+		<result property="t4_company" column="T4_COMPANY" columnIndex="21"/>
+		<result property="t3_confirm" column="t3_confirm" columnIndex="22"/>		
+		<result property="t3_preconfirm" column="t3_preconfirm" columnIndex="23"/>		
+		<result property="t3_regflag" column="t3_regflag" columnIndex="24"/>
+		<result property="t3_seq" column="t3_seq" columnIndex="25"/>
+		
+		
+	</resultMap>
+	
+	<resultMap id="invoiceList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="t1InNo" column="T1INNO" columnIndex="1"/>
+		<result property="t1Carry" column="T1CARRY" columnIndex="2"/>
+		<result property="t3SSDt" column="T3SSDT" columnIndex="3"/>
+		
+		<result property="t1PoNo" column="T1PONO" columnIndex="4"/>
+		
+		<result property="t1PoLineNo" column="T1POLINENO" columnIndex="5"/>
+		<result property="t1ItemCd" column="T1ITEMCD" columnIndex="6"/>
+		
+		<result property="t1Qty" column="T1QTY" columnIndex="7"/>
+		<result property="t4DanGa" column="T4DANGA" columnIndex="8"/>
+		<result property="t4DanGa2" column="T4DANGA2" columnIndex="9"/>
+		
+		<result property="t4GeumAeg" column="T4GEUMAEG" columnIndex="10"/>
+		<result property="t4JeCurDw" column="T4JECURDW" columnIndex="11"/>
+		<result property="t4SebeonCd" column="T4SEBEONCD" columnIndex="12"/>
+		
+		<result property="t3GgCoCd2" column="T3GGCOCD2" columnIndex="13"/>
+		<result property="t3HBlNo" column="T3HBLNO" columnIndex="14"/>
+		<result property="t4IndoJk" column="T4INDOJK" columnIndex="15"/>
+		
+	</resultMap>
+
+	<resultMap id="cargoList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="t3BlDt" column="T3BLDT" columnIndex="1"/>
+		<result property="t3SSDt" column="T3SSDT" columnIndex="2"/>
+		<result property="t2StockNo" column="T2STOCKNO" columnIndex="3"/>
+		<result property="t2JyRt" column="T2JYRT" columnIndex="4"/>
+		<result property="t4AACUERt" column="T4AACUERT" columnIndex="5"/>
+		<result property="t4AACDw" column="T4AACDW" columnIndex="6"/>
+		<result property="t3SSDt" column="T3SSDT" columnIndex="7"/>
+		<result property="t2CKEIFee" column="T2CKEIFEE" columnIndex="8"/>
+		<result property="t3InNo" column="T3INNO" columnIndex="9"/>
+		<result property="t3HBlNo" column="T3HBLNO" columnIndex="10"/>
+	</resultMap>
+
+
+	<resultMap id="blList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="t3HblNo" column="T3HBLNO" columnIndex="1"/>
+		<result property="t3BSDt" column="T3BSDT" columnIndex="2"/>
+		<result property="t3EtdDt" column="T3ETDDT" columnIndex="3"/>
+		<result property="t3EtaDt" column="T3ETADT" columnIndex="4"/>
+		<result property="t3SJGCd" column="T3SJGCD" columnIndex="5"/>
+		<result property="t3DJGCd" column="T3DJGCD" columnIndex="6"/>
+		<result property="t3SJHCd" column="T3SJHCD" columnIndex="7"/>
+		<result property="t3DCHCd" column="T3DCHCD" columnIndex="8"/>
+		<result property="t3FVNm" column="T3FVNM" columnIndex="9"/>
+		<result property="t3C20Qt" column="T3C20QT" columnIndex="10"/>
+		
+		<result property="t3C40Qt" column="T3C40QT" columnIndex="11"/>
+		<result property="t3USgb" column="T3USGB" columnIndex="12"/>
+		<result property="t3CPJEa" column="T3CPJEA" columnIndex="13"/>
+		
+		<result property="t3NWg" column="T3NWG" columnIndex="14"/>
+		<result property="t3GWg" column="T3GWG" columnIndex="15"/>
+		<result property="t3SLSBDt" column="T3SLSBDT" columnIndex="16"/>
+		<result property="t3SJSLSBCCd" column="T3SJSLSBCCD" columnIndex="17"/>
+		<result property="t3SIHDt" column="T3SIHDT" columnIndex="18"/>
+		<result property="t3IGYJDt" column="T3IGYJDT" columnIndex="19"/>
+		
+	</resultMap>
+	
+	
+	<resultMap id="passList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="t3HBlNo" column="T3HBLNO" columnIndex="1"/>
+		<result property="t4SingoNo" column="T4SINGONO" columnIndex="2"/>
+		<result property="t4SGSG" column="T4SGSG" columnIndex="3"/>
+		<result property="t4SingoDt" column="T4SINGODT" columnIndex="4"/>
+		<result property="t4CifUsd" column="T4CIFUSD" columnIndex="5"/>
+		
+		<result property="t4CifKrw" column="T4CIFKRW" columnIndex="6"/>
+		<result property="t4BGSGP" column="T4BGSGP" columnIndex="7"/>
+		<result property="t4GwanSe" column="T4GWANSE" columnIndex="8"/>
+		<result property="t4Bugase" column="T4BUGASE" columnIndex="9"/>
+		<result property="t1PoNo" column="T1PONO" columnIndex="10"/>
+		
+		<result property="t1PoLineNo" column="T1POLINENO" columnIndex="11"/>
+		<result property="t4LanNo2" column="T4LANNO2" columnIndex="12"/>
+		<result property="t4HeangNo" column="T4HEANGNO" columnIndex="13"/>
+		<result property="t4GSY" column="T4GSY" columnIndex="14"/>
+		
+		<result property="t4TgYcDt" column="T4TGYCDT" columnIndex="15"/>
+		<result property="t4SinGoJa" column="T4SINGOJA" columnIndex="16"/>
+	</resultMap>
+	
+	<resultMap id="docList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="t4GwanliNo" column="T4GWANLINO" columnIndex="1"/>
+		<result property="t3HBlNo" column="T3HBLNO" columnIndex="2"/>
+		<result property="t3JBDt" column="T3JBDT" columnIndex="3"/>
+		<result property="t3JGDt" column="T3JGDT" columnIndex="3"/>
+		<result property="t3JGJk" column="T3JGJK" columnIndex="4"/>
+	</resultMap>
+	
+	
+	<resultMap id="sapList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="bktxt" column="BKTXT" columnIndex="1"/>
+		<result property="zfimdno" column="ZFIMDNO" columnIndex="2"/>
+		<result property="cond_type" column="COND_TYPE" columnIndex="3"/>
+		<result property="cond_type1" column="COND_TYPE1" columnIndex="4"/>
+		<result property="vtext" column="VTEXT" columnIndex="5"/>
+		<result property="spras" column="SPRAS" columnIndex="6"/>
+		<result property="wrbtr" column="WRBTR" columnIndex="7"/>
+		<result property="dmbtr" column="DMBTR" columnIndex="8"/>
+		<result property="kursf" column="KURSF" columnIndex="9"/>
+		
+		<result property="waers" column="WAERS" columnIndex="10"/>
+		<result property="zfacdo" column="ZFACDO" columnIndex="11"/>
+		<result property="belnr" column="BELNR" columnIndex="12"/>
+		<result property="bldat" column="BLDAT" columnIndex="13"/>
+		
+		<result property="budat" column="BUDAT" columnIndex="14"/>
+		<result property="lifnr" column="LIFNR" columnIndex="15"/>
+		<result property="zfcstgrp" column="ZFCSTGRP" columnIndex="16"/>
+		
+		<result property="mwskz" column="MWSKZ" columnIndex="17"/>
+		<result property="wmwst" column="WMWST" columnIndex="18"/>
+		<result property="zfcd" column="ZFCD" columnIndex="19"/>
+		<result property="zterm" column="ZTERM" columnIndex="20"/>
+		<result property="name1" column="NAME1" columnIndex="21"/>
+		<result property="stcd2" column="STCD2" columnIndex="22"/>
+		<result property="t3_confirm" column="t3_confirm" columnIndex="23"/>		
+		<result property="t3_preconfirm" column="t3_preconfirm" columnIndex="24"/>		
+		<result property="filecnt" column="filecnt" columnIndex="25"/>	
+		<result property="filetype" column="filetype" columnIndex="26"/>
+		
+	</resultMap>
+	
+	<resultMap id="sapSubList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="bktxt" column="BKTXT" columnIndex="1"/>
+		<result property="zfimdno" column="ZFIMDNO" columnIndex="2"/>
+		<result property="cond_type" column="COND_TYPE" columnIndex="3"/>
+		<result property="cond_type1" column="COND_TYPE1" columnIndex="4"/>
+		<result property="vtext" column="VTEXT" columnIndex="5"/>
+		<result property="spras" column="SPRAS" columnIndex="6"/>
+		<result property="wrbtr" column="WRBTR" columnIndex="7"/>
+		<result property="dmbtr" column="DMBTR" columnIndex="8"/>
+		<result property="kursf" column="KURSF" columnIndex="9"/>
+		
+		<result property="waers" column="WAERS" columnIndex="10"/>
+		<result property="zfacdo" column="ZFACDO" columnIndex="11"/>
+		<result property="belnr" column="BELNR" columnIndex="12"/>
+		<result property="bldat" column="BLDAT" columnIndex="13"/>
+		
+		<result property="budat" column="BUDAT" columnIndex="14"/>
+		<result property="lifnr" column="LIFNR" columnIndex="15"/>
+		<result property="zfcstgrp" column="ZFCSTGRP" columnIndex="16"/>
+		
+		<result property="mwskz" column="MWSKZ" columnIndex="17"/>
+		<result property="wmwst" column="WMWST" columnIndex="18"/>
+		<result property="zfcd" column="ZFCD" columnIndex="19"/>
+		<result property="zterm" column="ZTERM" columnIndex="20"/>
+		<result property="name1" column="NAME1" columnIndex="21"/>
+		<result property="stcd2" column="STCD2" columnIndex="22"/>
+		<result property="t3_confirm" column="t3_confirm" columnIndex="23"/>		
+		<result property="t3_preconfirm" column="t3_preconfirm" columnIndex="24"/>		
+		<result property="filecnt" column="filecnt" columnIndex="25"/>	
+		<result property="filetype" column="filetype" columnIndex="26"/>
+		<result property="sapcheck" column="sapcheck" columnIndex="27"/>
+		<result property="sapcolor" column="sapcolor" columnIndex="28"/>
+		
+	</resultMap>
+	
+	<resultMap id="sapBktxtList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="bktxt" column="H_BL_NO" columnIndex="1"/>
+	</resultMap>
+	
+	<resultMap id="sapLifnrList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="extra_company" column="BL_COMPANY" columnIndex="1"/>
+	</resultMap>
+	
+	<resultMap id="extraList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="extra_company" column="extra_company" columnIndex="1"/>
+		<result property="extra_detail" column="extra_detail" columnIndex="2"/>
+		<result property="extra_custom" column="extra_custom" columnIndex="2"/>
+		<result property="extra_price" column="extra_price" columnIndex="3"/>
+		<result property="extra_tax" column="extra_tax" columnIndex="4"/>
+		<result property="extra_total" column="extra_total" columnIndex="5"/>
+		<result property="extra_style" column="extra_style" columnIndex="6"/>
+		<result property="income_gubun" column="income_gubun" columnIndex="7"/>
+		<result property="income_gubun1" column="income_gubun1" columnIndex="8"/>
+		<result property="income_gubun2" column="income_gubun2" columnIndex="9"/>
+		<result property="income_gubun3" column="income_gubun3" columnIndex="10"/>
+	</resultMap>
+	
+	<resultMap id="extra1List" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="extra1_company" column="extra1_company" columnIndex="1"/>
+		<result property="extra1_detail" column="extra1_detail" columnIndex="2"/>
+		<result property="extra1_custom" column="extra1_custom" columnIndex="2"/>
+		<result property="extra1_price" column="extra1_price" columnIndex="3"/>
+		<result property="extra1_tax" column="extra1_tax" columnIndex="4"/>
+		<result property="extra1_total" column="extra1_total" columnIndex="5"/>
+		<result property="extra1_style" column="extra1_style" columnIndex="6"/>
+		<result property="income1_gubun" column="income1_gubun" columnIndex="7"/>
+		<result property="income1_gubun1" column="income1_gubun1" columnIndex="8"/>
+		<result property="income1_gubun2" column="income1_gubun2" columnIndex="9"/>
+		<result property="income1_gubun3" column="income1_gubun3" columnIndex="10"/>
+	</resultMap>
+	
+	<resultMap id="extraListExcel" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="extra_company" column="extra_company" columnIndex="1"/>
+		<result property="extra_detail" column="extra_detail" columnIndex="2"/>
+		<result property="extra_custom" column="extra_custom" columnIndex="2"/>
+		<result property="extra_price" column="extra_price" columnIndex="3"/>
+		<result property="extra_tax" column="extra_tax" columnIndex="4"/>
+		<result property="extra_total" column="extra_total" columnIndex="5"/>
+		<result property="extra_style" column="extra_style" columnIndex="6"/>
+	</resultMap>
+	
+	<resultMap id="extra1ListExcel" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="extra1_company" column="extra1_company" columnIndex="1"/>
+		<result property="extra1_detail" column="extra1_detail" columnIndex="2"/>
+		<result property="extra1_custom" column="extra1_custom" columnIndex="2"/>
+		<result property="extra1_price" column="extra1_price" columnIndex="3"/>
+		<result property="extra1_tax" column="extra1_tax" columnIndex="4"/>
+		<result property="extra1_total" column="extra1_total" columnIndex="5"/>
+		<result property="extra1_style" column="extra1_style" columnIndex="6"/>
+	</resultMap>
+	
+	<resultMap id="extra1ListExcelDown" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="income_key" column="income_key" columnIndex="1"/>
+		<result property="name1" column="name1" columnIndex="9"/>
+		<result property="lifnr" column="lifnr" columnIndex="2"/>
+		<result property="extra_detail" column="extra_detail" columnIndex="2"/>
+		<result property="extra_price" column="extra_price" columnIndex="3"/>
+		<result property="extra_tax" column="extra_tax" columnIndex="4"/>
+		<result property="extra_bldate" column="extra_bldate" columnIndex="5"/>
+		<result property="waers" column="waers" columnIndex="6"/>
+	</resultMap>
+	
+	<resultMap id="sapFileList" class="egovframework.let.cop.bbs.service.BoardSapFileVO">
+		<result property="atchFileId" column="ATCH_FILE_ID" columnIndex="1"/>
+		<result property="blNo" column="BLNO" columnIndex="2"/>
+		<result property="fileGubun" column="FILE_GUBUN" columnIndex="3"/>
+		<result property="fileGubunNm" column="FILE_GUBUN_NM" columnIndex="4"/>
+		<result property="fileExtsn" column="FILE_EXTSN" columnIndex="6"/>
+		<result property="fileMg" column="FILE_SIZE" columnIndex="7"/>
+		<result property="fileStreCours" column="FILE_STRE_COURS" columnIndex="9"/>
+		<result property="orignlFileNm" column="ORIGNL_FILE_NM" columnIndex="10"/>
+		<result property="streFileNm" column="STRE_FILE_NM" columnIndex="11"/>
+		<result property="creatDt" column="CREAT_DT" columnIndex="12"/>
+	</resultMap>
+	
+	<resultMap id="sapFileSubList" class="egovframework.let.cop.bbs.service.BoardSapFileVO">
+		<result property="atchFileId" column="ATCH_FILE_ID" columnIndex="1"/>
+		<result property="blNo" column="BLNO" columnIndex="2"/>
+		<result property="fileCn" column="FILE_CN" columnIndex="5"/>
+		<result property="fileExtsn" column="FILE_EXTSN" columnIndex="6"/>
+		<result property="fileMg" column="FILE_SIZE" columnIndex="7"/>
+		<result property="fileSn" column="FILE_SN" columnIndex="8"/>
+		<result property="fileStreCours" column="FILE_STRE_COURS" columnIndex="9"/>
+		<result property="orignlFileNm" column="ORIGNL_FILE_NM" columnIndex="10"/>
+		<result property="streFileNm" column="STRE_FILE_NM" columnIndex="11"/>
+	</resultMap>
+	
+	<resultMap id="statementList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="statement_key" column="STATEMENT_KEY" columnIndex="1"/>
+		<result property="yyyymm" column="YYYYMM" columnIndex="2"/>
+		<result property="gubun" column="GUBUN" columnIndex="3"/>
+		<result property="num" column="NUM" columnIndex="4"/>
+		<result property="zfacdo" column="ZFACDO" columnIndex="5"/>
+		<result property="zfimdno" column="ZFIMDNO" columnIndex="6"/>
+		<result property="zfidrno" column="ZFIDRNO" columnIndex="7"/>
+		<result property="zfinrc" column="ZFINRC" columnIndex="8"/>
+		<result property="name1" column="NAME1" columnIndex="9"/>
+		<result property="extra_total" column="extra_total" columnIndex="10"/>
+		<result property="lifnr" column="LIFNR" columnIndex="11"/>
+		<result property="stcd2" column="STCD2" columnIndex="12"/>
+		<result property="zfblno" column="ZFBLNO" columnIndex="13"/>
+		<result property="zfapnm" column="ZFAPNM" columnIndex="14"/>
+		<result property="twrbtr" column="TWRBTR" columnIndex="15"/>
+		<result property="wrbtr_tax" column="WRBTR_TAX" columnIndex="16"/>
+		<result property="waers1" column="WAERS1" columnIndex="17"/>
+		<result property="swrbtr" column="SWRBTR" columnIndex="18"/>
+		<result property="waers2" column="WAERS2" columnIndex="19"/>
+		<result property="budat" column="BUDAT" columnIndex="20"/>
+		<result property="zfcstgrp" column="ZFCSTGRP" columnIndex="21"/>
+		<result property="zfcarnm" column="ZFCARNM" columnIndex="22"/>
+		<result property="mwskz" column="MWSKZ" columnIndex="23"/>
+		<result property="bldat" column="BLDAT" columnIndex="24"/>
+		<result property="confirm_yn" column="CONFIRM_YN" columnIndex="25"/>
+		<result property="reg_flag" column="REG_FLAG" columnIndex="26"/>
+		<result property="reg_dt" column="REG_DT" columnIndex="27"/>
+		<result property="gubun_nm" column="GUBUN_NM" columnIndex="28"/>
+		<result property="sapcolor" column="SAPCOLOR" columnIndex="29"/>
+		<result property="filecnt" column="filecnt" columnIndex="30"/>
+		
+	</resultMap>
+	
+	<resultMap id="extraTaxSumList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="zfapnm" column="ZFAPNM" columnIndex="1"/>
+		<result property="name1" column="NAME1" columnIndex="2"/>
+		<result property="dmbtr" column="DMBTR" columnIndex="3"/>
+		<result property="wrbtr" column="WRBTR" columnIndex="4"/>
+		<result property="twrbtr" column="TWRBTR" columnIndex="5"/>
+		<result property="bldat" column="BLDAT" columnIndex="6"/>
+		<result property="extra_style" column="extra_style" columnIndex="7"/>
+	</resultMap>
+	
+	<resultMap id="extraTTSendList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="num" column="NUM" columnIndex="1"/>
+		<result property="bldat" column="BLDAT" columnIndex="2"/>
+		<result property="bktxt" column="BKTXT" columnIndex="3"/>
+		<result property="zfidrno" column="ZFIDRNO" columnIndex="4"/>
+		<result property="send_dt" column="SEND_DT" columnIndex="5"/>		
+		<result property="waers" column="WAERS" columnIndex="6"/>
+		<result property="wrbtr" column="WRBTR" columnIndex="7"/>
+		<result property="name1" column="NAME1" columnIndex="8"/>
+		<result property="kursf" column="KURSF" columnIndex="9"/>
+	</resultMap>
+	
+	<resultMap id="yetArrivedList" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="bktxt" column="BKTXT" columnIndex="1"/>
+		<result property="item" column="ITEM" columnIndex="2"/>
+		<result property="wrbtr" column="WRBTR" columnIndex="3"/>
+		<result property="waers" column="WAERS" columnIndex="4"/>
+		<result property="wrbtrp" column="WRBTRP" columnIndex="5"/>
+		<result property="hwaer" column="HWAER" columnIndex="6"/>
+		<result property="cond_type" column="COND_TYPE" columnIndex="7"/>
+		<result property="vtext" column="VTEXT" columnIndex="8"/>
+		<result property="lifnr" column="LIFNR" columnIndex="9"/>
+		<result property="budat" column="BUDAT" columnIndex="10"/>
+		<result property="indat" column="INDAT" columnIndex="11"/>
+	</resultMap>
+	
+	<resultMap id="yetArrivedTotal" class="egovframework.let.cop.bbs.service.BoardMasterVO">
+		<result property="bktxt" column="BKTXT" columnIndex="1"/>
+		<result property="item" column="ITEM" columnIndex="2"/>
+		<result property="wrbtrp" column="WRBTRP" columnIndex="3"/>
+		<result property="taxamt" column="TAXAMT" columnIndex="4"/>
+		<result property="per" column="PER" columnIndex="5"/>
+		<result property="blamt" column="BLAMT" columnIndex="6"/>
+		<result property="dmbtr" column="DMBTR" columnIndex="7"/>
+		<result property="twrbtr" column="TWRBTR" columnIndex="8"/>
+		<result property="lastday" column="LASTDAY" columnIndex="9"/>
+	</resultMap>
+		
+	<parameterMap id="extraParam" class="java.util.Map">
+        <parameter property="chkmonth" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<parameterMap id="sapSubParam" class="java.util.Map">
+        <parameter property="searchBlNo" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="regdata" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="t3_confirm" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="t3_preconfirm" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="processFlag" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	
+	<select id="BBSAttributeManageDAO.selectDocList" parameterClass="BoardMasterVO"  resultMap="docList" remapResults="true">
+		<![CDATA[
+		
+			SELECT DISTINCT
+			     d2   t4GwanliNo
+			    ,H_BL_NO        t3HBlNo
+				,JEUNGBING_DT_1 t3JBDt
+				,JEONGI_DT_1     t3JGDt
+				,''                    t3JGJk
+			FROM IMS_RPA_FORWARDER T3
+				, IMS_RPA_CUSTOMS_AGENT T4
+			WHERE T3.H_BL_NO = T4.d52
+			AND T3.DEL_YN IS NULL
+			AND T4.DEL_YN IS NULL
+			AND T3.H_BL_NO = #searchBlNo#
+		]]>
+			
+	</select>
+	
+	<select id="BBSAttributeManageDAO.selectPassList" parameterClass="BoardMasterVO"  resultMap="passList" remapResults="true">
+		<![CDATA[
+		
+			WITH T1 AS (
+					SELECT CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD,SUM(CAST(REPLACE(QTY,',','') AS float))   QTY
+					FROM  IMS_RPA_IMPORT_NOTIFY
+					WHERE DEL_YN IS  NULL
+					GROUP BY CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD
+					
+			),
+			T3 AS (
+
+			SELECT DISTINCT * FROM IMS_RPA_FORWARDER
+			WHERE  DEL_YN IS  NULL
+			AND CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_SEONJEOG_DT)),'.','')) > '20190831'
+					),
+			T4 AS (
+
+			SELECT    DISTINCT *,REPLACE(d270,' ','') d270_KEY FROM IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			
+			
+			)  
+			SELECT   DISTINCT   H_BL_NO	 t3HBlNo		
+						,d32           t4TgYcDt
+						,d3           t4SinGoJa
+						,d1     	t4SingoNo
+						,d27 t4SGSG
+						,d32	  t4SingoDt 	
+						,d106	     t4CifUsd
+						,d105	     t4CifKrw
+						,d115   t4BGSGP				
+						,d107	    t4GwanSe
+						,d117		t4Bugase 
+						,PO_NO      t1PoNo	 
+						,PO_LINE_NO	 t1PoLineNo
+						,d267   t4LanNo2
+						,d268	 t4HeangNo
+						,d196	t4GSY
+						,d201 t4SJGSE
+			FROM 	 T3
+					,T1
+					,T4
+			WHERE   T3.H_BL_NO = T4.d52
+		    AND   T3.IN_NO  = T1.IV_NO  
+			AND   T1.QTY = T4.d276   
+			AND   T1.ITEM_CD = t4.d270_KEY
+			AND T3.H_BL_NO = #searchBlNo#
+			ORDER BY t4LanNo2,t4HeangNo
+			 
+		]]>
+			
+	</select>
+	
+	
+	
+	<select id="BBSAttributeManageDAO.selectBlList" parameterClass="BoardMasterVO"  resultMap="blList" remapResults="true">
+		<![CDATA[
+		
+			SELECT 
+				 H_BL_NO               	t3HblNo
+				,BL_DT_1        		t3BSDt
+				,ETD_DT                	t3EtdDt 
+				,ETA_DT				  	t3EtaDt	
+				,SEONJEOG_GUG_CD     	t3SJGCd 
+				,DOCHAG_GUG_CD       	t3DJGCd
+				,SEONJEOG_HANG_CD   	t3SJHCd
+				,DOCHAG_HANG_CD     	t3DCHCd
+				,FLT_VSSL_NM           	t3FVNm
+				,C_20FT_QT              t3C20Qt
+				,C_40FT_QT              t3C40Qt
+				,UNSONG_GB            	t3USgb
+				,CHONG_POJANG_EA   		t3CPJEa  
+				,NET_WG                 t3NWg
+				,GROSS_WG             	t3GWg
+				,SEOLYU_SONGBU_DT  		t3SLSBDt
+				,SEONJEOG_SEOLYU_SONGBUCHEO_CD  t3SJSLSBCCd
+				,SIL_IBHANG_DT          t3SIHDt
+				,IBGO_YEJEONG_DT     	t3IGYJDt
+			FROM  IMS_RPA_FORWARDER
+			WHERE H_BL_NO = #searchBlNo#
+			AND   DEL_YN IS  NULL
+			 
+		]]>
+			
+	</select>
+	
+	
+	<select id="BBSAttributeManageDAO.selectCargoList" parameterClass="BoardMasterVO"  resultMap="cargoList" remapResults="true">
+		/*BBSAttributeManageDAO.selectCargoList*/
+		<![CDATA[
+		
+			WITH T2 AS (
+			SELECT  ACNT_DT,STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_1 IV_NO FROM IMS_RPA_CARGO_INSURANCE
+			WHERE  IV_NO_1 IN
+								(
+									SELECT DISTINCT VAL IV_NO FROM
+										(
+											SELECT IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9
+											 FROM [MOT_RPQ].[dbo].[IMS_RPA_CARGO_INSURANCE]
+											 WHERE DEL_YN IS  NULL
+										 ) as ST
+										UNPIVOT
+										(
+										  VAL FOR COL IN ( IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9 )
+										 ) as PT
+									WHERE LEN(VAL) > 0
+								)
+			AND  DEL_YN IS  NULL					
+			),
+			T3 AS (
+				SELECT * FROM  IMS_RPA_FORWARDER
+				WHERE  DEL_YN IS  NULL
+			),
+			T4 AS (
+			SELECT DISTINCT d84,d83,d52 FROM  IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			)  
+			SELECT 
+				  T3.BL_DT_1 t3BlDt 
+				 ,T2.ACNT_DT t3SSDt 				  
+				 ,T2.STOCK_NO t2StockNo				 
+				 ,T2.JEOGYONG_RT t2JyRt 
+
+				 ,T4.d84 t4AACUERt
+				 ,T4.d83 t4AACDw
+				 ,T2.ACNT_DT t3SSDt 
+				 ,T2.CO_KRW_EXCH_INSR_FEE t2CKEIFee 
+				 
+				 ,T3.IN_NO t3InNo 
+				 ,T3.H_BL_NO t3HBlNo     
+			FROM T2,T3,T4 
+			WHERE T3.IN_NO = T2.IV_NO
+			AND   T3.H_BL_NO = T4.d52
+			AND   T3.H_BL_NO = #searchBlNo#
+			 
+		]]>
+			
+	</select>
+	
+	<select id="BBSAttributeManageDAO.selectInvoiceList" parameterClass="BoardMasterVO"  resultMap="invoiceList" remapResults="true">
+		<![CDATA[
+		
+			WITH T1 AS (
+					SELECT ROW_NUMBER() OVER(PARTITION BY CARRY,IV_NO,ITEM_CD,sum(cast(replace (QTY, ',', '') as float)) ORDER BY PO_NO ASC) as rnum,
+						 CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD,SUM(CAST(REPLACE(QTY,',','') AS float))   QTY
+					FROM  IMS_RPA_IMPORT_NOTIFY
+					WHERE DEL_YN IS  NULL
+					GROUP BY CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD
+					
+			),
+			T3 AS (
+
+			SELECT DISTINCT * FROM IMS_RPA_FORWARDER
+			WHERE  DEL_YN IS  NULL
+			AND CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_SEONJEOG_DT)),'.','')) > '20190831'
+			AND H_BL_NO = #searchBlNo#
+					),
+			T4 AS (
+
+			SELECT    DISTINCT *,REPLACE(d270,' ','') d270_KEY
+				,convert(nvarchar,d267)+convert(nvarchar,d268) as seq_key 
+			FROM IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			
+			
+			)  
+			SELECT t1InNo,
+			    t1Carry,
+			    t3SSDt,
+			    t1PoNo,
+			    t1PoLineNo,
+			    t1ItemCd,
+			    t1Qty,
+			    t4DanGa,
+			    t4DanGa2,
+			    t4GeumAeg,
+			    t4JeCurDw,
+			    t4SebeonCd,
+			    t3GgCoCd2,
+			    t3HBlNo,
+			    t4IndoJk
+			FROM(
+				select ROW_NUMBER() OVER(PARTITION BY T1.IV_NO,T1.PO_NO, T1.PO_LINE_NO,T4.d270_KEY ORDER BY T4.seq_key ASC) as rnum,
+					T4.seq_key,
+					T1.rnum as t1rnum,
+					T1.IV_NO t1InNo,
+					T1.CARRY t1Carry,
+					T3.SEOLYU_SONGBU_DT t3SSDt,
+					T1.PO_NO t1PoNo,
+					T1.PO_LINE_NO t1PoLineNo,
+					T1.ITEM_CD t1ItemCd,
+					T1.QTY t1Qty,
+					case
+						when CHARINDEX('.', d278) = 0 then d278
+						else case
+								when len(substring(d278, CHARINDEX('.', d278) + 1, len(d278))) = 1 then round(d278, 1) * 10
+								when len(substring(d278, CHARINDEX('.', d278) + 1, len(d278))) = 2 then round(d278, 2) * 100
+							end
+					end t4DanGa,
+					case
+						when CHARINDEX('.', d278) = 0 then 1
+						else case
+								when len(substring(d278, CHARINDEX('.', d278) + 1, len(d278))) = 0 then 1
+								when len(substring(d278, CHARINDEX('.', d278) + 1, len(d278))) = 1 then 10
+								when len(substring(d278, CHARINDEX('.', d278) + 1, len(d278))) = 2 then 100
+							end
+					end t4DanGa2,
+					cast(replace(T4.d279,'null',0) as float) t4GeumAeg,
+					T4.d68 t4JeCurDw,
+					T4.d162 t4SebeonCd,
+					T3.GONGGEUB_CO_CD_2 t3GgCoCd2,
+					T3.H_BL_NO t3HBlNo,
+					T4.d67 t4IndoJk
+			
+				from
+					T4 T4 left outer join
+					T3 T3 on T4.d52 = T3.H_BL_NO left outer join 
+					T1 T1 on  T1.IV_NO = T3.IN_NO
+					and T1.QTY = T4.d276
+					and T1.ITEM_CD = T4.d270_KEY
+					and T1.QTY = T4.d276
+				where
+					T3.H_BL_NO = #searchBlNo#
+					and T1.IV_NO is not NULL
+			) TOT
+			where (rnum = 1 and t1rnum = 1) or (rnum = 2 and t1rnum = 2)
+			order by seq_key
+			 
+		]]>
+			
+	</select>
+	
+	
+	
+	
+	<select id="BBSAttributeManageDAO.selectBBSMasterInfs" parameterClass="BoardMasterVO" resultMap="boardMasterList" remapResults="true">
+	/*BBSAttributeManageDAO.selectCargoList*/	
+		<![CDATA[
+			WITH T1 AS (
+			SELECT DISTINCT IV_NO FROM  IMS_RPA_IMPORT_NOTIFY
+			WHERE DEL_YN IS  NULL
+			),
+			T2 AS (
+				SELECT DISTINCT VAL IV_NO FROM
+				(
+					SELECT DISTINCT IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9
+					 FROM [MOT_RPQ].[dbo].[IMS_RPA_CARGO_INSURANCE]
+					 WHERE DEL_YN is null
+				 ) as ST
+				UNPIVOT
+				(
+				  VAL FOR COL IN ( IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9 )
+				 ) as PT
+				WHERE LEN(VAL) > 0 
+			),
+			T3 AS (
+			SELECT DISTINCT * FROM IMS_RPA_FORWARDER
+			WHERE H_BL_NO+IN_NO IN (SELECT DISTINCT H_BL_NO + MAX(IN_NO) FROM  IMS_RPA_FORWARDER
+									WHERE  DEL_YN IS  NULL
+									AND CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_SEONJEOG_DT)),'.','')) > '20190930'
+									GROUP BY H_BL_NO)
+									
+			AND DEL_YN IS  NULL
+			),
+			T4 AS (
+			SELECT DISTINCT d23 as T4_COMPANY, d52 BL_NO FROM  IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			) ,
+			T5 AS (
+				SELECT BLNO
+				, SUM(c1yn) as c1yn
+				, SUM(c2yn) as c2yn
+				, SUM(c3yn) as c3yn
+				, SUM(c4yn) as c4yn
+				, SUM(c5yn) as c5yn
+				, SUM(c6yn) as c6yn
+				, SUM(c7yn) as c7yn
+				, SUM(c8yn) as c8yn
+				, SUM(c9yn) as c9yn
+				, SUM(c10yn) as c10yn
+				from(
+					SELECT b.BLNO
+					  ,case when [FILE_SN] = 'FR00' then 1 else 0 end c1yn
+					  ,case when [FILE_SN] = 'FR06' then 1 else 0 end c2yn
+					  ,case when [FILE_SN] = 'FR02' then 1 else 0 end c3yn
+					  ,case when [FILE_SN] = 'FR04' then 1 else 0 end c4yn
+					  ,case when [FILE_SN] = 'FR01' then 1 else 0 end c5yn
+					  ,case when [FILE_SN] = 'FR03' then 1 else 0 end c6yn
+					  ,case when [FILE_SN] = 'FR05' then 1 else 0 end c7yn
+					  ,case when [FILE_SN] = 'FR08' then 1 else 0 end c8yn
+					  ,case when [FILE_SN] = 'FR07' then 1 else 0 end c9yn
+					  ,case when [FILE_SN] = 'FR09' then 1 else 0 end c10yn
+					  FROM [dbo].[LETTNFILE] a inner join [dbo].[LETTNFILEDETAIL] b on a.ATCH_FILE_ID = b.ATCH_FILE_ID
+					  where a.DIR_GUBUN = 'SAP'
+				  ) TT
+				group by [BLNO]
+				
+			) 
+			SELECT T3.H_BL_NO t3_blno, T3.BL_DT_1 t3_sjdt
+				,case when  T3.CONFIRM_YN = 'Y' then '확정'
+				      when  T3.CONFIRM_YN = 'S' then '수기' 
+				      when  T3.CONFIRM_YN = 'T' then '임시' 
+					  when  T3.CONFIRM_YN = 'F' then '확인'
+					  when  T3.CONFIRM_YN = 'L' then '승인'
+				       when T1.IV_NO is not null then '등록'
+							else '미등록' 
+				end t1_yn
+				,case when  T3.CONFIRM_YN = 'Y'  then '확정'
+				      when  T3.CONFIRM_YN = 'S' then '수기'
+				      when  T3.CONFIRM_YN = 'T' then '임시' 
+					  when  T3.CONFIRM_YN = 'F' then '확인'
+					  when  T3.CONFIRM_YN = 'L' then '승인'
+				       when T2.IV_NO is not null then '등록'
+							else '미등록' 
+				end t2_yn
+				,case when  T3.CONFIRM_YN = 'Y' then '확정' 
+					  when  T3.CONFIRM_YN = 'S' then '수기' 
+					  when  T3.CONFIRM_YN = 'T' then '임시'
+					  when  T3.CONFIRM_YN = 'F' then '확인'
+					  when  T3.CONFIRM_YN = 'L' then '승인'
+					  when  T3.IN_NO is not null then '등록'
+							else '미등록' 
+				 end t3_yn
+				,case when  T3.CONFIRM_YN = 'Y' then '확정'
+				      when  T3.CONFIRM_YN = 'S' then '수기' 
+				      when  T3.CONFIRM_YN = 'T' then '임시'
+					  when  T3.CONFIRM_YN = 'F' then '확인'
+					  when  T3.CONFIRM_YN = 'L' then '승인'
+				       when T4.BL_NO is not null then '등록'
+							else '미등록' 
+				end t4_yn
+				,case when  T3.CONFIRM_YN = 'Y' then '5AD2FF '
+				      when  T3.CONFIRM_YN = 'S' then '82F9B7' 
+				      when  T3.CONFIRM_YN = 'T' then 'dcdcdc'
+					  when  T3.CONFIRM_YN = 'F' then 'FFCAD5'
+					  when  T3.CONFIRM_YN = 'L' then 'AAFA82'
+				       when T1.IV_NO is not null then 'FFF56E'
+							else 'dcdcdc' 
+				end t1_color
+				,case when  T3.CONFIRM_YN = 'Y'  then '5AD2FF '
+				      when  T3.CONFIRM_YN = 'S' then '82F9B7'
+				      when  T3.CONFIRM_YN = 'T' then 'dcdcdc' 
+					  when  T3.CONFIRM_YN = 'F' then 'FFCAD5'
+					  when  T3.CONFIRM_YN = 'L' then 'AAFA82'
+				       when T2.IV_NO is not null then 'FFF56E'
+							else 'dcdcdc' 
+				end t2_color
+				,case when  T3.CONFIRM_YN = 'Y' then '5AD2FF ' 
+					  when  T3.CONFIRM_YN = 'S' then '82F9B7'
+					  when  T3.CONFIRM_YN = 'T' then 'dcdcdc' 
+					  when  T3.CONFIRM_YN = 'F' then 'FFCAD5'
+					  when  T3.CONFIRM_YN = 'L' then 'AAFA82'
+					  when  T3.IN_NO is not null then 'FFF56E'
+							else 'dcdcdc' 
+				 end t3_color
+				,case when  T3.CONFIRM_YN = 'Y' then '5AD2FF '
+				      when  T3.CONFIRM_YN = 'S' then '82F9B7' 
+				      when  T3.CONFIRM_YN = 'T' then 'dcdcdc'
+					  when  T3.CONFIRM_YN = 'F' then 'FFCAD5'
+					  when  T3.CONFIRM_YN = 'L' then 'AAFA82'
+				       when T4.BL_NO is not null then 'FFF56E'
+							else 'dcdcdc' 
+				end t4_color
+				,ISNULL(t5.c1yn,0) AS c1yn	
+				,ISNULL(t5.c2yn,0) AS c2yn	
+				,ISNULL(t5.c3yn,0) AS c3yn	
+				,ISNULL(t5.c4yn,0) AS c4yn	
+				,ISNULL(t5.c5yn,0) AS c5yn	
+				,ISNULL(t5.c6yn,0) AS c6yn	
+				,ISNULL(t5.c7yn,0) AS c7yn	
+				,ISNULL(t5.c8yn,0) AS c8yn	
+				,ISNULL(t5.c9yn,0) AS c9yn	
+				,ISNULL(t5.c10yn,0) AS c10yn
+				,T4.T4_COMPANY
+				,ISNULL(T3.CONFIRM_YN,'N') t3_confirm
+				,T3.PRECONFIRM_YN t3_preconfirm
+				,ISNULL(T3.REG_FLAG,'N') t3_regflag
+				,T3.SEQ t3_seq
+				
+			FROM T3  LEFT OUTER JOIN T2 
+			ON T3.IN_NO = T2.IV_NO
+			LEFT OUTER JOIN T1 
+			ON T3.IN_NO = T1.IV_NO
+			LEFT OUTER JOIN T4 
+			ON T3.H_BL_NO = T4.BL_NO
+			LEFT OUTER JOIN T5 
+			ON T3.H_BL_NO = T5.BLNO
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchBl">
+				<![CDATA[ T3.H_BL_NO = #searchBl# ]]>
+			</isNotEmpty>
+			
+			<isNotEmpty prepend="AND" property="searchBgnDe">
+				<isNotEmpty  property="searchEndDe">
+					<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(T3.BL_DT_1)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+			
+			<isNotEmpty  prepend="AND" property="searchCom">
+				<![CDATA[  UPPER(T4.T4_COMPANY) like UPPER('%'+#searchCom#+'%') ]]>
+			</isNotEmpty>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="">
+				<![CDATA[ T3.CONFIRM_YN in('Y','F','S','T','L')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="0">
+				<![CDATA[ T3.CONFIRM_YN in('Y','F','S','T','L')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="1">
+				<![CDATA[ T3.CONFIRM_YN in('Y')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="2">
+				<![CDATA[ T3.CONFIRM_YN in('S')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="3">
+				<![CDATA[ T3.CONFIRM_YN in('F')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="4">
+				<![CDATA[ T3.CONFIRM_YN in('L')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="6">
+				<![CDATA[ T3.CONFIRM_YN in('Y','S')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="7">
+				<![CDATA[ T3.CONFIRM_YN in('T')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="5">
+				<![CDATA[	 (T3.CONFIRM_YN IS NULL OR T3.CONFIRM_YN not in('Y','F','S','T','L'))		]]>
+			</isEqual>
+		 </dynamic>
+			
+		<![CDATA[
+			ORDER BY 2	
+		]]>	
+			
+	</select>
+	
+	
+	
+	<select id="BBSAttributeManageDAO.selectSapList" parameterClass="BoardMasterVO"  resultMap="sapList" remapResults="true">
+		<![CDATA[
+			WITH T1 AS (
+				select * from
+					OPENQUERY(ERP_DL, 'SELECT 
+						A.BKTXT
+						,A.ZFIMDNO
+						,A.ZFACDO
+						,D.BELNR
+						,B.COND_TYPE
+						,C.VTEXT
+						,C.SPRAS
+						,case when A.WAERS in (''KRW'',''JPY'') then A.WRBTR * 100 else A.WRBTR end WRBTR
+						,case when A.WAERS in (''KRW'',''JPY'',''CNY'',''USD'') then A.DMBTR * 100 else A.DMBTR end DMBTR
+						,case when A.KURSF = 0 then 1.00 else  A.KURSF end KURSF
+						,A.WAERS
+						,A.BLDAT
+						,A.BUDAT
+						,A.LIFNR
+						,A.ZFCSTGRP
+						,A.MWSKZ
+						,case when A.WAERS in (''KRW'',''JPY'') then A.WMWST * 100 else A.WMWST end WMWST
+						,B.ZFCD
+						,'''' ZTERM
+						,E.NAME1
+						,E.STCD2
+						FROM [wjp].ZIMTBKPF A INNER JOIN [wjp].ZIMTBSEG B
+						ON A.BELNR = B.BELNR
+						AND A.GJAHR = B.GJAHR
+						AND  A.ZFPOSYN= ''Y''
+						LEFT OUTER JOIN [wjp].[BKPF] D on A.MANDT = D.MANDT and A.BUKRS = D.BUKRS and A.GJAHR = D.GJAHR and  A.ZFACDO+A.GJAHR = D.AWKEY and left(D.BELNR,1) = ''5''
+						LEFT OUTER JOIN [wjp].T685T C
+						ON B.COND_TYPE = C.KSCHL
+						AND C.SPRAS =''3''
+						LEFT OUTER join [wjp].[LFA1] E on A.LIFNR = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchBlNo">
+				<![CDATA[  A.BKTXT = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchCom">
+				<![CDATA[ LTRIM(RTRIM(E.NAME1)) like UPPER(''%''+N''$searchCom$''+''%'') ]]>
+			</isNotEmpty>
+			<isEqual property="searchGubun" compareValue="BT">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND"  property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.BLDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual>
+			<isEqual property="searchGubun" compareValue="BL">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND"  property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.BUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual>
+		</dynamic>
+		<![CDATA[
+			
+				')
+					
+				UNION ALL
+				select * from
+					OPENQUERY(ERP_DL, 'SELECT 
+						A.ZFCIVNO as BKTXT
+						,A.ZFCIVRN as ZFIMDNO
+						,B.BELNR as ZFACDO
+						,D.BELNR
+						,''FR00'' as COND_TYPE
+						,N''물대'' as VTEXT
+						,0 SPRAS
+						,case when A.ZFIVAMC in (''KRW'',''JPY'') then A.ZFIVAMP * 100 else A.ZFIVAMP end WRBTR
+						,case when A.ZFIVAMC in (''KRW'',''JPY'',''CNY'',''USD'') then A.ZFIVAMK * 100 else A.ZFIVAMK end DMBTR 
+						,case when A.ZFEXRT = 0 then 1.00 else A.ZFEXRT end KURSF
+						,A.ZFIVAMC as WAERS
+						,0 BLDAT
+						,A.ZFBUDAT as BUDAT
+						,A.ZFMAVN as LIFNR
+						,0 ZFCSTGRP
+						,'''' as MWSKZ
+						,0 as WMWST
+						,'''' as ZFCD
+						,A.ZTERM
+						,E.NAME1
+						,E.STCD2
+						FROM [wjp].ZIMTCIVHD A 
+						LEFT OUTER JOIN [wjp].ZIMTCIVHST B
+						ON A.ZFCIVRN = B.ZFCIVRN and B.CBELNR =''''
+						LEFT OUTER JOIN [wjp].[BKPF] D on  A.MANDT = D.MANDT and A.BUKRS = D.BUKRS and B.GJAHR = D.GJAHR and B.BELNR+B.GJAHR = D.AWKEY and D.BLART = ''RE''
+						LEFT OUTER join [wjp].[LFA1] E on A.ZFMAVN = E.LIFNR
+	
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.ZFCIVNO = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="searchCom">
+				<![CDATA[ LTRIM(RTRIM(E.NAME1)) like UPPER(''%''+N''$searchCom$''+''%'') ]]>
+			</isNotEmpty>
+			<isEqual property="searchGubun" compareValue="BT">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND" property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.ZFBUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual>
+			<isEqual property="searchGubun" compareValue="BL">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND" property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.ZFBUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual>
+		</dynamic>
+		<![CDATA[
+				
+					')
+			),
+			T2 AS(
+				SELECT H_BL_NO,CONFIRM_YN ,PRECONFIRM_YN  
+				from [dbo].[IMS_RPA_FORWARDER] 
+				where DEL_YN IS NULL
+		]]>
+			<isNotEmpty  property="searchBlNo">
+				<![CDATA[ AND  H_BL_NO = #searchBlNo# ]]>
+			</isNotEmpty>
+		<![CDATA[
+				group by H_BL_NO, CONFIRM_YN ,PRECONFIRM_YN
+			),
+			T3 AS(
+				SELECT b.BLNO,FILE_SN,count(b.ATCH_FILE_ID) as filecnt 
+				FROM [dbo].[LETTNFILE] a inner join [dbo].[LETTNFILEDETAIL] b on a.ATCH_FILE_ID = b.ATCH_FILE_ID
+				where a.DIR_GUBUN = 'SAP'
+		]]>
+		<isNotEmpty  prepend="AND" property="searchBlNo">
+			<![CDATA[  b.BLNO = #searchBlNo# ]]>
+		</isNotEmpty>
+		<![CDATA[
+				 
+				group by b.BLNO,FILE_SN
+			)
+			select 	 
+				T1.BKTXT        
+				,T1.ZFIMDNO        
+				,T1.ZFACDO        
+				,T1.BELNR        
+				,replace(T1.COND_TYPE ,'FR00','') as COND_TYPE
+				,T1.COND_TYPE as COND_TYPE1
+				,T1.VTEXT        
+				,T1.SPRAS        
+				,T1.WRBTR
+				,T1.DMBTR
+				,T1.KURSF        
+				,T1.WAERS        
+				,case when T1.BLDAT = '0' then T1.BUDAT else T1.BLDAT end BLDAT        
+				,T1.BUDAT        
+				,T1.LIFNR        
+				,T1.ZFCSTGRP        
+				,T1.MWSKZ        
+				,T1.WMWST        
+				,T1.ZFCD        
+				,T1.ZTERM        
+				,T1.NAME1
+				,T1.STCD2
+				,T2.CONFIRM_YN t3_confirm     
+				,T2.PRECONFIRM_YN t3_preconfirm 
+				,ISNULL(T3.filecnt,0) as filecnt
+				,ISNULL(T3.FILE_SN,'') as filetype
+			from T1 left outer join T2 on T1.BKTXT  COLLATE Korean_Wansung_CI_AS = T2.H_BL_NO
+			  left outer join T3 on T1.BKTXT  COLLATE Korean_Wansung_CI_AS = T3.BLNO and T1.COND_TYPE  COLLATE Korean_Wansung_CI_AS = T3.FILE_SN
+			 
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotNull property="searchType">
+				<isNotEmpty prepend="AND"  property="searchType">
+					<![CDATA[  T1.COND_TYPE = #searchType# ]]>
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+ 		  order by T1.[BKTXT],
+ 		  case T1.COND_TYPE 
+ 		  	when 'FR00' then 'ZR00'  
+ 		  	when 'FR01' then 'ZR03'  
+ 		  	when 'FR02' then 'ZR01'  
+ 		  	when 'FR03' then 'ZR07'  
+ 		  	when 'FR04' then 'ZR04'  
+ 		  	when 'FR05' then 'ZR09'  
+ 		  	when 'FR06' then 'ZR02'  
+ 		  	when 'FR07' then 'ZR05'  
+ 		  	when 'FR08' then 'ZR08'  
+ 		  	when 'FR09' then 'ZR06'  
+ 		  	else 'ZR99' end ASC  
+			 
+		]]>
+			
+	</select>
+	
+	
+	
+	<select id="BBSAttributeManageDAO.selectSapSubBLList" parameterClass="BoardMasterVO"  resultMap="sapSubList" remapResults="true">
+		<![CDATA[
+			WITH T1 AS (
+				SELECT distinct [BKTXT]
+				  ,[ZFIMDNO]
+				  ,[ZFACDO]
+				  ,[BELNR]
+				  ,[COND_TYPE]
+				  ,[VTEXT]
+				  ,[SPRAS]
+				  ,[WRBTR]
+				  ,[DMBTR]
+				  ,[KURSF]
+				  ,[WAERS]
+				  ,[BLDAT]
+				  ,[BUDAT]
+				  ,[LIFNR]
+				  ,[ZFCSTGRP]
+				  ,[MWSKZ]
+				  ,[WMWST]
+				  ,[ZFCD]
+				  ,[ZTERM]
+				  ,[NAME1]
+				  ,[STCD2]
+				FROM(
+					select
+						*
+					from
+						OPENQUERY(ERP_DL, '
+							select
+								A.BKTXT,
+								A.ZFIMDNO,
+								A.ZFACDO,
+								D.BELNR,
+								B.COND_TYPE,
+								C.VTEXT,
+								C.SPRAS,
+								case when A.WAERS in (''KRW'',''JPY'') then A.WRBTR * 100 else A.WRBTR end WRBTR,
+								case when A.WAERS in (''KRW'',''JPY'',''CNY'',''USD'') then A.DMBTR * 100 else A.DMBTR end DMBTR,
+								case when A.KURSF = 0 then 1.00 else A.KURSF end KURSF,
+								A.WAERS,
+								A.BLDAT,
+								A.BUDAT,
+								A.LIFNR,
+								A.ZFCSTGRP,
+								A.MWSKZ,
+								case when A.WAERS in (''KRW'',''JPY'') then A.WMWST * 100 else A.WMWST end WMWST,
+								B.ZFCD,
+								'''' ZTERM,
+								E.NAME1,
+								E.STCD2
+							from
+								[wjp].ZIMTBKPF A
+								inner join [wjp].ZIMTBSEG B on A.BELNR = B.BELNR
+								and A.GJAHR = B.GJAHR
+								and A.ZFPOSYN = ''Y''
+								left outer join [wjp].[BKPF] D on A.MANDT = D.MANDT and A.BUKRS = D.BUKRS and A.ZFACDO = D.BELNR and A.GJAHR = D.GJAHR and A.ZFACDO + A.GJAHR = D.AWKEY and left(D.BELNR,1) = ''5''
+								left outer join [wjp].T685T C on B.COND_TYPE = C.KSCHL
+								and C.SPRAS = ''3''
+								left outer join [wjp].[LFA1] E on A.LIFNR = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchBlNo">
+				<![CDATA[  A.BKTXT = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+			
+				')
+					
+				UNION ALL
+				select
+					*
+				from
+					OPENQUERY(ERP_DL, '
+						select
+							A.ZFCIVNO as BKTXT,
+							A.ZFCIVRN as ZFIMDNO,
+							B.BELNR as ZFACDO,
+							D.BELNR,
+							''FR00'' as COND_TYPE,
+							N''물대'' as VTEXT,
+							0 SPRAS,
+							case when A.ZFIVAMC in (''KRW'',''JPY'') then A.ZFIVAMP * 100 else A.ZFIVAMP end WRBTR,
+							case when A.ZFIVAMC in (''KRW'',''JPY'',''CNY'',''USD'') then A.ZFIVAMK * 100 else A.ZFIVAMK end DMBTR, 
+							case when A.ZFEXRT = 0 then 1.00 else A.ZFEXRT end  KURSF,
+							A.ZFIVAMC as WAERS,
+							0 BLDAT,
+							A.ZFBUDAT as BUDAT,
+							A.ZFMAVN as LIFNR,
+							0 ZFCSTGRP,
+							'''' as MWSKZ,
+							0 as WMWST,
+							'''' as ZFCD,
+							A.ZTERM,
+							E.NAME1,
+							E.STCD2
+						from
+							[wjp].ZIMTCIVHD A
+							left outer join [wjp].ZIMTCIVHST B on A.ZFCIVRN = B.ZFCIVRN and B.CBELNR =''''
+							left outer join [wjp].[BKPF] D on A.MANDT = D.MANDT and A.BUKRS = D.BUKRS and B.BELNR = D.BELNR and B.GJAHR = D.GJAHR and B.BELNR + B.GJAHR = D.AWKEY and D.BLART = ''RE''
+							left outer join [wjp].[LFA1] E on A.ZFMAVN = E.LIFNR
+	
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.ZFCIVNO = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+				
+					')
+				union all
+				SELECT [BKTXT] COLLATE Korean_Wansung_CI_AS as  [BKTXT] 
+					,[ZFIMDNO] COLLATE Korean_Wansung_CI_AS as  [ZFIMDNO] 
+					,[ZFACDO] COLLATE Korean_Wansung_CI_AS as  [ZFACDO] 
+					,[BELNR] COLLATE Korean_Wansung_CI_AS as  [BELNR] 
+					,[COND_TYPE] COLLATE Korean_Wansung_CI_AS as  [COND_TYPE] 
+					,[VTEXT] COLLATE Korean_Wansung_CI_AS as  [VTEXT] 
+					,[SPRAS] COLLATE Korean_Wansung_CI_AS as  [SPRAS] 
+					,[WRBTR]
+					,[DMBTR] 
+					,[KURSF]  
+					,[WAERS] COLLATE Korean_Wansung_CI_AS as  [WAERS] 
+					,[BLDAT] COLLATE Korean_Wansung_CI_AS as  [BLDAT] 
+					,[BUDAT] COLLATE Korean_Wansung_CI_AS as  [BUDAT] 
+					,[LIFNR] COLLATE Korean_Wansung_CI_AS as  [LIFNR] 
+					,[ZFCSTGRP] COLLATE Korean_Wansung_CI_AS as  [ZFCSTGRP] 
+					,[MWSKZ]  COLLATE Korean_Wansung_CI_AS as  [MWSKZ] 
+					,[WMWST] 
+					,[ZFCD] COLLATE Korean_Wansung_CI_AS as  [ZFCD] 
+					,[ZTERM] COLLATE Korean_Wansung_CI_AS as  [ZTERM] 
+					,[NAME1] COLLATE Korean_Wansung_CI_AS as  [NAME1] 
+					,[STCD2] COLLATE Korean_Wansung_CI_AS as  [STCD2] 
+				FROM [dbo].[RPA_SAP_TB]
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ BKTXT = #searchBlNo# ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+				) tot
+			),
+			T2 AS(
+				SELECT H_BL_NO,CONFIRM_YN ,PRECONFIRM_YN  
+				from [dbo].[IMS_RPA_FORWARDER] 
+				where DEL_YN IS NULL
+		]]>
+			<isNotEmpty  property="searchBlNo">
+				<![CDATA[ AND  H_BL_NO = #searchBlNo# ]]>
+			</isNotEmpty>
+		<![CDATA[
+				group by H_BL_NO, CONFIRM_YN ,PRECONFIRM_YN
+			),
+			T3 AS(
+				SELECT b.BLNO,FILE_SN,count(b.ATCH_FILE_ID) as filecnt 
+				FROM [dbo].[LETTNFILE] a inner join [dbo].[LETTNFILEDETAIL] b on a.ATCH_FILE_ID = b.ATCH_FILE_ID
+				where a.DIR_GUBUN = 'SAP'
+		]]>
+		<isNotEmpty  prepend="AND" property="searchBlNo">
+			<![CDATA[  b.BLNO = #searchBlNo# ]]>
+		</isNotEmpty>
+		<![CDATA[
+				 
+				group by b.BLNO,FILE_SN
+			),
+			T4 as (
+		        select
+		            *
+		        from
+		            [dbo].[RPA_SAP_TB]
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty  prepend="AND" property="searchBlNo">
+				<![CDATA[  BKTXT = #searchBlNo# ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+		    ),
+			T5 as (
+		        select
+		            *
+		        from
+		            OPENQUERY(ERP_DL, '
+						select
+							A.BKTXT,
+							A.ZFIMDNO,
+							A.ZFACDO,
+							D.BELNR,
+							B.COND_TYPE,
+							C.VTEXT,
+							C.SPRAS,
+							case when A.WAERS in (''KRW'',''JPY'') then A.WRBTR * 100 else A.WRBTR end WRBTR,
+							case when A.WAERS in (''KRW'',''JPY'',''CNY'',''USD'') then A.DMBTR * 100 else A.DMBTR end DMBTR,
+							case when A.KURSF = 0 then 1.00 else A.KURSF end KURSF,
+							A.WAERS,
+							A.BLDAT,
+							A.BUDAT,
+							A.LIFNR,
+							A.ZFCSTGRP,
+							A.MWSKZ,
+							case when A.WAERS in (''KRW'',''JPY'') then A.WMWST * 100 else A.WMWST end WMWST,
+							B.ZFCD,
+							'''' ZTERM,
+							E.NAME1,
+							E.STCD2
+						from
+							[wjp].ZIMTBKPF A
+							inner join [wjp].ZIMTBSEG B on A.BELNR = B.BELNR
+							and A.GJAHR = B.GJAHR
+							and A.ZFPOSYN = ''Y''
+							left outer join [wjp].[BKPF] D on A.MANDT = D.MANDT and A.BUKRS = D.BUKRS and A.ZFACDO = D.BELNR and A.GJAHR = D.GJAHR and A.ZFACDO + A.GJAHR = D.AWKEY
+							left outer join [wjp].T685T C on B.COND_TYPE = C.KSCHL
+							and C.SPRAS = ''3''
+							left outer join [wjp].[LFA1] E on A.LIFNR = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchBlNo">
+				<![CDATA[  A.BKTXT = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+					')
+		        union all
+		        select
+		            *
+		        from
+		            OPENQUERY(ERP_DL, '
+						select
+							A.ZFCIVNO as BKTXT,
+							A.ZFCIVRN as ZFIMDNO,
+							B.BELNR as ZFACDO,
+							D.BELNR,
+							''FR00'' as COND_TYPE,
+							N''물대'' as VTEXT,
+							0 SPRAS,
+							case when A.ZFIVAMC in (''KRW'',''JPY'') then A.ZFIVAMP * 100 else A.ZFIVAMP end WRBTR,
+							case when A.ZFIVAMC in (''KRW'',''JPY'',''CNY'',''USD'') then A.ZFIVAMK * 100 else A.ZFIVAMK end DMBTR, 
+							case when A.ZFEXRT = 0 then 1.00 else A.ZFEXRT end KURSF,
+							A.ZFIVAMC as WAERS,
+							0 BLDAT,
+							A.ZFBUDAT as BUDAT,
+							A.ZFMAVN as LIFNR,
+							0 ZFCSTGRP,
+							'''' as MWSKZ,
+							0 as WMWST,
+							'''' as ZFCD,
+							A.ZTERM,
+							E.NAME1,
+							E.STCD2
+						from
+							[wjp].ZIMTCIVHD A
+							left outer join [wjp].ZIMTCIVHST B on A.ZFCIVRN = B.ZFCIVRN
+							left outer join [wjp].[BKPF] D on A.MANDT = D.MANDT and A.BUKRS = D.BUKRS and B.BELNR = D.BELNR and B.GJAHR = D.GJAHR and B.BELNR + B.GJAHR = D.AWKEY
+							left outer join [wjp].[LFA1] E on A.ZFMAVN = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.ZFCIVNO = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+					')
+			    )
+			    SELECT * FROM (
+				    select DISTINCT
+					    T1.BKTXT,
+					    T1.ZFIMDNO,
+					    T1.ZFACDO,
+					    T1.BELNR,
+					    replace (T1.COND_TYPE, 'FR00', '') as COND_TYPE,
+					    T1.COND_TYPE as COND_TYPE1,
+					    T1.VTEXT,
+					    T1.SPRAS,
+					    T1.WRBTR,
+					    T1.DMBTR,
+					    T1.KURSF,
+					    T1.WAERS,
+					    case
+					        when T1.BLDAT = '0' then T1.BUDAT
+					        else T1.BLDAT
+					    end BLDAT,
+					    T1.BUDAT,
+					    T1.LIFNR,
+					    T1.ZFCSTGRP,
+					    T1.MWSKZ,
+					    T1.WMWST,
+					    T1.ZFCD,
+					    T1.ZTERM,
+					    T1.NAME1,
+					    T1.STCD2,
+					    T2.CONFIRM_YN t3_confirm,
+					    T2.PRECONFIRM_YN t3_preconfirm,
+					    ISNULL(T3.filecnt, 0) as filecnt,
+					    ISNULL(T3.FILE_SN, '') as filetype,
+						case when t1.BKTXT COLLATE Korean_Wansung_CI_AS = t4.BKTXT
+								and t1.COND_TYPE COLLATE Korean_Wansung_CI_AS = t4.COND_TYPE
+								and t1.BELNR COLLATE Korean_Wansung_CI_AS = t4.BELNR then '1' else '0' end sapcheck,
+						case when T4.BKTXT is not null and T5.BKTXT is null then 'FFFF96' 
+							 when T4.BKTXT is null and T5.BKTXT is not null then 'FFFFFF'
+							 when T4.BKTXT is not null and T5.BKTXT is not null and t4.BELNR COLLATE Korean_Wansung_CI_AS = t5.BELNR 
+							 then case when T2.CONFIRM_YN = 'T' then 'FFFF96' else 'E4F7BA' end
+							 when T4.BKTXT is not null and T5.BKTXT is not null  and t4.BELNR COLLATE Korean_Wansung_CI_AS != t5.BELNR then 
+								case when T1.BELNR = t5.BELNR then 'FFC0CB' else 
+								case when T2.CONFIRM_YN = 'T' then 'FFFF96' else 'E4F7BA' end 
+								end
+					
+							 else '' end sapcolor
+					from
+					    T1
+						left outer join T4 on T1.BKTXT COLLATE Korean_Wansung_CI_AS = T4.BKTXT and T1.COND_TYPE COLLATE Korean_Wansung_CI_AS = T4.COND_TYPE 
+						left outer join T5 on T1.BKTXT = T5.BKTXT and T1.COND_TYPE  = T5.COND_TYPE 
+					    left outer join T2 on T1.BKTXT COLLATE Korean_Wansung_CI_AS = T2.H_BL_NO
+					    left outer join T3 on T1.BKTXT COLLATE Korean_Wansung_CI_AS = T3.BLNO
+					    and T1.COND_TYPE COLLATE Korean_Wansung_CI_AS = T3.FILE_SN
+				) tot
+				order by
+				    tot.[BKTXT],
+				     case tot.COND_TYPE1 
+		 		  	when 'FR00' then 'ZR00'  
+		 		  	when 'FR01' then 'ZR03'  
+		 		  	when 'FR02' then 'ZR01'  
+		 		  	when 'FR03' then 'ZR07'  
+		 		  	when 'FR04' then 'ZR04'  
+		 		  	when 'FR05' then 'ZR09'  
+		 		  	when 'FR06' then 'ZR02'  
+		 		  	when 'FR07' then 'ZR05'  
+		 		  	when 'FR08' then 'ZR08'  
+		 		  	when 'FR09' then 'ZR06'  
+		 		  	else 'ZR99' end ASC  
+			 
+		]]>
+			
+	</select>
+	
+	<procedure id="BBSAttributeManageDAO.selectSapSubBLSPList" parameterMap="sapSubParam"  resultMap="sapSubList" remapResults="true">
+		<![CDATA[
+			{call dbo.rpa_SetSAPTempSave(?,?,?,?,?)} 
+		]]>
+			
+	</procedure>
+	
+	
+	
+	<procedure id="BBSAttributeManageDAO.selectExtraSPList" parameterMap="extraParam"  resultMap="extraList,extra1List" remapResults="true">
+		<![CDATA[
+			{call dbo.rpa_GetExtraList1(?)} 
+		]]>
+			
+	</procedure>
+
+	<procedure id="BBSAttributeManageDAO.selectExtraSPList1" parameterMap="extraParam"  resultMap="extraListExcel,extra1ListExcel" remapResults="true">
+		<![CDATA[
+			{call dbo.rpa_GetExtraList(?)} 
+		]]>
+			
+	</procedure>
+	
+	<procedure id="BBSAttributeManageDAO.selectYetArrivedList" parameterMap="extraParam"  resultMap="yetArrivedList,yetArrivedTotal" remapResults="true">
+		<![CDATA[
+			{call dbo.getUetarrived(?)} 
+		]]>
+			
+	</procedure>
+	
+	
+	
+	<select id="BBSAttributeManageDAO.selectExtraSPFinishList" parameterClass="BoardMasterVO" resultMap="extraListExcel" remapResults="true">
+		<![CDATA[
+			select
+				case
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 3 then ISNULL(ZFAPNM, '합계')
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 7 then ISNULL(ZFAPNM, '총계')
+			        else ISNULL(ZFAPNM,'')
+			    end extra_custom,
+			    case
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 3 then ISNULL(CUSTOM_NAME, '합계')
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 7 then ISNULL(CUSTOM_NAME, '총계')
+			        else CUSTOM_NAME
+			    end extra_company,
+			    case
+			    	when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 1 then ISNULL(ZFCDNM, '소계')
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 3 then ISNULL(ZFCDNM, '')
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 7 then ISNULL(ZFCDNM, '총계')
+			        else ZFCDNM
+			    end extra_detail,
+			    sum(WRBTR) as extra_price,
+			    sum(WRBTR_TAX) as extra_tax,
+			    sum(WRBTR) + sum(WRBTR_TAX) as extra_total,
+			    case
+			    	when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 1 then 'itemtotal'
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 3 then 'subtotal'
+			        when GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM) = 7 then 'alltotal'
+			        else 'normaltr'
+			    end extra_style
+			from
+			    (
+			        select
+			            main.ZFAPNM ,
+			            sub.CUSTOM_NAME COLLATE Korean_Wansung_CI_AS as CUSTOM_NAME,
+			            main.ZFCDNM,
+			            main.WRBTR,
+			            main.WRBTR_TAX
+			        from
+			            (
+			                select
+			                    f.ZFAPNM,
+			                    a.LIFNR,
+			                    a.MWSKZ,
+			                    e.ZFCDNM,
+			                    sum(FLOOR(a.WRBTR * 100)) as WRBTR,
+			                    case
+			                        when a.MWSKZ != 'VH' then 0
+			                        else sum(FLOOR(a.WRBTR * 10))
+			                    end WRBTR_TAX,
+			                    b.COND_TYPE
+			                from
+			                    [ERP_DL].[WJP].[wjp].[ZIMTBKPF] a
+			                    inner join [ERP_DL].[WJP].[wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR] and a.[GJAHR] = b.[GJAHR]
+			                    inner join [ERP_DL].[WJP].[wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+			                    	and a.[ZFCSTGRP] = e.ZFCDTY and e.[ZFCD] = b.[ZFCD]
+			                    left outer join [ERP_DL].[WJP].[wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = '7' then f.ZFIVNO else f.ZFBLNO end and b.[ZFDOCNO] = f.[ZFDOCNO]
+			                where a.ZFPOSYN = 'Y'
+			                    and b.[COND_TYPE] != 'FR02'
+			                    and e.[ZFCDTY] in ('004','005','006')
+		]]>
+		<isEqual property="searchGubun" compareValue="BT">
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty prepend="AND"  property="searchEndDe">
+					<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BLDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  
+								AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</isEqual>
+		<isEqual property="searchGubun" compareValue="BL">
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty prepend="AND"  property="searchEndDe">
+					<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  
+							AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</isEqual>
+		<![CDATA[
+					                    
+			                group by
+			                    f.ZFAPNM,
+			                    a.LIFNR,
+			                    e.ZFCDNM,
+			                    a.MWSKZ,
+			                    b.COND_TYPE
+			            ) main
+			            inner join [dbo].[RPA_CUSTOM_TB] sub on main.LIFNR = sub.LIFNR COLLATE Korean_Wansung_CI_AS
+			            and sub.MWSKZ COLLATE SQL_Latin1_General_CP850_BIN2 in (main.MWSKZ)
+			        union all
+			        select
+			            main.ZFAPNM ,
+			            main.CUSTOM_NAME,
+			            main.ZFCDNM,
+			            main.WRBTR,
+			            main.WRBTR_TAX
+			        from
+			            (
+			                select
+			                    f.ZFAPNM,
+			                    a.LIFNR,
+			                    d.NAME1 as CUSTOM_NAME,
+			                    a.MWSKZ,
+			                    e.ZFCDNM,
+			                    case when left(a.BUDAT,6) in('202002','202003','202004') and a.LIFNR = 'B1661A01' and a.MWSKZ = 'VZ' then
+									sum(FLOOR(b.WRBTR * 100)) + 2000
+								else
+									sum(FLOOR(b.WRBTR * 100)) end WRBTR,
+			                    sum(FLOOR(b.WMWST * 100)) as WRBTR_TAX
+			                    ,b.COND_TYPE
+			                from
+			                    [ERP_DL].[WJP].[wjp].[ZIMTBKPF] a
+			                    inner join [ERP_DL].[WJP].[wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR] and a.[GJAHR] = b.[GJAHR]
+			                    inner join [ERP_DL].[WJP].[wjp].[T685T] c on c.KSCHL = b.COND_TYPE and c.SPRAS = '3'
+			                    inner join [ERP_DL].[WJP].[wjp].[LFA1] d on d.[LIFNR] = a.[LIFNR] and d.[SPRAS] = c.[SPRAS]
+			                    inner join [ERP_DL].[WJP].[wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+			                    		and a.[ZFCSTGRP] = e.ZFCDTY and e.[ZFCD] = b.[ZFCD]
+			                    left outer join [ERP_DL].[WJP].[wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = '7' then f.ZFIVNO else f.ZFBLNO end and b.[ZFDOCNO] = f.[ZFDOCNO]
+			                where
+			                    a.ZFPOSYN = 'Y'
+			                    and a.MWSKZ not in ('VG','VH')
+			                    and b.[COND_TYPE] != 'FR02'
+			                    and e.[ZFCDTY] in ('004','005','006')
+		]]>
+		<isEqual property="searchGubun" compareValue="BT">
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty prepend="AND"  property="searchEndDe">
+					<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BLDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  
+								AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</isEqual>
+		<isEqual property="searchGubun" compareValue="BL">
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty prepend="AND"  property="searchEndDe">
+					<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  
+							AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</isEqual>
+		<![CDATA[			                    
+			                group by
+			                    f.ZFAPNM,
+			                    a.LIFNR,
+			                    e.ZFCDNM,
+			                    d.NAME1,
+			                    a.MWSKZ,
+			                    b.COND_TYPE,
+								left(a.BUDAT,6)
+			            ) main
+			        where
+			            not exists (
+			                select
+			                    null
+			                from
+			                    [dbo].[RPA_CUSTOM_TB] sub
+			                where
+			                    sub.LIFNR COLLATE Korean_Wansung_CI_AS = main.LIFNR
+			                    and sub.MWSKZ COLLATE Korean_Wansung_CI_AS = main.MWSKZ
+			            )
+			    ) tot
+			group by
+			    rollup (ZFAPNM, CUSTOM_NAME, ZFCDNM)
+			order by
+			    ISNULL(ZFAPNM, '합계'),
+			    ISNULL(CUSTOM_NAME, '합계'),
+			    GROUPING_ID(ZFAPNM, CUSTOM_NAME, ZFCDNM),
+			    (
+			        case ZFCDNM
+			            when '해상 운임료' then 1
+			            when '항공 운임료' then 2
+			            when '이용료' then 3
+			            when '내륙운송료' then 4
+			            when '통관수수료' then 5
+			            when '보관료' then 6
+			            when '취급수수료' then 7
+			            when '보험료' then 7
+			            else 99
+			        end
+			    ) asc
+		]]>
+			
+	</select>
+	
+	
+	<update id="BBSAttributeManageDAO.updateBBSMasterInf" parameterClass="BoardMaster" >
+		<![CDATA[
+			UPDATE IMS_RPA_FORWARDER 
+			   SET CONFIRM_YN = #confirmYn#
+			 WHERE H_BL_NO = #searchBlNo#
+			   AND DEL_YN IS  NULL
+		]]>
+		
+	</update>
+	
+	<update id="BBSAttributeManageDAO.finishBBSMasterInf" parameterClass="BoardMasterVO" >
+		<![CDATA[
+			UPDATE IMS_RPA_FORWARDER 
+			   SET CONFIRM_YN = #t3_confirm#
+		]]>
+		<isNotEmpty  property="t3_preconfirm">
+				<![CDATA[  , PRECONFIRM_YN = #t3_preconfirm# ]]>
+		</isNotEmpty>
+		<![CDATA[
+			   
+			 WHERE H_BL_NO = #searchBlNo#
+			   AND DEL_YN IS  NULL
+		]]>
+	</update>
+	
+	
+	<insert id="BBSAttributeManageDAO.insertBBSMasterSAPInf" parameterClass="BoardMaster" >
+		<![CDATA[
+			WITH T1 AS (
+				SELECT distinct
+					BKTXT,
+					ZFIMDNO,
+					ZFACDO,
+					BELNR,
+					COND_TYPE,
+					VTEXT,
+					SPRAS,
+					WRBTR,
+					DMBTR,
+					KURSF,
+					WAERS,
+					BLDAT,
+					BUDAT,
+					LIFNR,
+					ZFCSTGRP,
+					MWSKZ,
+					WMWST,
+					ZFCD,
+					ZTERM,
+					NAME1,
+					STCD2
+				FROM(
+					select
+						*
+					from
+						OPENQUERY(ERP_DL, '
+							select
+								A.BKTXT,
+								A.ZFIMDNO,
+								A.ZFACDO,
+								D.BELNR,
+								B.COND_TYPE,
+								C.VTEXT,
+								C.SPRAS,
+								case when A.WAERS in (''KRW'',''JPY'') then A.WRBTR * 100 else A.WRBTR end WRBTR,
+								case when A.WAERS in (''KRW'',''JPY'',''CNY'',''USD'') then A.DMBTR * 100 else A.DMBTR end DMBTR,
+								case when A.KURSF = 0 then 1.00 else A.KURSF end KURSF,
+								A.WAERS,
+								A.BLDAT,
+								A.BUDAT,
+								A.LIFNR,
+								A.ZFCSTGRP,
+								A.MWSKZ,
+								case when A.WAERS in (''KRW'',''JPY'') then A.WMWST * 100 else A.WMWST end WMWST,
+								B.ZFCD,
+								'''' ZTERM,
+								E.NAME1,
+								E.STCD2
+							from
+								[wjp].ZIMTBKPF A
+								inner join [wjp].ZIMTBSEG B on A.BELNR = B.BELNR
+								and A.GJAHR = B.GJAHR
+								and A.ZFPOSYN = ''Y''
+								left outer join [wjp].[BKPF] D on A.MANDT = D.MANDT and A.BUKRS = D.BUKRS and A.ZFACDO = D.BELNR and A.GJAHR = D.GJAHR and A.ZFACDO + A.GJAHR = D.AWKEY and left(D.BELNR,1) = ''5''
+								left outer join [wjp].T685T C on B.COND_TYPE = C.KSCHL
+								and C.SPRAS = ''3''
+								left outer join [wjp].[LFA1] E on A.LIFNR = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.BKTXT = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+						')
+					union all
+					select
+						*
+					from
+						OPENQUERY(ERP_DL, '
+							select
+								A.ZFCIVNO as BKTXT,
+								A.ZFCIVRN as ZFIMDNO,
+								B.BELNR as ZFACDO,
+								D.BELNR,
+								''FR00'' as COND_TYPE,
+								N''물대'' as VTEXT,
+								0 SPRAS,
+								case when A.ZFIVAMC in (''KRW'',''JPY'') then A.ZFIVAMP * 100 else A.ZFIVAMP end WRBTR,
+								case when A.ZFIVAMC in (''KRW'',''JPY'',''CNY'',''USD'') then A.ZFIVAMK * 100 else A.ZFIVAMK end DMBTR, 
+								case when A.ZFEXRT = 0 then 1.00 else A.ZFEXRT end KURSF,
+								A.ZFIVAMC as WAERS,
+								0 BLDAT,
+								A.ZFBUDAT as BUDAT,
+								A.ZFMAVN as LIFNR,
+								0 ZFCSTGRP,
+								'''' as MWSKZ,
+								0 as WMWST,
+								'''' as ZFCD,
+								A.ZTERM,
+								E.NAME1,
+								E.STCD2
+							from
+								[wjp].ZIMTCIVHD A
+								left outer join [wjp].ZIMTCIVHST B on A.ZFCIVRN = B.ZFCIVRN
+								left outer join [wjp].[BKPF] D on A.MANDT = D.MANDT and A.BUKRS = D.BUKRS and B.BELNR = D.BELNR and B.GJAHR = D.GJAHR and B.BELNR + B.GJAHR = D.AWKEY
+								left outer join [wjp].[LFA1] E on A.ZFMAVN = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.ZFCIVNO = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+						')
+					union all
+					SELECT [BKTXT] COLLATE Korean_Wansung_CI_AS as  [BKTXT] 
+						,[ZFIMDNO] COLLATE Korean_Wansung_CI_AS as  [ZFIMDNO] 
+						,[ZFACDO] COLLATE Korean_Wansung_CI_AS as  [ZFACDO] 
+						,[BELNR] COLLATE Korean_Wansung_CI_AS as  [BELNR] 
+						,[COND_TYPE] COLLATE Korean_Wansung_CI_AS as  [COND_TYPE] 
+						,[VTEXT] COLLATE Korean_Wansung_CI_AS as  [VTEXT] 
+						,[SPRAS] COLLATE Korean_Wansung_CI_AS as  [SPRAS] 
+						,[WRBTR] 
+						,[DMBTR] 
+						,[KURSF] 
+						,[WAERS] COLLATE Korean_Wansung_CI_AS as  [WAERS] 
+						,[BLDAT] COLLATE Korean_Wansung_CI_AS as  [BLDAT] 
+						,[BUDAT] COLLATE Korean_Wansung_CI_AS as  [BUDAT] 
+						,[LIFNR] COLLATE Korean_Wansung_CI_AS as  [LIFNR] 
+						,[ZFCSTGRP] COLLATE Korean_Wansung_CI_AS as  [ZFCSTGRP] 
+						,[MWSKZ]  COLLATE Korean_Wansung_CI_AS as  [MWSKZ] 
+						,[WMWST] 
+						,[ZFCD] COLLATE Korean_Wansung_CI_AS as  [ZFCD] 
+						,[ZTERM] COLLATE Korean_Wansung_CI_AS as  [ZTERM] 
+						,[NAME1] COLLATE Korean_Wansung_CI_AS as  [NAME1]
+						,[STCD2] COLLATE Korean_Wansung_CI_AS as  [STCD2] 
+					FROM [dbo].[RPA_SAP_TB]
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ BKTXT = #searchBlNo# ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+					) tot
+			]]>
+			<iterate property="nameVOList" prepend="WHERE BKTXT+COND_TYPE+'-'+BELNR IN" open="(" close=")" conjunction="," >
+		          #nameVOList[]#
+		   	</iterate>
+			<![CDATA[
+				) 
+	
+			    MERGE RPA_SAP_TB tgt
+				USING (
+					SELECT * FROM T1
+				) AS src
+				ON tgt.BKTXT COLLATE Korean_Wansung_CI_AS = src.BKTXT 
+					AND tgt.BELNR COLLATE Korean_Wansung_CI_AS = src.BELNR
+					AND tgt.COND_TYPE COLLATE Korean_Wansung_CI_AS = src.COND_TYPE
+				WHEN MATCHED THEN
+				  UPDATE SET COND_TYPE = src.COND_TYPE
+						   , VTEXT = src.VTEXT
+						   , SPRAS = src.SPRAS
+						   , WRBTR = src.WRBTR
+						   , DMBTR = src.DMBTR
+						   , KURSF = src.KURSF
+						   , WAERS = src.WAERS
+						   , BLDAT = src.BLDAT
+						   , BUDAT = src.BUDAT
+						   , LIFNR = src.LIFNR
+						   , ZFCSTGRP = src.ZFCSTGRP
+						   , MWSKZ = src.MWSKZ
+						   , WMWST = src.WMWST
+						   , ZFCD = src.ZFCD
+						   , ZTERM = src.ZTERM
+						   , NAME1 = src.NAME1
+						   , STCD2 = src.STCD2
+						   , DEL_FLAG = 'N'
+						   , MOD_DT = getdate()
+				WHEN NOT MATCHED THEN
+				  INSERT (BKTXT,ZFIMDNO,ZFACDO,BELNR,COND_TYPE,VTEXT,SPRAS,WRBTR,DMBTR,KURSF,WAERS,
+						  BLDAT,BUDAT,LIFNR,ZFCSTGRP,MWSKZ,WMWST,ZFCD,ZTERM,NAME1,STCD2,DEL_FLAG,MOD_DT)
+				  VALUES (src.BKTXT,src.ZFIMDNO,src.ZFACDO,src.BELNR,src.COND_TYPE,src.VTEXT,src.SPRAS,src.WRBTR,src.DMBTR,src.KURSF,src.WAERS,
+					      src.BLDAT,src.BUDAT,src.LIFNR,src.ZFCSTGRP,src.MWSKZ,src.WMWST,src.ZFCD,src.ZTERM,src.NAME1,src.STCD2,'N',getdate());
+
+		]]>
+		
+	</insert>
+
+	<delete id="BBSAttributeManageDAO.updateBBSMasterSAPInf" parameterClass="BoardMaster" >
+		<![CDATA[
+			 UPDATE RPA_SAP_TB SET DEL_FLAG = 'Y'
+			 WHERE BKTXT = #searchBlNo#
+		]]>
+		
+	</delete>
+		
+	<delete id="BBSAttributeManageDAO.deleteBBSMasterSAPInf" parameterClass="BoardMaster" >
+		<![CDATA[
+			DELETE FROM RPA_SAP_TB 
+			 WHERE DEL_FLAG = 'Y' AND BKTXT = #searchBlNo#
+		]]>
+		
+	</delete>
+	
+	
+	<select id="BBSAttributeManageDAO.selectBBSSAPBktxtInfs" parameterClass="BoardMasterVO" resultMap="sapBktxtList" remapResults="true">
+
+		<![CDATA[
+			WITH T1 AS (
+			SELECT DISTINCT IV_NO FROM  IMS_RPA_IMPORT_NOTIFY
+			WHERE DEL_YN IS  NULL
+			),
+			T2 AS (
+				SELECT DISTINCT VAL IV_NO FROM
+				(
+					SELECT DISTINCT IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9
+					 FROM [MOT_RPQ].[dbo].[IMS_RPA_CARGO_INSURANCE]
+					 WHERE DEL_YN is null
+				 ) as ST
+				UNPIVOT
+				(
+				  VAL FOR COL IN ( IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9 )
+				 ) as PT
+				WHERE LEN(VAL) > 0 
+			),
+			T3 AS (
+			SELECT DISTINCT * FROM IMS_RPA_FORWARDER
+			WHERE H_BL_NO+IN_NO IN (SELECT DISTINCT H_BL_NO + MAX(IN_NO) FROM  IMS_RPA_FORWARDER
+									WHERE  DEL_YN IS  NULL
+									AND CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_SEONJEOG_DT)),'.','')) > '20190930'
+									GROUP BY H_BL_NO)
+									
+			AND DEL_YN IS  NULL
+			),
+			T4 AS (
+			SELECT DISTINCT d23 as BL_COMPANY, d52 BL_NO FROM  IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			)  
+			SELECT T3.H_BL_NO
+				
+			FROM T3  LEFT OUTER JOIN T2 
+			ON T3.IN_NO = T2.IV_NO
+			LEFT OUTER JOIN T1 
+			ON T3.IN_NO = T1.IV_NO
+			LEFT OUTER JOIN T4 
+			ON T3.H_BL_NO = T4.BL_NO
+			WHERE T3.CONFIRM_YN = 'Y'
+		]]>
+			<isNotEmpty  property="searchKeyword">
+				<![CDATA[ AND  UPPER(T3.H_BL_NO) like UPPER(#searchKeyword#) ]]>
+			</isNotEmpty>
+			
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty  property="searchEndDe">
+					<![CDATA[	AND CONVERT(INT,REPLACE(RTRIM(LTRIM(T3.BL_DT_1)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+			
+		<![CDATA[
+			ORDER BY T4.BL_COMPANY
+		]]>	
+			
+	</select>
+	
+	<select id="BBSAttributeManageDAO.selectBBSSAPLifnrInfs" parameterClass="BoardMasterVO" resultMap="sapLifnrList" remapResults="true">
+
+		<![CDATA[
+			SELECT distinct
+			      [NAME1]  as BL_COMPANY
+			  FROM [dbo].[V_LFA1]
+
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchKeyword">
+				<![CDATA[  UPPER(NAME1) like UPPER(#searchKeyword#) ]]>
+			</isNotEmpty>
+		</dynamic>
+			
+		<![CDATA[
+			ORDER BY NAME1
+		]]>	
+			
+	</select>		
+	
+		
+	<insert id="BBSAttributeManageDAO.insertFileSapMaster" parameterClass="java.util.HashMap" >
+		<![CDATA[
+			INSERT INTO LETTNFILE (
+				ATCH_FILE_ID,
+				DIR_GUBUN,
+				BLNO, 
+				FILE_GUBUN,
+				FILE_GUBUN_NM,
+				FILE_STRE_COURS, 
+				STRE_FILE_NM, 
+			  	ORIGNL_FILE_NM, 
+			  	FILE_EXTSN, 
+			  	FILE_SIZE, 
+				CREAT_DT, 
+				USE_AT
+			)
+			VALUES ( 
+				#atchFileId#,
+				#dirGubun#,
+				#blNo#, 
+				#fileGubun#, 
+				#fileGubunNm#, 
+				#fileStreCours#, 
+				#streFileNm#, 
+				#orignlFileNm#, 
+				#fileExtsn#, 
+				#fileMg#, 
+				getdate(), 
+				'Y'
+			)			
+		]]>
+	</insert>
+	
+	<insert id="BBSAttributeManageDAO.insertFileSapDetail" parameterClass="BoardSapFileVO" >
+		<![CDATA[
+			INSERT INTO LETTNFILEDETAIL (
+				ATCH_FILE_ID,
+				BLNO, 
+				FILE_SN, 
+				FILE_STRE_COURS, 
+				STRE_FILE_NM, 
+			  	ORIGNL_FILE_NM, 
+			  	FILE_EXTSN, 
+			  	FILE_SIZE, 
+			  	FILE_CN 
+			)
+			VALUES (
+				#atchFileId#,
+				#blNo#, 
+				#fileSn#, 
+				#fileStreCours#, 
+				#streFileNm#, 
+			  	#orignlFileNm#, 
+			  	#fileExtsn#, 
+			  	#fileMg#, 
+			  	#fileCn# 
+			)			
+		]]>
+	</insert>
+	
+	<insert id="BBSAttributeManageDAO.insertFileSapDetailMulti" parameterClass="java.util.HashMap" >
+		<![CDATA[
+			INSERT INTO LETTNFILEDETAIL (
+				ATCH_FILE_ID,
+				BLNO, 
+				FILE_SN, 
+				FILE_STRE_COURS, 
+				STRE_FILE_NM, 
+			  	ORIGNL_FILE_NM, 
+			  	FILE_EXTSN, 
+			  	FILE_SIZE, 
+			  	FILE_CN 
+			)
+		]]>
+			
+		<dynamic>
+			<iterate prepend="VALUES" conjunction=", " property="fileList">
+				<![CDATA[
+					(
+						#atchFileId#,
+						#blNo#, 
+						#fileList[].fileSn#, 
+						#fileStreCours#, 
+						#streFileNm#, 
+					  	#orignlFileNm#, 
+					  	#fileExtsn#, 
+					  	#fileMg#, 
+					  	#fileCn# 
+					)
+				]]>
+			</iterate>
+		</dynamic>				
+	</insert>			
+	
+	<select id="BBSAttributeManageDAO.selectFileSapMax" parameterClass="java.util.Map" resultClass="java.lang.String" >
+        <![CDATA[
+            SELECT
+                #blNo# + '_' + RIGHT('000' + CONVERT(varchar,ISNULL(MAX(RIGHT(ATCH_FILE_ID,3)),0) + 1),3) as atchFileId
+            FROM
+                LETTNFILE
+            WHERE
+                BLNO = #blNo#
+        ]]>            
+    </select>
+    
+    <select id="BBSAttributeManageDAO.selectFileSapCnt" parameterClass="BoardSapFileVO" resultClass="java.lang.Integer" >
+        <![CDATA[
+            SELECT
+                count(*)
+            FROM
+                LETTNFILE
+            WHERE
+                BLNO = #blNo# and FILE_GUBUN like #fileGubun#
+        ]]>            
+    </select>
+    
+    <select id="BBSAttributeManageDAO.selectFileSap" parameterClass="BoardMasterVO" resultMap="sapFileList" remapResults="true">
+
+		<![CDATA[
+			SELECT [ATCH_FILE_ID]
+		      ,[BLNO]
+		      ,[FILE_GUBUN]
+		      ,[FILE_GUBUN_NM]
+		      ,[FILE_STRE_COURS]
+		      ,[STRE_FILE_NM]
+		      ,[ORIGNL_FILE_NM]
+		      ,[FILE_EXTSN]
+		      ,[FILE_SIZE]
+		      ,[CREAT_DT]
+		  FROM [dbo].[LETTNFILE]
+		  WHERE BLNO = #searchBlNo# and FILE_GUBUN like #searchFileCn#
+		]]>			
+		<![CDATA[
+			ORDER BY ATCH_FILE_ID
+		]]>	
+			
+	</select>
+	
+	<select id="BBSAttributeManageDAO.selectFileSapDetail" parameterClass="BoardMaster" resultMap="sapFileList" remapResults="true">
+
+		<![CDATA[
+			SELECT [ATCH_FILE_ID]
+		      ,[BLNO]
+		      ,[FILE_GUBUN]
+		      ,[FILE_GUBUN_NM]
+		      ,[FILE_STRE_COURS]
+		      ,[STRE_FILE_NM]
+		      ,[ORIGNL_FILE_NM]
+		      ,[FILE_EXTSN]
+		      ,[FILE_SIZE]
+		      ,[CREAT_DT]
+		  FROM [dbo].[LETTNFILE]
+		  WHERE ATCH_FILE_ID = #searchAtchFileId#
+		]]>	
+			
+	</select>
+	
+	<delete id="BBSAttributeManageDAO.deleteFileSap" parameterClass="BoardSapFileVO">
+
+		<![CDATA[
+			DELETE FROM [dbo].[LETTNFILE]
+		 	WHERE ATCH_FILE_ID = #atchFileId# 
+		]]>	
+					
+	</delete>
+	
+	
+	<insert id="BBSAttributeManageDAO.insertForward" parameterClass="BoardMasterVO" >
+		<![CDATA[
+			INSERT INTO IMS_RPA_FORWARDER (
+				IN_NO,
+				H_BL_NO, 
+				BL_DT_1, 
+				BL_DT_2,
+				BL_SEONJEOG_DT,
+				REG_FLAG
+			)
+			VALUES (
+				#t3_inno#,
+				#t3_blno#, 
+				CONVERT(CHAR(10), CONVERT (DATE,#t3_sjdt#), 102),
+				CONVERT(CHAR(10), CONVERT (DATE,#t3_sjdt#), 102),
+				CONVERT(CHAR(10), getdate(), 102),
+				#t3_regflag#
+			)			
+		]]>
+	</insert>
+	
+	<select id="BBSAttributeManageDAO.selectForwardCnt" parameterClass="BoardMasterVO" resultClass="java.lang.Integer" >
+        <![CDATA[
+            SELECT
+                count(*)
+            FROM
+                IMS_RPA_FORWARDER
+            WHERE
+                IN_NO = #t3_inno# AND H_BL_NO = #t3_blno# AND
+                CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_DT_1)),'.','')) = REPLACE(#t3_sjdt#,'-','') 
+        ]]>            
+    </select>
+    
+    <delete id="BBSAttributeManageDAO.deleteForward" parameterClass="BoardMasterVO">
+
+		<![CDATA[
+			DELETE FROM [dbo].[IMS_RPA_FORWARDER]
+		 	WHERE SEQ = #t3_seq#
+		]]>	
+					
+	</delete>
+	
+	<insert id="BBSAttributeManageDAO.insertRpaIncome" parameterClass="BoardMasterVO" >
+		<![CDATA[
+			INSERT INTO RPA_INCOME_TB (
+			  [INCOME_KEY]
+		      ,[YYYYMM]
+		      ,[GUBUN]
+		      ,[LIFNR]
+		      ,[CUSTOM_NAME]
+		      ,[COND_TYPE]
+		      ,[ZFCD]
+		      ,[ZFCDNM]
+		      ,[ZFCUT]
+		      ,[ZFAPNM]
+		      ,[WRBTR]
+		      ,[WRBTR_TAX]
+		      ,[WRBTR_TOTAL]
+			)
+			SELECT *
+			FROM (
+				select
+					#searchMonth# +'_'  + LIFNR +'_'  + ISNULL(ZFCD, '000') +'_'  + ISNULL(ZFCUT, '00000') as INCOME_KEY,
+					#searchMonth# as YYYYMM,
+					N'CLOSE' as GUBUN,
+					LIFNR,
+				    ISNULL(CUSTOM_NAME, '합계') as CUSTOM_NAME,
+					ISNULL(COND_TYPE, 'F000') as COND_TYPE,
+					ISNULL(ZFCD, '000') as ZFCD,
+				    ISNULL(ZFCDNM, '합계') as ZFCDNM,	
+					ISNULL(ZFCUT, '00000') as ZFCUT,
+				    ISNULL(ZFAPNM, '') as ZFAPNM,
+				    sum(WRBTR) as WRBTR,
+				    sum(WRBTR_TAX) as WRBTR_TAX,
+				    sum(WRBTR) + sum(WRBTR_TAX) as WRBTR_TOTAL
+				from
+				    (
+				        select
+							main.LIFNR,
+				            main.ZFCDNM,
+				            sub.CUSTOM_NAME,
+				            main.ZFAPNM,
+				            main.WRBTR,
+				            main.WRBTR_TAX,
+							main.COND_TYPE,
+							main.ZFCUT,
+							ZFCD
+				        from
+				            OPENQUERY(ERP_DL, '
+							select
+								e.ZFCDNM,
+								a.LIFNR,
+								a.MWSKZ,
+								f.ZFAPNM,
+								sum(FLOOR(a.WRBTR * 100)) as WRBTR,
+								case
+									when a.MWSKZ != ''VH'' then 0
+									else sum(FLOOR(a.WRBTR * 10))
+								end WRBTR_TAX,
+								b.[COND_TYPE]
+								,f.ZFCUT
+								,e.ZFCD
+							from
+								[wjp].[ZIMTBKPF] a
+								inner join [wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR]
+								and a.[GJAHR] = b.[GJAHR]
+								inner join [wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+								and a.[ZFCSTGRP] = e.ZFCDTY
+								and e.[ZFCD] = b.[ZFCD]
+								left outer join [wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = ''7'' then f.ZFIVNO else f.ZFBLNO end
+								and b.[ZFDOCNO] = f.[ZFDOCNO]
+							where
+								CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''')
+								and a.ZFPOSYN = ''Y''
+								and b.[COND_TYPE] != ''FR02''
+								and e.[ZFCDTY] in (
+									''004'',
+									''005'',
+									''006''
+								)
+							group by
+								e.ZFCDNM,
+								a.LIFNR,
+								f.ZFAPNM,
+								a.MWSKZ,
+								b.[COND_TYPE],
+								f.ZFCUT,
+								e.ZFCD
+							') main
+				            inner join [dbo].[RPA_CUSTOM_TB] sub on main.LIFNR = sub.LIFNR COLLATE Korean_Wansung_CI_AS
+				            and sub.MWSKZ COLLATE SQL_Latin1_General_CP850_BIN2 in (main.MWSKZ)
+				    ) tot
+				group by 
+				    CUSTOM_NAME, ZFCDNM, ZFAPNM,LIFNR,COND_TYPE,ZFCUT,ZFCD
+				
+				UNION ALL
+				
+				select
+					#searchMonth# +'_' + LIFNR +'_'  + ISNULL(ZFCD, '000') +'_'  + ISNULL(ZFCUT, '00000') as INCOME_KEY,
+					#searchMonth# as YYYYMM,
+					N'EACH' as GUBUN,
+					LIFNR,
+				    ISNULL(CUSTOM_NAME, '합계') as CUSTOM_NAME,
+					ISNULL(COND_TYPE, 'F000') as COND_TYPE,
+					ISNULL(ZFCD, '000') as ZFCD,
+				    ISNULL(ZFCDNM, '합계') as ZFCDNM,
+					ISNULL(ZFCUT, '00000') as ZFCUT,
+					ISNULL(ZFAPNM, '') as ZFAPNM,
+				    sum(WRBTR) as WRBTR,
+				    sum(WRBTR_TAX) as WRBTR_TAX,
+				    sum(WRBTR) + sum(WRBTR_TAX) as WRBTR_TOTAL
+				from
+				    (
+				        select
+							main.LIFNR,
+				            main.ZFCDNM,
+				            main.CUSTOM_NAME,
+				            main.ZFAPNM,
+				            main.WRBTR,
+				            main.WRBTR_TAX,
+							main.COND_TYPE,
+							main.ZFCUT,
+							main.ZFCD
+				        from
+				            OPENQUERY(ERP_DL, '
+								select
+									e.ZFCDNM,
+									a.LIFNR,
+									d.NAME1 COLLATE Korean_Wansung_CI_AS as CUSTOM_NAME,
+									a.MWSKZ,
+									f.ZFAPNM,
+									sum(FLOOR(b.WRBTR * 100)) as WRBTR,
+									sum(FLOOR(b.WMWST * 100)) as WRBTR_TAX,
+									b.[COND_TYPE],
+									f.ZFCUT,
+									e.ZFCD
+								from
+									[wjp].[ZIMTBKPF] a
+									inner join [wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR]
+									and a.[GJAHR] = b.[GJAHR]
+									inner join [wjp].[T685T] c on c.KSCHL = b.COND_TYPE
+									and c.SPRAS = ''3''
+									inner join [wjp].[LFA1] d on d.[LIFNR] = a.[LIFNR]
+									and d.[SPRAS] = c.[SPRAS]
+									inner join [wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+									and a.[ZFCSTGRP] = e.ZFCDTY
+									and e.[ZFCD] = b.[ZFCD]
+									left outer join [wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = ''7'' then f.ZFIVNO else f.ZFBLNO end
+									and b.[ZFDOCNO] = f.[ZFDOCNO]
+								where
+									CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''')
+									and a.ZFPOSYN = ''Y''
+									and a.MWSKZ not in (
+										''VG'',
+										''VH''
+									)
+									and b.[COND_TYPE] != ''FR02''
+									and e.[ZFCDTY] in (
+										''004'',
+										''005'',
+										''006''
+									)
+								group by
+									e.ZFCDNM,
+									a.LIFNR,
+									f.ZFAPNM,
+									d.NAME1,
+									a.MWSKZ,
+									b.[COND_TYPE],
+									f.ZFCUT,
+									e.ZFCD
+							') main
+				        where
+				            not exists (
+				                select
+				                    null
+				                from
+				                    [dbo].[RPA_CUSTOM_TB] sub
+				                where
+				                    sub.LIFNR COLLATE Korean_Wansung_CI_AS = main.LIFNR
+				                    and sub.MWSKZ COLLATE Korean_Wansung_CI_AS = main.MWSKZ
+				            )
+				    ) tot
+				group by
+				    CUSTOM_NAME, ZFCDNM, ZFAPNM,LIFNR,COND_TYPE,ZFCUT,ZFCD
+				) tot
+		
+		]]>
+	</insert>
+	
+	<delete id="BBSAttributeManageDAO.deleteRpaIncome" parameterClass="BoardMasterVO">
+
+		<![CDATA[
+			DELETE FROM [dbo].[RPA_INCOME_TB]
+		 	WHERE YYYYMM = #searchMonth#
+		]]>	
+					
+	</delete>
+    
+    
+    <select id="BBSAttributeManageDAO.selectExtraTax" parameterClass="BoardMasterVO" resultMap="extra1ListExcelDown" remapResults="true">
+        <![CDATA[
+            WITH T1 as(
+				select
+					#searchMonth# + '_' + LIFNR + '_' + ISNULL(ZFCD, '000') + '_' + ISNULL(ZFCUT, '00000') income_key,
+					CUSTOM_NAME as name1,
+					LIFNR as lifnr,
+					CONVERT(varchar(2), month (CONVERT(datetime, CONVERT(char(8), #searchBgnDe#)))) + N'월_' + ISNULL(ZFCDNM, '합계') as extra_detail,
+					sum(WRBTR) as extra_price,
+					sum(WRBTR_TAX) as extra_tax,
+					convert(varchar(10),DATEADD(DAY, -1, DATEADD(MONTH, 1, CONVERT(DATE, CONVERT(VARCHAR(6), #searchBgnDe#, 112) + '01'))),102) as extra_bldate,
+					'KRW' as waers,
+					case when ZFCD = 'CSC' then ZFCD else ZFCD + convert(varchar,ROW_NUMBER() OVER( ORDER BY LIFNR ASC)) end num
+				from
+					(
+						select
+							main.LIFNR,
+							main.ZFCDNM,
+							sub.CUSTOM_NAME,
+							main.ZFAPNM,
+							main.WRBTR,
+							main.WRBTR_TAX,
+							main.COND_TYPE,
+							main.ZFCUT,
+							main.ZFCD
+				        from
+				            OPENQUERY(ERP_DL, '
+							select
+								e.ZFCDNM,
+								a.LIFNR,
+								a.MWSKZ,
+								f.ZFAPNM,
+								sum(FLOOR(a.WRBTR * 100)) as WRBTR,
+								case
+									when a.MWSKZ != ''VH'' then 0
+									else sum(FLOOR(a.WRBTR * 10))
+								end WRBTR_TAX,
+								b.[COND_TYPE]
+								,f.ZFCUT
+								,e.ZFCD
+							from
+								[wjp].[ZIMTBKPF] a
+								inner join [wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR]
+								and a.[GJAHR] = b.[GJAHR]
+								inner join [wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+								and a.[ZFCSTGRP] = e.ZFCDTY
+								and e.[ZFCD] = b.[ZFCD]
+								left outer join [wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = ''7'' then f.ZFIVNO else f.ZFBLNO end
+								and b.[ZFDOCNO] = f.[ZFDOCNO]
+							where
+								left(CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),''.'','''')),6)  = ''$searchMonth$''
+								and a.ZFPOSYN = ''Y''
+								and b.[COND_TYPE] != ''FR02''
+								and e.[ZFCDTY] in (
+									''004'',
+									''005'',
+									''006''
+								)
+							group by
+								e.ZFCDNM,
+								a.LIFNR,
+								f.ZFAPNM,
+								a.MWSKZ,
+								b.[COND_TYPE],
+								f.ZFCUT,
+								e.ZFCD
+							') main
+				            inner join [dbo].[RPA_CUSTOM_TB] sub on main.LIFNR = sub.LIFNR COLLATE Korean_Wansung_CI_AS
+				            and sub.MWSKZ COLLATE SQL_Latin1_General_CP850_BIN2 in (main.MWSKZ)
+						WHERE main.WRBTR_TAX > 0
+				    ) tot
+				    where ZFCD != '00000' and ZFCD is not null
+				group by 
+				    CUSTOM_NAME, ZFCDNM, ZFAPNM,LIFNR,COND_TYPE,ZFCUT,ZFCD
+			)
+			select income_key,name1,lifnr,extra_detail,SUM(extra_price) as extra_price, SUM(extra_tax) as extra_tax, extra_bldate,waers
+			from T1
+			GROUP BY income_key,name1,lifnr,extra_detail,extra_bldate,waers, num
+        ]]>            
+    </select>
+    
+    <insert id="BBSAttributeManageDAO.insertExtraTax" parameterClass="BoardMasterVO">
+        <![CDATA[
+            WITH T1 as(
+				select
+					#searchMonth# + '_' + LIFNR + '_' + ISNULL(ZFCD, '000') + '_' + ISNULL(ZFCUT, '00000') income_key,
+					#searchMonth# as yyyymm,
+					'MON' as gubun,
+					LIFNR as lifnr,
+					CUSTOM_NAME as name1,
+					ZFAPNM as custom_nm,
+					CONVERT(varchar(2), month (CONVERT(datetime, CONVERT(char(8), #searchBgnDe#)))) + N'월_' + ISNULL(ZFCDNM, '합계') as extra_detail,
+					sum(WRBTR) as extra_price,
+					sum(WRBTR_TAX) as extra_tax,
+					convert(varchar(10),DATEADD(DAY, -1, DATEADD(MONTH, 1, CONVERT(DATE, CONVERT(VARCHAR(6), #searchBgnDe#, 112) + '01'))),102) as extra_bldate,
+					'KRW' as waers,
+					STCD2 as stcd2,
+					MWSKZ as mwskz,
+					case when ZFCD = 'CSC' then ZFCD else ZFCD + convert(varchar,ROW_NUMBER() OVER( ORDER BY LIFNR ASC)) end num
+					
+				from
+					(
+						select
+							main.LIFNR,
+							main.ZFCDNM,
+							sub.CUSTOM_NAME,
+							main.ZFAPNM,
+							main.WRBTR,
+							main.WRBTR_TAX,
+							main.COND_TYPE,
+							main.ZFCUT,
+							main.ZFCD,
+							main.STCD2,
+							case when main.MWSKZ = 'VG' then 'V0' 
+								when main.MWSKZ = 'VH' then 'V4'
+								else main.MWSKZ end MWSKZ
+				        from
+				            OPENQUERY(ERP_DL, '
+							select
+								e.ZFCDNM,
+								a.LIFNR,
+								a.MWSKZ,
+								f.ZFAPNM,
+								sum(FLOOR(a.WRBTR * 100)) as WRBTR,
+								case
+									when a.MWSKZ != ''VH'' then 0
+									else sum(FLOOR(a.WRBTR * 10))
+								end WRBTR_TAX,
+								b.[COND_TYPE]
+								,f.ZFCUT
+								,e.ZFCD
+								,c.STCD2    
+							from
+								[wjp].[ZIMTBKPF] a
+								inner join [wjp].[ZIMTBSEG] b on a.[BELNR] = b.[BELNR]
+								and a.[GJAHR] = b.[GJAHR]
+								inner join [wjp].[ZIMTIMIMG08] e on e.[COND_TYPE] = b.[COND_TYPE]
+								and a.[ZFCSTGRP] = e.ZFCDTY
+								and e.[ZFCD] = b.[ZFCD]
+								left outer join [wjp].ZIMTIDS f on a.ZFIMDNO = case when left(a.ZFIMDNO,1) = ''7'' then f.ZFIVNO else f.ZFBLNO end
+								and b.[ZFDOCNO] = f.[ZFDOCNO]
+								left outer join [wjp].[LFA1] c on a.LIFNR = c.LIFNR
+							where
+								left(CONVERT(INT,REPLACE(RTRIM(LTRIM(a.BUDAT)),''.'','''')),6)  = ''$searchMonth$''
+								and a.ZFPOSYN = ''Y''
+								and b.[COND_TYPE] != ''FR02''
+								and e.[ZFCDTY] in (
+									''004'',
+									''005'',
+									''006''
+								)
+							group by
+								e.ZFCDNM,
+								a.LIFNR,
+								f.ZFAPNM,
+								a.MWSKZ,
+								b.[COND_TYPE],
+								f.ZFCUT,
+								e.ZFCD,
+								c.STCD2,
+								STCD2
+							') main
+				            inner join [dbo].[RPA_CUSTOM_TB] sub on main.LIFNR = sub.LIFNR COLLATE Korean_Wansung_CI_AS
+				            and sub.MWSKZ COLLATE SQL_Latin1_General_CP850_BIN2 in (main.MWSKZ)
+				    ) tot
+				    where ZFCD != '00000' and ZFCD is not null 
+				group by 
+				    CUSTOM_NAME, ZFCDNM, ZFAPNM,LIFNR,COND_TYPE,ZFCUT,ZFCD,STCD2,MWSKZ
+			)
+			MERGE RPA_STATEMENT_TB tgt
+			USING (
+				select income_key,yyyymm,gubun,lifnr,name1,custom_nm,extra_detail,SUM(extra_price) as extra_price, SUM(extra_tax) as extra_tax,mwskz, extra_bldate,waers,stcd2
+				from T1
+				GROUP BY income_key,yyyymm,gubun,lifnr,name1,custom_nm, extra_detail,mwskz,extra_bldate,waers, num,stcd2
+			) AS src
+			ON tgt.STATEMENT_KEY = src.income_key COLLATE Korean_Wansung_CI_AS
+			WHEN MATCHED THEN
+				UPDATE SET 
+					    LIFNR=src.lifnr 
+					    ,STCD2=src.stcd2 
+					    ,ZFBLNO=src.extra_detail
+					    ,NAME1=src.name1
+					    ,ZFAPNM=src.custom_nm
+					    ,TWRBTR=src.extra_price
+					    ,WRBTR_TAX=src.extra_tax 
+					    ,WAERS1=src.waers
+					    ,SWRBTR=src.extra_price
+					    ,WAERS2=src.waers
+					    ,MWSKZ=src.mwskz					    
+					    ,BUDAT=src.extra_bldate
+					    ,BLDAT=src.extra_bldate
+						,REG_DT=getdate()
+			WHEN NOT MATCHED THEN
+				INSERT (STATEMENT_KEY,YYYYMM,GUBUN,NUM,LIFNR,STCD2
+						,ZFBLNO,NAME1,ZFAPNM,TWRBTR,WRBTR_TAX,WAERS1,SWRBTR,WAERS2,MWSKZ,BUDAT,BLDAT)
+				VALUES (src.income_key,src.yyyymm,src.gubun,0,src.lifnr,src.stcd2
+				,src.extra_detail,src.name1,src.custom_nm,0,src.extra_tax,src.waers,
+						src.extra_price,src.waers,src.mwskz,src.extra_bldate,src.extra_bldate);
+        ]]>            
+    </insert>
+    
+    
+    <insert id="BBSAttributeManageDAO.insertMultiStatement" parameterClass="java.util.HashMap">
+    	<![CDATA[
+			MERGE INTO RPA_STATEMENT_TB AS tar
+	    	USING (
+	    ]]>
+	    <dynamic>
+			<iterate prepend="VALUES" conjunction=", " property="List">
+			(
+				case when ISNULL(#List[].ZFIMDNO#,'') = '' then #List[].ZFCARNM# else ISNULL(#List[].ZFBLNO#,'') end
+	           ,#yyyymm#
+	           ,case when ISNULL(#List[].ZFIMDNO#,'') = '' then 'MON' else 'BL' end
+	           ,ISNULL(#List[].NUM#,0)
+	           ,ISNULL(#List[].ZFACDO#,'')
+	           ,ISNULL(#List[].ZFIMDNO#,'')
+	           ,ISNULL(#List[].ZFIDRNO#,'')
+	           ,ISNULL(#List[].ZFINRC#,'')
+	           ,ISNULL(#List[].NAME1#,'')
+	           ,ISNULL(#List[].LIFNR#,'')
+	           ,ISNULL(#List[].STCD2#,'')
+	           ,ISNULL(#List[].ZFBLNO#,'')
+	           ,ISNULL(#List[].ZFAPNM#,'')
+	           ,case when LTRIM(#List[].TWRBTR#) = '' then 0 else IIF(#List[].TWRBTR# is null , NULL,  CONVERT(decimal(20,0), #List[].TWRBTR#)) end
+	           ,case when LTRIM(#List[].WRBTR_TAX#) = '' then 0 else IIF(#List[].WRBTR_TAX# is null , NULL,  CONVERT(decimal(20,0), #List[].WRBTR_TAX#)) end
+	           ,ISNULL(#List[].WAERS1#,'')
+	           ,case when LTRIM(#List[].SWRBTR#) = '' then 0 else IIF(#List[].SWRBTR# is null , NULL,  CONVERT(decimal(20,0), #List[].SWRBTR#)) end
+	           ,ISNULL(#List[].WAERS2#,'')
+	           ,ISNULL(#List[].BUDAT#,'')
+	           ,ISNULL(#List[].ZFCSTGRP#,'')
+	           ,case when ISNULL(#List[].ZFIMDNO#,'') = '' then '' else ISNULL(#List[].ZFCARNM#,'') end
+	           ,ISNULL(#List[].BLDAT#,'')
+			)
+
+			</iterate>
+
+		</dynamic>
+		<![CDATA[
+			) AS src (
+       			[STATEMENT_KEY]
+	           ,[YYYYMM]
+	           ,[GUBUN]
+	           ,[NUM]
+	           ,[ZFACDO]
+	           ,[ZFIMDNO]
+	           ,[ZFIDRNO]
+	           ,[ZFINRC]
+	           ,[NAME1]
+	           ,[LIFNR]
+	           ,[STCD2]
+	           ,[ZFBLNO]
+	           ,[ZFAPNM]
+	           ,[TWRBTR]
+	           ,[WRBTR_TAX]
+	           ,[WAERS1]
+	           ,[SWRBTR]
+	           ,[WAERS2]
+	           ,[BUDAT]
+	           ,[ZFCSTGRP]
+	           ,[ZFCARNM]
+	           ,[BLDAT]
+			) ON
+        	tar.STATEMENT_KEY = src.STATEMENT_KEY
+	    	WHEN MATCHED THEN
+				UPDATE SET
+					NUM=src.NUM 
+					,ZFACDO=src.ZFACDO
+					,ZFIMDNO=src.ZFIMDNO
+	           		,ZFIDRNO=src.ZFIDRNO
+		           	,ZFINRC=src.ZFINRC
+		           	,NAME1=src.NAME1
+		           	,LIFNR=src.LIFNR
+		           	,STCD2=src.STCD2
+		           	,ZFBLNO=src.ZFBLNO
+		           	,ZFAPNM=src.ZFAPNM
+		           	,TWRBTR=src.TWRBTR
+		           	,WRBTR_TAX=src.WRBTR_TAX
+		           	,WAERS1=src.WAERS1
+		           	,SWRBTR=src.SWRBTR
+		           	,WAERS2=src.WAERS2
+		           	,BUDAT=src.BUDAT
+		           	,ZFCSTGRP=src.ZFCSTGRP
+		           	,ZFCARNM=src.ZFCARNM
+		           	,BLDAT=src.BLDAT
+				   	,REG_DT=getdate()
+			WHEN NOT MATCHED BY TARGET THEN
+				INSERT (
+					[STATEMENT_KEY]
+		           ,[YYYYMM]
+		           ,[GUBUN]
+		           ,[NUM]
+		           ,[ZFACDO]
+		           ,[ZFIMDNO]
+		           ,[ZFIDRNO]
+		           ,[ZFINRC]
+		           ,[NAME1]
+		           ,[LIFNR]
+		           ,[STCD2]
+		           ,[ZFBLNO]
+		           ,[ZFAPNM]
+		           ,[TWRBTR]
+		           ,[WRBTR_TAX]
+		           ,[WAERS1]
+		           ,[SWRBTR]
+		           ,[WAERS2]
+		           ,[BUDAT]
+		           ,[ZFCSTGRP]
+		           ,[ZFCARNM]
+		           ,[BLDAT]
+				) VALUES (
+					src.[STATEMENT_KEY]
+		           ,src.[YYYYMM]
+		           ,src.[GUBUN]
+		           ,src.[NUM]
+		           ,src.[ZFACDO]
+		           ,src.[ZFIMDNO]
+		           ,src.[ZFIDRNO]
+		           ,src.[ZFINRC]
+		           ,src.[NAME1]
+		           ,src.[LIFNR]
+		           ,src.[STCD2]
+		           ,src.[ZFBLNO]
+		           ,src.[ZFAPNM]
+		           ,src.[TWRBTR]
+		           ,src.[WRBTR_TAX]
+		           ,src.[WAERS1]
+		           ,src.[SWRBTR]
+		           ,src.[WAERS2]
+		           ,src.[BUDAT]
+		           ,src.[ZFCSTGRP]
+		           ,src.[ZFCARNM]
+		           ,src.[BLDAT]
+				);
+		]]>
+	</insert>
+	
+	<select id="BBSAttributeManageDAO.selectStatement" parameterClass="BoardMasterVO" resultMap="statementList" remapResults="true">
+        <![CDATA[
+            SELECT [STATEMENT_KEY]
+		      ,[YYYYMM]
+		      ,[GUBUN]
+		      , case when GUBUN = 'BL' then '관,부가세' else '일반부가세' end GUBUN_NM
+		      ,[NUM]
+		      ,[ZFACDO]
+		      ,[ZFIMDNO]
+		      ,[ZFIDRNO]
+		      ,[ZFINRC]
+		      ,[NAME1]
+		      ,[LIFNR]
+		      ,[STCD2]
+		      ,case when GUBUN = 'BL' then ZFBLNO else '' end ZFBLNO
+		      ,[ZFAPNM]
+		      ,[TWRBTR]
+		      ,[WRBTR_TAX]
+		      ,TWRBTR + WRBTR_TAX as extra_total
+		      ,[WAERS1]
+		      ,[SWRBTR]
+		      ,[WAERS2]
+		      ,[BUDAT]
+		      ,[ZFCSTGRP]
+		      ,[ZFCARNM]
+		      ,[MWSKZ]
+		      ,[BLDAT]
+		      ,[CONFIRM_YN]
+		      ,[REG_FLAG]
+		      ,[REG_DT]
+		      ,case when CONFIRM_YN = 'Y' then 'E4F7BA' else 'FFFFFF' end SAPCOLOR
+		      , ISNULL(filecnt,0) as filecnt
+		  FROM [dbo].[RPA_STATEMENT_TB] main
+		  left outer join (
+		  	SELECT b.BLNO,count(b.ATCH_FILE_ID) as filecnt 
+			from [dbo].[LETTNFILE] a inner join [dbo].[LETTNFILEDETAIL] b on a.ATCH_FILE_ID = b.ATCH_FILE_ID
+			where a.DIR_GUBUN = 'EXTRA'
+			group by b.BLNO
+		  ) filesub on main.STATEMENT_KEY = filesub.BLNO
+        ]]>   
+        <dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchGubun">
+				<![CDATA[  GUBUN = #searchGubun# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchConfirm">
+				<![CDATA[  CONFIRM_YN = #searchConfirm# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchCom">
+				<![CDATA[ LTRIM(RTRIM(NAME1)) like UPPER('%'+#searchCom#+'%') ]]>
+			</isNotEmpty>
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty  prepend="AND"  property="searchEndDe">
+					<![CDATA[CONVERT(INT,REPLACE(RTRIM(LTRIM(BLDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</dynamic>  
+		<![CDATA[
+			order by BLDAT
+		]]>       
+    </select>
+    
+    <update id="BBSAttributeManageDAO.updateStatementConfirm" parameterClass="BoardMasterVO" >
+		<![CDATA[
+			UPDATE RPA_STATEMENT_TB 
+			   SET CONFIRM_YN = #confirm_yn#
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchGubun">
+				<![CDATA[  GUBUN = #searchGubun# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchConfirm">
+				<![CDATA[  CONFIRM_YN = #searchConfirm# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchCom">
+				<![CDATA[ LTRIM(RTRIM(NAME1)) like UPPER('%'+#searchCom#+'%') ]]>
+			</isNotEmpty>
+			<isNotEmpty property="searchBgnDe">
+				<isNotEmpty  prepend="AND"  property="searchEndDe">
+					<![CDATA[CONVERT(INT,REPLACE(RTRIM(LTRIM(BLDAT)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+		</dynamic>  
+		
+	</update>
+	
+	<update id="BBSAttributeManageDAO.updateMultiStatementConfirm" parameterClass="BoardMasterVO">
+		<![CDATA[
+			UPDATE RPA_STATEMENT_TB 
+			   SET CONFIRM_YN = #confirm_yn#
+		]]>
+		<iterate property="keyList" prepend="WHERE STATEMENT_KEY IN" open="(" close=")" conjunction="," >
+                #keyList[]#
+        </iterate>
+		
+	</update>
+
+    <delete id="BBSAttributeManageDAO.deleteStatement" parameterClass="BoardMasterVO">
+
+		<![CDATA[
+			DELETE FROM RPA_STATEMENT_TB
+		]]>	
+		<iterate property="keyList" prepend="WHERE STATEMENT_KEY IN" open="(" close=")" conjunction="," >
+                #keyList[]#
+        </iterate>
+					
+	</delete>
+	
+	<select id="BBSAttributeManageDAO.selectExtraTaxSum" parameterClass="BoardMasterVO" resultMap="extraTaxSumList" remapResults="true">
+		<![CDATA[	
+		with
+		    TT as (
+		        select
+				    BKTXT COLLATE Korean_Wansung_CI_AS as BKTXT
+		            ,ZFAPNM COLLATE Korean_Wansung_CI_AS as ZFAPNM
+					,NAME1 COLLATE Korean_Wansung_CI_AS as NAME1
+					,LIFNR COLLATE Korean_Wansung_CI_AS as LIFNR
+					,DMBTR
+					,WRBTR
+		        from
+		            OPENQUERY(ERP_DL, '     
+					select
+						A.BKTXT,
+						F.ZFAPNM,
+						E.NAME1,
+						A.LIFNR,
+						case
+							when A.WAERS in (
+								N''KRW'',
+								N''JPY'',
+								N''CNY'',
+								N''USD''
+							) then A.DMBTR * 100
+							else A.DMBTR
+						end DMBTR,
+						0 as WRBTR,
+						'''' as BLDAT
+					from
+						[wjp].ZIMTBKPF A
+						inner join [wjp].ZIMTBSEG B on A.BELNR = B.BELNR
+						and A.GJAHR = B.GJAHR
+						and A.ZFPOSYN = N''Y''
+						left outer join [wjp].[BKPF] D on A.MANDT = D.MANDT and A.BUKRS = D.BUKRS and A.ZFACDO = D.BELNR and A.GJAHR = D.GJAHR and A.ZFACDO + A.GJAHR = D.AWKEY
+						and left(D.BELNR, 1) = N''5''
+						left outer join [wjp].T685T C on B.COND_TYPE = C.KSCHL
+						and C.SPRAS = N''3''
+						left outer join [wjp].[LFA1] E on A.LIFNR = E.LIFNR
+						left outer join [wjp].[ZIMTIDS] F on A.BKTXT = F.ZFHBLNO
+					where
+						B.COND_TYPE = ''FR02''
+		]]>	
+		<isNotEmpty property="searchBgnDe">
+			<isNotEmpty prepend="AND"  property="searchEndDe">
+				<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.BLDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+			</isNotEmpty>
+		</isNotEmpty>
+		<![CDATA[						 
+					')
+				union
+				select
+					ZFBLNO as BKTXT
+					,ZFAPNM
+					,NAME1
+					,LIFNR
+					,0 as DMBTR
+					,WRBTR_TAX as WRBTR
+				from
+					[dbo].[RPA_STATEMENT_TB]
+				where
+					[GUBUN] = 'BL'
+		]]>
+		<isNotEmpty prepend="AND" property="searchExtraBgnDe">
+			<isNotEmpty  property="searchExtraEndDe">
+				<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(BLDAT)),'.',''))  BETWEEN  REPLACE(#searchExtraBgnDe#,'-','')  AND REPLACE(#searchExtraEndDe#,'-','') ]]>
+			</isNotEmpty>
+		</isNotEmpty>	
+		<![CDATA[ 
+		    ),
+			T1 as (
+				select
+					ZFBLNO,
+		            ZFAPNM,
+		            NAME1,
+		            LIFNR,
+					BLDAT
+		        from
+		            [dbo].[RPA_STATEMENT_TB]
+		        where
+		            [GUBUN] = 'BL'
+		]]>
+		<isNotEmpty prepend="AND" property="searchExtraBgnDe">
+			<isNotEmpty  property="searchExtraEndDe">
+				<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(BLDAT)),'.',''))  BETWEEN  REPLACE(#searchExtraBgnDe#,'-','')  AND REPLACE(#searchExtraEndDe#,'-','') ]]>
+			</isNotEmpty>
+		</isNotEmpty>	
+		<![CDATA[ 
+			)
+		select
+            case
+		        when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 7 then ISNULL(TT.ZFAPNM, '합계')
+		        when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 15 then ISNULL(TT.ZFAPNM, '총계')
+		        else TT.ZFAPNM
+		    end  ZFAPNM,
+		    case
+		        when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 7 then ISNULL(TT.NAME1, '합계')
+		        when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 15 then ISNULL(TT.NAME1, '총계')
+		        else TT.NAME1
+		    end  NAME1,
+			TT.LIFNR,
+            SUM(ISNULL(TT.DMBTR,0)) DMBTR,
+			SUM(ISNULL(TT.WRBTR,0)) WRBTR,
+			SUM(ISNULL(TT.DMBTR,0)) + SUM(ISNULL(TT.WRBTR,0)) as TWRBTR,
+            ISNULL(T1.BLDAT,'') as BLDAT,
+			GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) as gid,
+			case
+				when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 7 then 'subtotal'
+				when GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) = 15 then 'alltotal'
+				else 'normaltr'
+			end extra_style
+        from TT left outer join T1 on  TT.BKTXT = T1.ZFBLNO and TT.ZFAPNM = T1.ZFAPNM and TT.LIFNR = T1.LIFNR and TT.NAME1 = T1.NAME1
+		group by rollup (TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT)
+		having
+		 GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT) not in(1,3)
+		order by
+			ISNULL(TT.ZFAPNM, '합계'),
+			GROUPING_ID(TT.ZFAPNM,TT.NAME1,TT.LIFNR,T1.BLDAT),
+			case TT.LIFNR
+				when 'B0613A01' then 1
+				when 'B0439A01' then 2
+				when 'B0662A01' then 3
+				else 4
+			end asc
+		]]>	
+	</select> 	
+	
+	<select id="BBSAttributeManageDAO.selectTTSendList" parameterClass="BoardMasterVO" resultMap="extraTTSendList" remapResults="true">
+		<![CDATA[	
+			WITH
+			    T1 as (
+			        select
+			            *
+			        from
+			            OPENQUERY(ERP_DL, '
+							select
+								F.ZFBLDT as BLDAT,
+								A.ZFBUDAT as BUDAT,
+								A.ZFCIVNO as BKTXT,
+								C.ZFIDRNO,
+								A.ZFIVAMC as WAERS,
+								case
+									when A.ZFIVAMC in (
+										''KRW'',
+										''JPY''
+									) then A.ZFIVAMP * 100
+									else A.ZFIVAMP
+								end WRBTR,
+								E.NAME1,
+								case
+									when A.ZFEXRT = 0 then 1.00
+									else A.ZFEXRT
+								end KURSF
+							from
+								[wjp].ZIMTCIVHD A
+								left outer join [wjp].ZIMTCIVHST B on A.MANDT = B.MANDT and A.ZFCIVRN = B.ZFCIVRN and B.CBELNR = ''''
+								left outer join [wjp].ZIMTIDS C on A.MANDT = C.MANDT and A.ZFCIVNO = C.ZFHBLNO
+								left outer join [wjp].[BKPF] D on A.MANDT = D.MANDT and A.BUKRS = D.BUKRS and B.BELNR = D.BELNR and B.GJAHR = D.GJAHR and B.BELNR + B.GJAHR = D.AWKEY
+								left outer join [wjp].[LFA1] E on A.MANDT = E.MANDT and A.ZFMAVN = E.LIFNR
+								left outer join [wjp].[ZIMTBL] F on A.MANDT = F.MANDT and A.ZFCIVNO = F.ZFHBLNO
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.ZFCIVNO = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="searchCom">
+				<![CDATA[ LTRIM(RTRIM(E.NAME1)) like UPPER(''%''+N''$searchCom$''+''%'') ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchWaers">
+				<![CDATA[ LTRIM(RTRIM(A.ZFIVAMC)) = N''$searchWaers$'']]>
+			</isNotEmpty>
+			<isEqual property="searchGubun" compareValue="BT">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND" property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.ZFBUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual> 
+			<isEqual property="searchGubun" compareValue="BL">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND" property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(F.ZFBLDT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual>
+		</dynamic>
+		<![CDATA[
+						')
+			    )
+			
+			select
+				ROW_NUMBER() OVER( ORDER BY T1.NAME1,T1.BLDAT,T1.BKTXT,T1.ZFIDRNO,T1.WAERS) AS NUM,
+			    case when len(T1.BLDAT) = 8 then CONVERT (DATE, T1.BLDAT,112) else '' end BLDAT,
+			    T1.BKTXT,
+				ISNULL(T1.ZFIDRNO,'') as ZFIDRNO,
+				CONVERT (DATE, #searchSendDt#,112) as SEND_DT,
+			    T1.WAERS,
+			    SUM(T1.WRBTR) as WRBTR,
+			    T1.NAME1,
+				case T1.WAERS 
+					when 'KRW' then '' 
+					when 'JPY' then T1.WAERS + N'100 = ₩' +  convert(varchar,CAST(T1.KURSF AS DECIMAL(8,2)))
+					else  T1.WAERS + N'1 = ₩' +  convert(varchar,CAST(T1.KURSF AS DECIMAL(8,2))) 
+				end  KURSF
+			from
+			    T1 
+			GROUP BY T1.NAME1,T1.BLDAT,T1.BKTXT,T1.ZFIDRNO,T1.WAERS,T1.KURSF
+			order by
+			    T1.NAME1,T1.BLDAT,T1.BKTXT,T1.ZFIDRNO,T1.WAERS
+		
+		]]>	
+	</select> 	
+		
+</sqlMap>

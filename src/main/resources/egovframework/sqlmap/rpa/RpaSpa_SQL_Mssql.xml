@@ -1,0 +1,1208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RpaSap">
+
+	<typeAlias  alias="RpaSpaVO" type="egovframework.rpa.spa.vo.RpaSpaVO"/>
+
+
+	<resultMap id="boardMasterList" class="egovframework.rpa.spa.vo.RpaSpaVO">
+		<result property="t3_blno" column="T3_BLNO" columnIndex="1"/>
+		<result property="t3_sjdt" column="T3_SJDT" columnIndex="2"/>
+		<result property="t1_yn" column="T1_YN" columnIndex="3"/>
+		<result property="t2_yn" column="T2_YN" columnIndex="4"/>
+		<result property="t3_yn" column="T3_YN" columnIndex="5"/>
+		<result property="t4_yn" column="T4_YN" columnIndex="6"/>
+		<result property="t1_color" column="T1_COLOR" columnIndex="7"/>
+		<result property="t2_color" column="T2_COLOR" columnIndex="8"/>
+		<result property="t3_color" column="T3_COLOR" columnIndex="9"/>
+		<result property="t4_color" column="T4_COLOR" columnIndex="10"/>
+		
+		<result property="c1yn" column="C1YN" columnIndex="11"/>
+		<result property="c2yn" column="C2YN" columnIndex="12"/>
+		<result property="c3yn" column="C3YN" columnIndex="13"/>
+		<result property="c4yn" column="C4YN" columnIndex="14"/>
+		<result property="c5yn" column="C5YN" columnIndex="15"/>
+		<result property="c6yn" column="C6YN" columnIndex="16"/>
+		<result property="c7yn" column="C7YN" columnIndex="17"/>
+		<result property="c8yn" column="C8YN" columnIndex="18"/>
+		<result property="c9yn" column="C9YN" columnIndex="19"/>
+		<result property="c10yn" column="C10YN" columnIndex="20"/>
+		<result property="t4_company" column="T4_COMPANY" columnIndex="21"/>
+		<result property="t3_confirm" column="t3_confirm" columnIndex="22"/>		
+		<result property="t3_preconfirm" column="t3_preconfirm" columnIndex="23"/>		
+		<result property="t3_regflag" column="t3_regflag" columnIndex="24"/>
+		<result property="t3_seq" column="t3_seq" columnIndex="25"/>
+		
+		
+	</resultMap>
+	
+	<resultMap id="invoiceList" class="egovframework.rpa.spa.vo.RpaSpaVO">
+		<result property="t1InNo" column="T1INNO" columnIndex="1"/>
+		<result property="t1Carry" column="T1CARRY" columnIndex="2"/>
+		<result property="t3SSDt" column="T3SSDT" columnIndex="3"/>
+		
+		<result property="t1PoNo" column="T1PONO" columnIndex="4"/>
+		
+		<result property="t1PoLineNo" column="T1POLINENO" columnIndex="5"/>
+		<result property="t1ItemCd" column="T1ITEMCD" columnIndex="6"/>
+		
+		<result property="t1Qty" column="T1QTY" columnIndex="7"/>
+		<result property="t4DanGa" column="T4DANGA" columnIndex="8"/>
+		<result property="t4DanGa2" column="T4DANGA2" columnIndex="9"/>
+		
+		<result property="t4GeumAeg" column="T4GEUMAEG" columnIndex="10"/>
+		<result property="t4JeCurDw" column="T4JECURDW" columnIndex="11"/>
+		<result property="t4SebeonCd" column="T4SEBEONCD" columnIndex="12"/>
+		
+		<result property="t3GgCoCd2" column="T3GGCOCD2" columnIndex="13"/>
+		<result property="t3HBlNo" column="T3HBLNO" columnIndex="14"/>
+		<result property="t4IndoJk" column="T4INDOJK" columnIndex="15"/>
+		
+	</resultMap>
+
+	<resultMap id="cargoList" class="egovframework.rpa.spa.vo.RpaSpaVO">
+		<result property="t3BlDt" column="T3BLDT" columnIndex="1"/>
+		<result property="t3SSDt" column="T3SSDT" columnIndex="2"/>
+		<result property="t2StockNo" column="T2STOCKNO" columnIndex="3"/>
+		<result property="t2JyRt" column="T2JYRT" columnIndex="4"/>
+		<result property="t4AACUERt" column="T4AACUERT" columnIndex="5"/>
+		<result property="t4AACDw" column="T4AACDW" columnIndex="6"/>
+		<result property="t3SSDt" column="T3SSDT" columnIndex="7"/>
+		<result property="t2CKEIFee" column="T2CKEIFEE" columnIndex="8"/>
+		<result property="t3InNo" column="T3INNO" columnIndex="9"/>
+		<result property="t3HBlNo" column="T3HBLNO" columnIndex="10"/>
+	</resultMap>
+
+
+	<resultMap id="blList" class="egovframework.rpa.spa.vo.RpaSpaVO">
+		<result property="t3HblNo" column="T3HBLNO" columnIndex="1"/>
+		<result property="t3BSDt" column="T3BSDT" columnIndex="2"/>
+		<result property="t3EtdDt" column="T3ETDDT" columnIndex="3"/>
+		<result property="t3EtaDt" column="T3ETADT" columnIndex="4"/>
+		<result property="t3SJGCd" column="T3SJGCD" columnIndex="5"/>
+		<result property="t3DJGCd" column="T3DJGCD" columnIndex="6"/>
+		<result property="t3SJHCd" column="T3SJHCD" columnIndex="7"/>
+		<result property="t3DCHCd" column="T3DCHCD" columnIndex="8"/>
+		<result property="t3FVNm" column="T3FVNM" columnIndex="9"/>
+		<result property="t3C20Qt" column="T3C20QT" columnIndex="10"/>
+		
+		<result property="t3C40Qt" column="T3C40QT" columnIndex="11"/>
+		<result property="t3USgb" column="T3USGB" columnIndex="12"/>
+		<result property="t3CPJEa" column="T3CPJEA" columnIndex="13"/>
+		
+		<result property="t3NWg" column="T3NWG" columnIndex="14"/>
+		<result property="t3GWg" column="T3GWG" columnIndex="15"/>
+		<result property="t3SLSBDt" column="T3SLSBDT" columnIndex="16"/>
+		<result property="t3SJSLSBCCd" column="T3SJSLSBCCD" columnIndex="17"/>
+		<result property="t3SIHDt" column="T3SIHDT" columnIndex="18"/>
+		<result property="t3IGYJDt" column="T3IGYJDT" columnIndex="19"/>
+		
+	</resultMap>
+	
+	
+	<resultMap id="passList" class="egovframework.rpa.spa.vo.RpaSpaVO">
+		<result property="t3HBlNo" column="T3HBLNO" columnIndex="1"/>
+		<result property="t4SingoNo" column="T4SINGONO" columnIndex="2"/>
+		<result property="t4SGSG" column="T4SGSG" columnIndex="3"/>
+		<result property="t4SingoDt" column="T4SINGODT" columnIndex="4"/>
+		<result property="t4CifUsd" column="T4CIFUSD" columnIndex="5"/>
+		
+		<result property="t4CifKrw" column="T4CIFKRW" columnIndex="6"/>
+		<result property="t4BGSGP" column="T4BGSGP" columnIndex="7"/>
+		<result property="t4GwanSe" column="T4GWANSE" columnIndex="8"/>
+		<result property="t4Bugase" column="T4BUGASE" columnIndex="9"/>
+		<result property="t1PoNo" column="T1PONO" columnIndex="10"/>
+		
+		<result property="t1PoLineNo" column="T1POLINENO" columnIndex="11"/>
+		<result property="t4LanNo2" column="T4LANNO2" columnIndex="12"/>
+		<result property="t4HeangNo" column="T4HEANGNO" columnIndex="13"/>
+		<result property="t4GSY" column="T4GSY" columnIndex="14"/>
+		
+		<result property="t4TgYcDt" column="T4TGYCDT" columnIndex="15"/>
+		<result property="t4SinGoJa" column="T4SINGOJA" columnIndex="16"/>
+	</resultMap>
+	
+	<resultMap id="docList" class="egovframework.rpa.spa.vo.RpaSpaVO">
+		<result property="t4GwanliNo" column="T4GWANLINO" columnIndex="1"/>
+		<result property="t3HBlNo" column="T3HBLNO" columnIndex="2"/>
+		<result property="t3JBDt" column="T3JBDT" columnIndex="3"/>
+		<result property="t3JGDt" column="T3JGDT" columnIndex="3"/>
+		<result property="t3JGJk" column="T3JGJK" columnIndex="4"/>
+	</resultMap>
+	
+	
+	<resultMap id="sapList" class="egovframework.rpa.spa.vo.RpaSpaVO">
+		<result property="bktxt" column="BKTXT" columnIndex="1"/>
+		<result property="zfimdno" column="ZFIMDNO" columnIndex="2"/>
+		<result property="cond_type" column="COND_TYPE" columnIndex="3"/>
+		<result property="cond_type1" column="COND_TYPE1" columnIndex="4"/>
+		<result property="vtext" column="VTEXT" columnIndex="5"/>
+		<result property="spras" column="SPRAS" columnIndex="6"/>
+		<result property="wrbtr" column="WRBTR" columnIndex="7"/>
+		<result property="dmbtr" column="DMBTR" columnIndex="8"/>
+		<result property="kursf" column="KURSF" columnIndex="9"/>
+		
+		<result property="waers" column="WAERS" columnIndex="10"/>
+		<result property="zfacdo" column="ZFACDO" columnIndex="11"/>
+		<result property="belnr" column="BELNR" columnIndex="12"/>
+		<result property="bldat" column="BLDAT" columnIndex="13"/>
+		
+		<result property="budat" column="BUDAT" columnIndex="14"/>
+		<result property="lifnr" column="LIFNR" columnIndex="15"/>
+		<result property="zfcstgrp" column="ZFCSTGRP" columnIndex="16"/>
+		
+		<result property="mwskz" column="MWSKZ" columnIndex="17"/>
+		<result property="wmwst" column="WMWST" columnIndex="18"/>
+		<result property="zfcd" column="ZFCD" columnIndex="19"/>
+		<result property="zterm" column="ZTERM" columnIndex="20"/>
+		<result property="name1" column="NAME1" columnIndex="21"/>
+		<result property="stcd2" column="STCD2" columnIndex="22"/>
+		<result property="t3_confirm" column="t3_confirm" columnIndex="23"/>		
+		<result property="t3_preconfirm" column="t3_preconfirm" columnIndex="24"/>		
+		<result property="filecnt" column="filecnt" columnIndex="25"/>	
+		<result property="filetype" column="filetype" columnIndex="26"/>
+		
+	</resultMap>
+	
+	<resultMap id="sapSubList" class="egovframework.rpa.spa.vo.RpaSpaVO">
+		<result property="bktxt" column="BKTXT" columnIndex="1"/>
+		<result property="zfimdno" column="ZFIMDNO" columnIndex="2"/>
+		<result property="cond_type" column="COND_TYPE" columnIndex="3"/>
+		<result property="cond_type1" column="COND_TYPE1" columnIndex="4"/>
+		<result property="vtext" column="VTEXT" columnIndex="5"/>
+		<result property="spras" column="SPRAS" columnIndex="6"/>
+		<result property="wrbtr" column="WRBTR" columnIndex="7"/>
+		<result property="dmbtr" column="DMBTR" columnIndex="8"/>
+		<result property="kursf" column="KURSF" columnIndex="9"/>
+		
+		<result property="waers" column="WAERS" columnIndex="10"/>
+		<result property="zfacdo" column="ZFACDO" columnIndex="11"/>
+		<result property="belnr" column="BELNR" columnIndex="12"/>
+		<result property="bldat" column="BLDAT" columnIndex="13"/>
+		
+		<result property="budat" column="BUDAT" columnIndex="14"/>
+		<result property="lifnr" column="LIFNR" columnIndex="15"/>
+		<result property="zfcstgrp" column="ZFCSTGRP" columnIndex="16"/>
+		
+		<result property="mwskz" column="MWSKZ" columnIndex="17"/>
+		<result property="wmwst" column="WMWST" columnIndex="18"/>
+		<result property="zfcd" column="ZFCD" columnIndex="19"/>
+		<result property="zterm" column="ZTERM" columnIndex="20"/>
+		<result property="name1" column="NAME1" columnIndex="21"/>
+		<result property="stcd2" column="STCD2" columnIndex="22"/>
+		<result property="t3_confirm" column="t3_confirm" columnIndex="23"/>		
+		<result property="t3_preconfirm" column="t3_preconfirm" columnIndex="24"/>		
+		<result property="filecnt" column="filecnt" columnIndex="25"/>	
+		<result property="filetype" column="filetype" columnIndex="26"/>
+		<result property="sapcheck" column="sapcheck" columnIndex="27"/>
+		<result property="sapcolor" column="sapcolor" columnIndex="28"/>
+		
+	</resultMap>
+	
+	<select id="RpaSapDAO.selectDocList" parameterClass="RpaSpaVO"  resultMap="docList" remapResults="true">
+		<![CDATA[
+		
+			SELECT DISTINCT
+			     d2   t4GwanliNo
+			    ,H_BL_NO        t3HBlNo
+				,JEUNGBING_DT_1 t3JBDt
+				,JEONGI_DT_1     t3JGDt
+				,''                    t3JGJk
+			FROM IMS_RPA_FORWARDER T3
+				, IMS_RPA_CUSTOMS_AGENT T4
+			WHERE T3.H_BL_NO = T4.d52
+			AND T3.DEL_YN IS NULL
+			AND T4.DEL_YN IS NULL
+			AND T3.H_BL_NO = #searchBlNo#
+		]]>
+			
+	</select>
+	
+	<select id="RpaSapDAO.selectPassList" parameterClass="RpaSpaVO"  resultMap="passList" remapResults="true">
+		<![CDATA[
+		
+			WITH T1 AS (
+					SELECT CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD,SUM(CAST(REPLACE(QTY,',','') AS float))   QTY
+					FROM  IMS_RPA_IMPORT_NOTIFY
+					WHERE DEL_YN IS  NULL
+					GROUP BY CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD
+					
+			),
+			T3 AS (
+
+			SELECT DISTINCT * FROM IMS_RPA_FORWARDER
+			WHERE  DEL_YN IS  NULL
+			AND CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_SEONJEOG_DT)),'.','')) > '20190831'
+					),
+			T4 AS (
+
+			SELECT    DISTINCT *,REPLACE(d270,' ','') d270_KEY FROM IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			
+			
+			)  
+			SELECT   DISTINCT   H_BL_NO	 t3HBlNo		
+						,d32           t4TgYcDt
+						,d3           t4SinGoJa
+						,d1     	t4SingoNo
+						,d27 t4SGSG
+						,d32	  t4SingoDt 	
+						,d106	     t4CifUsd
+						,d105	     t4CifKrw
+						,d115   t4BGSGP				
+						,d107	    t4GwanSe
+						,d117		t4Bugase 
+						,PO_NO      t1PoNo	 
+						,PO_LINE_NO	 t1PoLineNo
+						,d267   t4LanNo2
+						,d268	 t4HeangNo
+						,d196	t4GSY
+						,d201 t4SJGSE
+			FROM 	 T3
+					,T1
+					,T4
+			WHERE   T3.H_BL_NO = T4.d52
+		    AND   T3.IN_NO  = T1.IV_NO  
+			AND   T1.QTY = T4.d276   
+			AND   T1.ITEM_CD = t4.d270_KEY
+			AND T3.H_BL_NO = #searchBlNo#
+			ORDER BY t4LanNo2,t4HeangNo
+			 
+		]]>
+			
+	</select>
+	
+	
+	
+	<select id="RpaSapDAO.selectBlList" parameterClass="RpaSpaVO"  resultMap="blList" remapResults="true">
+		<![CDATA[
+		
+			SELECT 
+				 H_BL_NO               	t3HblNo
+				,BL_DT_1        		t3BSDt
+				,ETD_DT                	t3EtdDt 
+				,ETA_DT				  	t3EtaDt	
+				,SEONJEOG_GUG_CD     	t3SJGCd 
+				,DOCHAG_GUG_CD       	t3DJGCd
+				,SEONJEOG_HANG_CD   	t3SJHCd
+				,DOCHAG_HANG_CD     	t3DCHCd
+				,FLT_VSSL_NM           	t3FVNm
+				,C_20FT_QT              t3C20Qt
+				,C_40FT_QT              t3C40Qt
+				,UNSONG_GB            	t3USgb
+				,CHONG_POJANG_EA   		t3CPJEa  
+				,NET_WG                 t3NWg
+				,GROSS_WG             	t3GWg
+				,SEOLYU_SONGBU_DT  		t3SLSBDt
+				,SEONJEOG_SEOLYU_SONGBUCHEO_CD  t3SJSLSBCCd
+				,SIL_IBHANG_DT          t3SIHDt
+				,IBGO_YEJEONG_DT     	t3IGYJDt
+			FROM  IMS_RPA_FORWARDER
+			WHERE H_BL_NO = #searchBlNo#
+			AND   DEL_YN IS  NULL
+			 
+		]]>
+			
+	</select>
+	
+	
+	<select id="RpaSapDAO.selectCargoList" parameterClass="RpaSpaVO"  resultMap="cargoList" remapResults="true">
+		/*RpaSapDAO.selectCargoList*/
+		<![CDATA[
+		
+			WITH T2 AS (
+			SELECT  ACNT_DT,STOCK_NO,JEOGYONG_RT,CO_KRW_EXCH_INSR_FEE,IV_NO_1 IV_NO FROM IMS_RPA_CARGO_INSURANCE
+			WHERE  IV_NO_1 IN
+								(
+									SELECT DISTINCT VAL IV_NO FROM
+										(
+											SELECT IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9
+											 FROM [MOT_RPQ].[dbo].[IMS_RPA_CARGO_INSURANCE]
+											 WHERE DEL_YN IS  NULL
+										 ) as ST
+										UNPIVOT
+										(
+										  VAL FOR COL IN ( IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9 )
+										 ) as PT
+									WHERE LEN(VAL) > 0
+								)
+			AND  DEL_YN IS  NULL					
+			),
+			T3 AS (
+				SELECT * FROM  IMS_RPA_FORWARDER
+				WHERE  DEL_YN IS  NULL
+			),
+			T4 AS (
+			SELECT DISTINCT d84,d83,d52 FROM  IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			)  
+			SELECT 
+				  T3.BL_DT_1 t3BlDt 
+				 ,T2.ACNT_DT t3SSDt 				  
+				 ,T2.STOCK_NO t2StockNo				 
+				 ,T2.JEOGYONG_RT t2JyRt 
+
+				 ,T4.d84 t4AACUERt
+				 ,T4.d83 t4AACDw
+				 ,T2.ACNT_DT t3SSDt 
+				 ,T2.CO_KRW_EXCH_INSR_FEE t2CKEIFee 
+				 
+				 ,T3.IN_NO t3InNo 
+				 ,T3.H_BL_NO t3HBlNo     
+			FROM T2,T3,T4 
+			WHERE T3.IN_NO = T2.IV_NO
+			AND   T3.H_BL_NO = T4.d52
+			AND   T3.H_BL_NO = #searchBlNo#
+			 
+		]]>
+			
+	</select>
+	
+	<select id="RpaSapDAO.selectInvoiceList" parameterClass="RpaSpaVO"  resultMap="invoiceList" remapResults="true">
+		<![CDATA[
+		
+			WITH T1 AS (
+					SELECT ROW_NUMBER() OVER(PARTITION BY CARRY,IV_NO,ITEM_CD,sum(cast(replace (QTY, ',', '') as float)) ORDER BY PO_NO ASC) as rnum,
+						 CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD,SUM(CAST(REPLACE(QTY,',','') AS float))   QTY
+					FROM  IMS_RPA_IMPORT_NOTIFY
+					WHERE DEL_YN IS  NULL
+					GROUP BY CARRY,IV_NO,PO_NO,PO_LINE_NO,ITEM_CD
+					
+			),
+			T3 AS (
+
+			SELECT DISTINCT * FROM IMS_RPA_FORWARDER
+			WHERE  DEL_YN IS  NULL
+			AND CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_SEONJEOG_DT)),'.','')) > '20190831'
+			AND H_BL_NO = #searchBlNo#
+					),
+			T4 AS (
+
+			SELECT    DISTINCT *,REPLACE(d270,' ','') d270_KEY
+				,convert(nvarchar,d267)+convert(nvarchar,d268) as seq_key 
+			FROM IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			
+			
+			)  
+			SELECT t1InNo,
+			    t1Carry,
+			    t3SSDt,
+			    t1PoNo,
+			    t1PoLineNo,
+			    t1ItemCd,
+			    t1Qty,
+			    t4DanGa,
+			    t4DanGa2,
+			    t4GeumAeg,
+			    t4JeCurDw,
+			    t4SebeonCd,
+			    t3GgCoCd2,
+			    t3HBlNo,
+			    t4IndoJk
+			FROM(
+				select ROW_NUMBER() OVER(PARTITION BY T1.IV_NO,T1.PO_NO, T1.PO_LINE_NO,T4.d270_KEY ORDER BY T4.seq_key ASC) as rnum,
+					T4.seq_key,
+					T1.rnum as t1rnum,
+					T1.IV_NO t1InNo,
+					T1.CARRY t1Carry,
+					T3.SEOLYU_SONGBU_DT t3SSDt,
+					T1.PO_NO t1PoNo,
+					T1.PO_LINE_NO t1PoLineNo,
+					T1.ITEM_CD t1ItemCd,
+					T1.QTY t1Qty,
+					case
+						when CHARINDEX('.', d278) = 0 then d278
+						else case
+								when len(substring(d278, CHARINDEX('.', d278) + 1, len(d278))) = 1 then round(d278, 1) * 10
+								when len(substring(d278, CHARINDEX('.', d278) + 1, len(d278))) = 2 then round(d278, 2) * 100
+							end
+					end t4DanGa,
+					case
+						when CHARINDEX('.', d278) = 0 then 1
+						else case
+								when len(substring(d278, CHARINDEX('.', d278) + 1, len(d278))) = 0 then 1
+								when len(substring(d278, CHARINDEX('.', d278) + 1, len(d278))) = 1 then 10
+								when len(substring(d278, CHARINDEX('.', d278) + 1, len(d278))) = 2 then 100
+							end
+					end t4DanGa2,
+					cast(replace(T4.d279,'null',0) as float) t4GeumAeg,
+					T4.d68 t4JeCurDw,
+					T4.d162 t4SebeonCd,
+					T3.GONGGEUB_CO_CD_2 t3GgCoCd2,
+					T3.H_BL_NO t3HBlNo,
+					T4.d67 t4IndoJk
+			
+				from
+					T4 T4 left outer join
+					T3 T3 on T4.d52 = T3.H_BL_NO left outer join 
+					T1 T1 on  T1.IV_NO = T3.IN_NO
+					and T1.QTY = T4.d276
+					and T1.ITEM_CD = T4.d270_KEY
+					and T1.QTY = T4.d276
+				where
+					T3.H_BL_NO = #searchBlNo#
+					and T1.IV_NO is not NULL
+			) TOT
+			where (rnum = 1 and t1rnum = 1) or (rnum = 2 and t1rnum = 2)
+			order by seq_key
+			 
+		]]>
+			
+	</select>
+	
+	
+	
+	
+	<select id="RpaSapDAO.selectBBSMasterInfs" parameterClass="RpaSpaVO" resultMap="boardMasterList" remapResults="true">
+	/*RpaSapDAO.selectCargoList*/	
+		<![CDATA[
+			WITH T1 AS (
+			SELECT DISTINCT IV_NO FROM  IMS_RPA_IMPORT_NOTIFY
+			WHERE DEL_YN IS  NULL
+			),
+			T2 AS (
+				SELECT DISTINCT VAL IV_NO FROM
+				(
+					SELECT DISTINCT IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9
+					 FROM [MOT_RPQ].[dbo].[IMS_RPA_CARGO_INSURANCE]
+					 WHERE DEL_YN is null
+				 ) as ST
+				UNPIVOT
+				(
+				  VAL FOR COL IN ( IV_NO_1,IV_NO_2,IV_NO_3,IV_NO_4,IV_NO_5,IV_NO_6,IV_NO_7,IV_NO_8,IV_NO_9 )
+				 ) as PT
+				WHERE LEN(VAL) > 0 
+			),
+			T3 AS (
+			SELECT DISTINCT * FROM IMS_RPA_FORWARDER
+			WHERE H_BL_NO+IN_NO IN (SELECT DISTINCT H_BL_NO + MAX(IN_NO) FROM  IMS_RPA_FORWARDER
+									WHERE  DEL_YN IS  NULL
+									AND CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_SEONJEOG_DT)),'.','')) > '20190930'
+									GROUP BY H_BL_NO)
+									
+			AND DEL_YN IS  NULL
+			),
+			T4 AS (
+			SELECT DISTINCT d23 as T4_COMPANY, d52 BL_NO FROM  IMS_RPA_CUSTOMS_AGENT
+			WHERE  DEL_YN IS  NULL
+			) ,
+			T5 AS (
+				SELECT BLNO
+				, SUM(c1yn) as c1yn
+				, SUM(c2yn) as c2yn
+				, SUM(c3yn) as c3yn
+				, SUM(c4yn) as c4yn
+				, SUM(c5yn) as c5yn
+				, SUM(c6yn) as c6yn
+				, SUM(c7yn) as c7yn
+				, SUM(c8yn) as c8yn
+				, SUM(c9yn) as c9yn
+				, SUM(c10yn) as c10yn
+				from(
+					SELECT b.BLNO
+					  ,case when [FILE_SN] = 'FR00' then 1 else 0 end c1yn
+					  ,case when [FILE_SN] = 'FR06' then 1 else 0 end c2yn
+					  ,case when [FILE_SN] = 'FR02' then 1 else 0 end c3yn
+					  ,case when [FILE_SN] = 'FR04' then 1 else 0 end c4yn
+					  ,case when [FILE_SN] = 'FR01' then 1 else 0 end c5yn
+					  ,case when [FILE_SN] = 'FR03' then 1 else 0 end c6yn
+					  ,case when [FILE_SN] = 'FR05' then 1 else 0 end c7yn
+					  ,case when [FILE_SN] = 'FR08' then 1 else 0 end c8yn
+					  ,case when [FILE_SN] = 'FR07' then 1 else 0 end c9yn
+					  ,case when [FILE_SN] = 'FR09' then 1 else 0 end c10yn
+					  FROM [dbo].[LETTNFILE] a inner join [dbo].[LETTNFILEDETAIL] b on a.ATCH_FILE_ID = b.ATCH_FILE_ID
+					  where a.DIR_GUBUN = 'SAP'
+				  ) TT
+				group by [BLNO]
+				
+			) 
+			SELECT T3.H_BL_NO t3_blno, T3.BL_DT_1 t3_sjdt
+				,case when  T3.CONFIRM_YN = 'Y' then '확정'
+				      when  T3.CONFIRM_YN = 'S' then '수기' 
+				      when  T3.CONFIRM_YN = 'T' then '임시' 
+					  when  T3.CONFIRM_YN = 'F' then '확인'
+					  when  T3.CONFIRM_YN = 'L' then '승인'
+				       when T1.IV_NO is not null then '등록'
+							else '미등록' 
+				end t1_yn
+				,case when  T3.CONFIRM_YN = 'Y'  then '확정'
+				      when  T3.CONFIRM_YN = 'S' then '수기'
+				      when  T3.CONFIRM_YN = 'T' then '임시' 
+					  when  T3.CONFIRM_YN = 'F' then '확인'
+					  when  T3.CONFIRM_YN = 'L' then '승인'
+				       when T2.IV_NO is not null then '등록'
+							else '미등록' 
+				end t2_yn
+				,case when  T3.CONFIRM_YN = 'Y' then '확정' 
+					  when  T3.CONFIRM_YN = 'S' then '수기' 
+					  when  T3.CONFIRM_YN = 'T' then '임시'
+					  when  T3.CONFIRM_YN = 'F' then '확인'
+					  when  T3.CONFIRM_YN = 'L' then '승인'
+					  when  T3.IN_NO is not null then '등록'
+							else '미등록' 
+				 end t3_yn
+				,case when  T3.CONFIRM_YN = 'Y' then '확정'
+				      when  T3.CONFIRM_YN = 'S' then '수기' 
+				      when  T3.CONFIRM_YN = 'T' then '임시'
+					  when  T3.CONFIRM_YN = 'F' then '확인'
+					  when  T3.CONFIRM_YN = 'L' then '승인'
+				       when T4.BL_NO is not null then '등록'
+							else '미등록' 
+				end t4_yn
+				,case when  T3.CONFIRM_YN = 'Y' then '5AD2FF '
+				      when  T3.CONFIRM_YN = 'S' then '82F9B7' 
+				      when  T3.CONFIRM_YN = 'T' then 'dcdcdc'
+					  when  T3.CONFIRM_YN = 'F' then 'FFCAD5'
+					  when  T3.CONFIRM_YN = 'L' then 'AAFA82'
+				       when T1.IV_NO is not null then 'FFF56E'
+							else 'dcdcdc' 
+				end t1_color
+				,case when  T3.CONFIRM_YN = 'Y'  then '5AD2FF '
+				      when  T3.CONFIRM_YN = 'S' then '82F9B7'
+				      when  T3.CONFIRM_YN = 'T' then 'dcdcdc' 
+					  when  T3.CONFIRM_YN = 'F' then 'FFCAD5'
+					  when  T3.CONFIRM_YN = 'L' then 'AAFA82'
+				       when T2.IV_NO is not null then 'FFF56E'
+							else 'dcdcdc' 
+				end t2_color
+				,case when  T3.CONFIRM_YN = 'Y' then '5AD2FF ' 
+					  when  T3.CONFIRM_YN = 'S' then '82F9B7'
+					  when  T3.CONFIRM_YN = 'T' then 'dcdcdc' 
+					  when  T3.CONFIRM_YN = 'F' then 'FFCAD5'
+					  when  T3.CONFIRM_YN = 'L' then 'AAFA82'
+					  when  T3.IN_NO is not null then 'FFF56E'
+							else 'dcdcdc' 
+				 end t3_color
+				,case when  T3.CONFIRM_YN = 'Y' then '5AD2FF '
+				      when  T3.CONFIRM_YN = 'S' then '82F9B7' 
+				      when  T3.CONFIRM_YN = 'T' then 'dcdcdc'
+					  when  T3.CONFIRM_YN = 'F' then 'FFCAD5'
+					  when  T3.CONFIRM_YN = 'L' then 'AAFA82'
+				       when T4.BL_NO is not null then 'FFF56E'
+							else 'dcdcdc' 
+				end t4_color
+				,ISNULL(t5.c1yn,0) AS c1yn	
+				,ISNULL(t5.c2yn,0) AS c2yn	
+				,ISNULL(t5.c3yn,0) AS c3yn	
+				,ISNULL(t5.c4yn,0) AS c4yn	
+				,ISNULL(t5.c5yn,0) AS c5yn	
+				,ISNULL(t5.c6yn,0) AS c6yn	
+				,ISNULL(t5.c7yn,0) AS c7yn	
+				,ISNULL(t5.c8yn,0) AS c8yn	
+				,ISNULL(t5.c9yn,0) AS c9yn	
+				,ISNULL(t5.c10yn,0) AS c10yn
+				,T4.T4_COMPANY
+				,ISNULL(T3.CONFIRM_YN,'N') t3_confirm
+				,T3.PRECONFIRM_YN t3_preconfirm
+				,ISNULL(T3.REG_FLAG,'N') t3_regflag
+				,T3.SEQ t3_seq
+				
+			FROM T3  LEFT OUTER JOIN T2 
+			ON T3.IN_NO = T2.IV_NO
+			LEFT OUTER JOIN T1 
+			ON T3.IN_NO = T1.IV_NO
+			LEFT OUTER JOIN T4 
+			ON T3.H_BL_NO = T4.BL_NO
+			LEFT OUTER JOIN T5 
+			ON T3.H_BL_NO = T5.BLNO
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchBl">
+				<![CDATA[ T3.H_BL_NO = #searchBl# ]]>
+			</isNotEmpty>
+			
+			<isNotEmpty prepend="AND" property="searchBgnDe">
+				<isNotEmpty  property="searchEndDe">
+					<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(T3.BL_DT_1)),'.',''))  BETWEEN  REPLACE(#searchBgnDe#,'-','')  AND REPLACE(#searchEndDe#,'-','') ]]>
+				</isNotEmpty>
+			</isNotEmpty>
+			
+			<isNotEmpty  prepend="AND" property="searchCom">
+				<![CDATA[  UPPER(T4.T4_COMPANY) like UPPER('%'+#searchCom#+'%') ]]>
+			</isNotEmpty>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="">
+				<![CDATA[ T3.CONFIRM_YN in('Y','F','S','T','L')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="0">
+				<![CDATA[ T3.CONFIRM_YN in('Y','F','S','T','L')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="1">
+				<![CDATA[ T3.CONFIRM_YN in('Y')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="2">
+				<![CDATA[ T3.CONFIRM_YN in('S')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="3">
+				<![CDATA[ T3.CONFIRM_YN in('F')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="4">
+				<![CDATA[ T3.CONFIRM_YN in('L')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="6">
+				<![CDATA[ T3.CONFIRM_YN in('Y','S')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="7">
+				<![CDATA[ T3.CONFIRM_YN in('T')		]]>
+			</isEqual>
+			
+			<isEqual  prepend="AND" property="searchCnd" compareValue="5">
+				<![CDATA[	 (T3.CONFIRM_YN IS NULL OR T3.CONFIRM_YN not in('Y','F','S','T','L'))		]]>
+			</isEqual>
+		 </dynamic>
+			
+		<![CDATA[
+			ORDER BY 2	
+		]]>	
+			
+	</select>
+	
+	
+	
+	<select id="RpaSapDAO.selectSapList" parameterClass="RpaSpaVO"  resultMap="sapList" remapResults="true">
+		<![CDATA[
+			WITH T1 AS (
+				select * from
+					OPENQUERY(ERP_DL, 'SELECT 
+						A.BKTXT
+						,A.ZFIMDNO
+						,A.ZFACDO
+						,D.BELNR
+						,B.COND_TYPE
+						,C.VTEXT
+						,C.SPRAS
+						,case when A.WAERS in (''KRW'',''JPY'') then A.WRBTR * 100 else A.WRBTR end WRBTR
+						,case when A.WAERS in (''KRW'',''JPY'',''CNY'',''USD'') then A.DMBTR * 100 else A.DMBTR end DMBTR
+						,case when A.KURSF = 0 then 1.00 else  A.KURSF end KURSF
+						,A.WAERS
+						,A.BLDAT
+						,A.BUDAT
+						,A.LIFNR
+						,A.ZFCSTGRP
+						,A.MWSKZ
+						,case when A.WAERS in (''KRW'',''JPY'') then A.WMWST * 100 else A.WMWST end WMWST
+						,B.ZFCD
+						,'''' ZTERM
+						,E.NAME1
+						,E.STCD2
+						FROM [wjp].ZIMTBKPF A INNER JOIN [wjp].ZIMTBSEG B
+						ON A.BELNR = B.BELNR
+						AND A.GJAHR = B.GJAHR
+						AND  A.ZFPOSYN= ''Y''
+						LEFT OUTER JOIN [wjp].[BKPF] D on  A.ZFACDO+A.GJAHR = D.AWKEY and left(D.BELNR,1) = ''5''
+						LEFT OUTER JOIN [wjp].T685T C
+						ON B.COND_TYPE = C.KSCHL
+						AND C.SPRAS =''3''
+						LEFT OUTER join [wjp].[LFA1] E on A.LIFNR = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchBlNo">
+				<![CDATA[  A.BKTXT = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND"  property="searchCom">
+				<![CDATA[ LTRIM(RTRIM(E.NAME1)) like UPPER(''%''+N''$searchCom$''+''%'') ]]>
+			</isNotEmpty>
+			<isEqual property="searchGubun" compareValue="BT">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND"  property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.BLDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual>
+			<isEqual property="searchGubun" compareValue="BL">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND"  property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.BUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual>
+		</dynamic>
+		<![CDATA[
+			
+				')
+					
+				UNION ALL
+				select * from
+					OPENQUERY(ERP_DL, 'SELECT 
+						A.ZFCIVNO as BKTXT
+						,A.ZFCIVRN as ZFIMDNO
+						,B.BELNR as ZFACDO
+						,D.BELNR
+						,''FR00'' as COND_TYPE
+						,N''물대'' as VTEXT
+						,0 SPRAS
+						,case when A.ZFIVAMC in (''KRW'',''JPY'') then A.ZFIVAMP * 100 else A.ZFIVAMP end WRBTR
+						,case when A.ZFIVAMC in (''KRW'',''JPY'',''CNY'',''USD'') then A.ZFIVAMK * 100 else A.ZFIVAMK end DMBTR 
+						,case when A.ZFEXRT = 0 then 1.00 else A.ZFEXRT end KURSF
+						,A.ZFIVAMC as WAERS
+						,0 BLDAT
+						,A.ZFBUDAT as BUDAT
+						,A.ZFMAVN as LIFNR
+						,0 ZFCSTGRP
+						,'''' as MWSKZ
+						,0 as WMWST
+						,'''' as ZFCD
+						,A.ZTERM
+						,E.NAME1
+						,E.STCD2
+						FROM [wjp].ZIMTCIVHD A 
+						LEFT OUTER JOIN [wjp].ZIMTCIVHST B
+						ON A.ZFCIVRN = B.ZFCIVRN and B.CBELNR =''''
+						LEFT OUTER JOIN [wjp].[BKPF] D on  B.BELNR+B.GJAHR = D.AWKEY and D.BLART = ''RE''
+						LEFT OUTER join [wjp].[LFA1] E on A.ZFMAVN = E.LIFNR
+	
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.ZFCIVNO = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="searchCom">
+				<![CDATA[ LTRIM(RTRIM(E.NAME1)) like UPPER(''%''+N''$searchCom$''+''%'') ]]>
+			</isNotEmpty>
+			<isEqual property="searchGubun" compareValue="BT">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND" property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.ZFBUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual>
+			<isEqual property="searchGubun" compareValue="BL">
+				<isNotEmpty property="searchBgnDe">
+					<isNotEmpty prepend="AND" property="searchEndDe">
+						<![CDATA[	CONVERT(INT,REPLACE(RTRIM(LTRIM(A.ZFBUDAT)),''.'',''''))  BETWEEN  REPLACE(''$searchBgnDe$'',''-'','''')  AND REPLACE(''$searchEndDe$'',''-'','''') ]]>
+					</isNotEmpty>
+				</isNotEmpty>
+			</isEqual>
+		</dynamic>
+		<![CDATA[
+				
+					')
+			),
+			T2 AS(
+				SELECT H_BL_NO,CONFIRM_YN ,PRECONFIRM_YN  
+				from [dbo].[IMS_RPA_FORWARDER] 
+				where DEL_YN IS NULL
+		]]>
+			<isNotEmpty  property="searchBlNo">
+				<![CDATA[ AND  H_BL_NO = #searchBlNo# ]]>
+			</isNotEmpty>
+		<![CDATA[
+				group by H_BL_NO, CONFIRM_YN ,PRECONFIRM_YN
+			),
+			T3 AS(
+				SELECT b.BLNO,FILE_SN,count(b.ATCH_FILE_ID) as filecnt 
+				FROM [dbo].[LETTNFILE] a inner join [dbo].[LETTNFILEDETAIL] b on a.ATCH_FILE_ID = b.ATCH_FILE_ID
+				where a.DIR_GUBUN = 'SAP'
+		]]>
+		<isNotEmpty  prepend="AND" property="searchBlNo">
+			<![CDATA[  b.BLNO = #searchBlNo# ]]>
+		</isNotEmpty>
+		<![CDATA[
+				 
+				group by b.BLNO,FILE_SN
+			)
+			select 	 
+				T1.BKTXT        
+				,T1.ZFIMDNO        
+				,T1.ZFACDO        
+				,T1.BELNR        
+				,replace(T1.COND_TYPE ,'FR00','') as COND_TYPE
+				,T1.COND_TYPE as COND_TYPE1
+				,T1.VTEXT        
+				,T1.SPRAS        
+				,T1.WRBTR
+				,T1.DMBTR
+				,T1.KURSF        
+				,T1.WAERS        
+				,case when T1.BLDAT = '0' then T1.BUDAT else T1.BLDAT end BLDAT        
+				,T1.BUDAT        
+				,T1.LIFNR        
+				,T1.ZFCSTGRP        
+				,T1.MWSKZ        
+				,T1.WMWST        
+				,T1.ZFCD        
+				,T1.ZTERM        
+				,T1.NAME1
+				,T1.STCD2
+				,T2.CONFIRM_YN t3_confirm     
+				,T2.PRECONFIRM_YN t3_preconfirm 
+				,ISNULL(T3.filecnt,0) as filecnt
+				,ISNULL(T3.FILE_SN,'') as filetype
+			from T1 left outer join T2 on T1.BKTXT  COLLATE Korean_Wansung_CI_AS = T2.H_BL_NO
+			  left outer join T3 on T1.BKTXT  COLLATE Korean_Wansung_CI_AS = T3.BLNO and T1.COND_TYPE  COLLATE Korean_Wansung_CI_AS = T3.FILE_SN
+			 
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotNull property="searchType">
+				<isNotEmpty prepend="AND"  property="searchType">
+					<![CDATA[  T1.COND_TYPE = #searchType# ]]>
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+ 		  order by T1.[BKTXT],
+ 		  case T1.COND_TYPE 
+ 		  	when 'FR00' then 'ZR00'  
+ 		  	when 'FR01' then 'ZR03'  
+ 		  	when 'FR02' then 'ZR01'  
+ 		  	when 'FR03' then 'ZR07'  
+ 		  	when 'FR04' then 'ZR04'  
+ 		  	when 'FR05' then 'ZR09'  
+ 		  	when 'FR06' then 'ZR02'  
+ 		  	when 'FR07' then 'ZR05'  
+ 		  	when 'FR08' then 'ZR08'  
+ 		  	when 'FR09' then 'ZR06'  
+ 		  	else 'ZR99' end ASC  
+			 
+		]]>
+			
+	</select>
+	
+	
+	
+	<select id="RpaSapDAO.selectSapSubBLList" parameterClass="RpaSpaVO"  resultMap="sapSubList" remapResults="true">
+		<![CDATA[
+			WITH T1 AS (
+				SELECT distinct [BKTXT]
+				  ,[ZFIMDNO]
+				  ,[ZFACDO]
+				  ,[BELNR]
+				  ,[COND_TYPE]
+				  ,[VTEXT]
+				  ,[SPRAS]
+				  ,[WRBTR]
+				  ,[DMBTR]
+				  ,[KURSF]
+				  ,[WAERS]
+				  ,[BLDAT]
+				  ,[BUDAT]
+				  ,[LIFNR]
+				  ,[ZFCSTGRP]
+				  ,[MWSKZ]
+				  ,[WMWST]
+				  ,[ZFCD]
+				  ,[ZTERM]
+				  ,[NAME1]
+				  ,[STCD2]
+				FROM(
+					select
+						*
+					from
+						OPENQUERY(ERP_DL, '
+							select
+								A.BKTXT,
+								A.ZFIMDNO,
+								A.ZFACDO,
+								D.BELNR,
+								B.COND_TYPE,
+								C.VTEXT,
+								C.SPRAS,
+								case when A.WAERS in (''KRW'',''JPY'') then A.WRBTR * 100 else A.WRBTR end WRBTR,
+								case when A.WAERS in (''KRW'',''JPY'',''CNY'',''USD'') then A.DMBTR * 100 else A.DMBTR end DMBTR,
+								case when A.KURSF = 0 then 1.00 else A.KURSF end KURSF,
+								A.WAERS,
+								A.BLDAT,
+								A.BUDAT,
+								A.LIFNR,
+								A.ZFCSTGRP,
+								A.MWSKZ,
+								case when A.WAERS in (''KRW'',''JPY'') then A.WMWST * 100 else A.WMWST end WMWST,
+								B.ZFCD,
+								'''' ZTERM,
+								E.NAME1,
+								E.STCD2
+							from
+								[wjp].ZIMTBKPF A
+								inner join [wjp].ZIMTBSEG B on A.BELNR = B.BELNR
+								and A.GJAHR = B.GJAHR
+								and A.ZFPOSYN = ''Y''
+								left outer join [wjp].[BKPF] D on A.ZFACDO + A.GJAHR = D.AWKEY and left(D.BELNR,1) = ''5''
+								left outer join [wjp].T685T C on B.COND_TYPE = C.KSCHL
+								and C.SPRAS = ''3''
+								left outer join [wjp].[LFA1] E on A.LIFNR = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchBlNo">
+				<![CDATA[  A.BKTXT = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+			
+				')
+					
+				UNION ALL
+				select
+					*
+				from
+					OPENQUERY(ERP_DL, '
+						select
+							A.ZFCIVNO as BKTXT,
+							A.ZFCIVRN as ZFIMDNO,
+							B.BELNR as ZFACDO,
+							D.BELNR,
+							''FR00'' as COND_TYPE,
+							N''물대'' as VTEXT,
+							0 SPRAS,
+							case when A.ZFIVAMC in (''KRW'',''JPY'') then A.ZFIVAMP * 100 else A.ZFIVAMP end WRBTR,
+							case when A.ZFIVAMC in (''KRW'',''JPY'',''CNY'',''USD'') then A.ZFIVAMK * 100 else A.ZFIVAMK end DMBTR, 
+							case when A.ZFEXRT = 0 then 1.00 else A.ZFEXRT end  KURSF,
+							A.ZFIVAMC as WAERS,
+							0 BLDAT,
+							A.ZFBUDAT as BUDAT,
+							A.ZFMAVN as LIFNR,
+							0 ZFCSTGRP,
+							'''' as MWSKZ,
+							0 as WMWST,
+							'''' as ZFCD,
+							A.ZTERM,
+							E.NAME1,
+							E.STCD2
+						from
+							[wjp].ZIMTCIVHD A
+							left outer join [wjp].ZIMTCIVHST B on A.ZFCIVRN = B.ZFCIVRN and B.CBELNR =''''
+							left outer join [wjp].[BKPF] D on B.BELNR + B.GJAHR = D.AWKEY and D.BLART = ''RE''
+							left outer join [wjp].[LFA1] E on A.ZFMAVN = E.LIFNR
+	
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.ZFCIVNO = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+				
+					')
+				union all
+				SELECT [BKTXT] COLLATE Korean_Wansung_CI_AS as  [BKTXT] 
+					,[ZFIMDNO] COLLATE Korean_Wansung_CI_AS as  [ZFIMDNO] 
+					,[ZFACDO] COLLATE Korean_Wansung_CI_AS as  [ZFACDO] 
+					,[BELNR] COLLATE Korean_Wansung_CI_AS as  [BELNR] 
+					,[COND_TYPE] COLLATE Korean_Wansung_CI_AS as  [COND_TYPE] 
+					,[VTEXT] COLLATE Korean_Wansung_CI_AS as  [VTEXT] 
+					,[SPRAS] COLLATE Korean_Wansung_CI_AS as  [SPRAS] 
+					,[WRBTR]
+					,[DMBTR] 
+					,[KURSF]  
+					,[WAERS] COLLATE Korean_Wansung_CI_AS as  [WAERS] 
+					,[BLDAT] COLLATE Korean_Wansung_CI_AS as  [BLDAT] 
+					,[BUDAT] COLLATE Korean_Wansung_CI_AS as  [BUDAT] 
+					,[LIFNR] COLLATE Korean_Wansung_CI_AS as  [LIFNR] 
+					,[ZFCSTGRP] COLLATE Korean_Wansung_CI_AS as  [ZFCSTGRP] 
+					,[MWSKZ]  COLLATE Korean_Wansung_CI_AS as  [MWSKZ] 
+					,[WMWST] 
+					,[ZFCD] COLLATE Korean_Wansung_CI_AS as  [ZFCD] 
+					,[ZTERM] COLLATE Korean_Wansung_CI_AS as  [ZTERM] 
+					,[NAME1] COLLATE Korean_Wansung_CI_AS as  [NAME1] 
+					,[STCD2] COLLATE Korean_Wansung_CI_AS as  [STCD2] 
+				FROM [dbo].[RPA_SAP_TB]
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ BKTXT = #searchBlNo# ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+				) tot
+			),
+			T2 AS(
+				SELECT H_BL_NO,CONFIRM_YN ,PRECONFIRM_YN  
+				from [dbo].[IMS_RPA_FORWARDER] 
+				where DEL_YN IS NULL
+		]]>
+			<isNotEmpty  property="searchBlNo">
+				<![CDATA[ AND  H_BL_NO = #searchBlNo# ]]>
+			</isNotEmpty>
+		<![CDATA[
+				group by H_BL_NO, CONFIRM_YN ,PRECONFIRM_YN
+			),
+			T3 AS(
+				SELECT b.BLNO,FILE_SN,count(b.ATCH_FILE_ID) as filecnt 
+				FROM [dbo].[LETTNFILE] a inner join [dbo].[LETTNFILEDETAIL] b on a.ATCH_FILE_ID = b.ATCH_FILE_ID
+				where a.DIR_GUBUN = 'SAP'
+		]]>
+		<isNotEmpty  prepend="AND" property="searchBlNo">
+			<![CDATA[  b.BLNO = #searchBlNo# ]]>
+		</isNotEmpty>
+		<![CDATA[
+				 
+				group by b.BLNO,FILE_SN
+			),
+			T4 as (
+		        select
+		            *
+		        from
+		            [dbo].[RPA_SAP_TB]
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty  prepend="AND" property="searchBlNo">
+				<![CDATA[  BKTXT = #searchBlNo# ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+		    ),
+			T5 as (
+		        select
+		            *
+		        from
+		            OPENQUERY(ERP_DL, '
+						select
+							A.BKTXT,
+							A.ZFIMDNO,
+							A.ZFACDO,
+							D.BELNR,
+							B.COND_TYPE,
+							C.VTEXT,
+							C.SPRAS,
+							case when A.WAERS in (''KRW'',''JPY'') then A.WRBTR * 100 else A.WRBTR end WRBTR,
+							case when A.WAERS in (''KRW'',''JPY'',''CNY'',''USD'') then A.DMBTR * 100 else A.DMBTR end DMBTR,
+							case when A.KURSF = 0 then 1.00 else A.KURSF end KURSF,
+							A.WAERS,
+							A.BLDAT,
+							A.BUDAT,
+							A.LIFNR,
+							A.ZFCSTGRP,
+							A.MWSKZ,
+							case when A.WAERS in (''KRW'',''JPY'') then A.WMWST * 100 else A.WMWST end WMWST,
+							B.ZFCD,
+							'''' ZTERM,
+							E.NAME1,
+							E.STCD2
+						from
+							[wjp].ZIMTBKPF A
+							inner join [wjp].ZIMTBSEG B on A.BELNR = B.BELNR
+							and A.GJAHR = B.GJAHR
+							and A.ZFPOSYN = ''Y''
+							left outer join [wjp].[BKPF] D on A.ZFACDO + A.GJAHR = D.AWKEY
+							left outer join [wjp].T685T C on B.COND_TYPE = C.KSCHL
+							and C.SPRAS = ''3''
+							left outer join [wjp].[LFA1] E on A.LIFNR = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND"  property="searchBlNo">
+				<![CDATA[  A.BKTXT = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+					')
+		        union all
+		        select
+		            *
+		        from
+		            OPENQUERY(ERP_DL, '
+						select
+							A.ZFCIVNO as BKTXT,
+							A.ZFCIVRN as ZFIMDNO,
+							B.BELNR as ZFACDO,
+							D.BELNR,
+							''FR00'' as COND_TYPE,
+							N''물대'' as VTEXT,
+							0 SPRAS,
+							case when A.ZFIVAMC in (''KRW'',''JPY'') then A.ZFIVAMP * 100 else A.ZFIVAMP end WRBTR,
+							case when A.ZFIVAMC in (''KRW'',''JPY'',''CNY'',''USD'') then A.ZFIVAMK * 100 else A.ZFIVAMK end DMBTR, 
+							case when A.ZFEXRT = 0 then 1.00 else A.ZFEXRT end KURSF,
+							A.ZFIVAMC as WAERS,
+							0 BLDAT,
+							A.ZFBUDAT as BUDAT,
+							A.ZFMAVN as LIFNR,
+							0 ZFCSTGRP,
+							'''' as MWSKZ,
+							0 as WMWST,
+							'''' as ZFCD,
+							A.ZTERM,
+							E.NAME1,
+							E.STCD2
+						from
+							[wjp].ZIMTCIVHD A
+							left outer join [wjp].ZIMTCIVHST B on A.ZFCIVRN = B.ZFCIVRN
+							left outer join [wjp].[BKPF] D on B.BELNR + B.GJAHR = D.AWKEY
+							left outer join [wjp].[LFA1] E on A.ZFMAVN = E.LIFNR
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="searchBlNo">
+				<![CDATA[ A.ZFCIVNO = ''$searchBlNo$'' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+					')
+			    )
+			    SELECT * FROM (
+				    select DISTINCT
+					    T1.BKTXT,
+					    T1.ZFIMDNO,
+					    T1.ZFACDO,
+					    T1.BELNR,
+					    replace (T1.COND_TYPE, 'FR00', '') as COND_TYPE,
+					    T1.COND_TYPE as COND_TYPE1,
+					    T1.VTEXT,
+					    T1.SPRAS,
+					    T1.WRBTR,
+					    T1.DMBTR,
+					    T1.KURSF,
+					    T1.WAERS,
+					    case
+					        when T1.BLDAT = '0' then T1.BUDAT
+					        else T1.BLDAT
+					    end BLDAT,
+					    T1.BUDAT,
+					    T1.LIFNR,
+					    T1.ZFCSTGRP,
+					    T1.MWSKZ,
+					    T1.WMWST,
+					    T1.ZFCD,
+					    T1.ZTERM,
+					    T1.NAME1,
+					    T1.STCD2,
+					    T2.CONFIRM_YN t3_confirm,
+					    T2.PRECONFIRM_YN t3_preconfirm,
+					    ISNULL(T3.filecnt, 0) as filecnt,
+					    ISNULL(T3.FILE_SN, '') as filetype,
+						case when t1.BKTXT COLLATE Korean_Wansung_CI_AS = t4.BKTXT
+								and t1.COND_TYPE COLLATE Korean_Wansung_CI_AS = t4.COND_TYPE
+								and t1.BELNR COLLATE Korean_Wansung_CI_AS = t4.BELNR then '1' else '0' end sapcheck,
+						case when T4.BKTXT is not null and T5.BKTXT is null then 'FFFF96' 
+							 when T4.BKTXT is null and T5.BKTXT is not null then 'FFFFFF'
+							 when T4.BKTXT is not null and T5.BKTXT is not null and t4.BELNR COLLATE Korean_Wansung_CI_AS = t5.BELNR 
+							 then case when T2.CONFIRM_YN = 'T' then 'FFFF96' else 'E4F7BA' end
+							 when T4.BKTXT is not null and T5.BKTXT is not null  and t4.BELNR COLLATE Korean_Wansung_CI_AS != t5.BELNR then 
+								case when T1.BELNR = t5.BELNR then 'FFC0CB' else 
+								case when T2.CONFIRM_YN = 'T' then 'FFFF96' else 'E4F7BA' end 
+								end
+					
+							 else '' end sapcolor
+					from
+					    T1
+						left outer join T4 on T1.BKTXT COLLATE Korean_Wansung_CI_AS = T4.BKTXT and T1.COND_TYPE COLLATE Korean_Wansung_CI_AS = T4.COND_TYPE 
+						left outer join T5 on T1.BKTXT = T5.BKTXT and T1.COND_TYPE  = T5.COND_TYPE 
+					    left outer join T2 on T1.BKTXT COLLATE Korean_Wansung_CI_AS = T2.H_BL_NO
+					    left outer join T3 on T1.BKTXT COLLATE Korean_Wansung_CI_AS = T3.BLNO
+					    and T1.COND_TYPE COLLATE Korean_Wansung_CI_AS = T3.FILE_SN
+				) tot
+				order by
+				    tot.[BKTXT],
+				     case tot.COND_TYPE1 
+		 		  	when 'FR00' then 'ZR00'  
+		 		  	when 'FR01' then 'ZR03'  
+		 		  	when 'FR02' then 'ZR01'  
+		 		  	when 'FR03' then 'ZR07'  
+		 		  	when 'FR04' then 'ZR04'  
+		 		  	when 'FR05' then 'ZR09'  
+		 		  	when 'FR06' then 'ZR02'  
+		 		  	when 'FR07' then 'ZR05'  
+		 		  	when 'FR08' then 'ZR08'  
+		 		  	when 'FR09' then 'ZR06'  
+		 		  	else 'ZR99' end ASC  
+			 
+		]]>
+			
+	</select>
+		
+</sqlMap>
