@@ -667,10 +667,17 @@
 			),
 			T3 AS (
 			SELECT DISTINCT * FROM IMS_RPA_FORWARDER
-			WHERE H_BL_NO+IN_NO IN (SELECT DISTINCT H_BL_NO + MAX(IN_NO) FROM  IMS_RPA_FORWARDER
-									WHERE  DEL_YN IS  NULL
-									AND CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_SEONJEOG_DT)),'.','')) > '20190930'
-									GROUP BY H_BL_NO)
+			WHERE H_BL_NO+IN_NO IN (select distinct
+                    a.H_BL_NO + case when max(b.IV_NO) is null then max(a.IN_NO) else max(b.IV_NO) end
+                from
+                    IMS_RPA_FORWARDER a
+					left outer join IMS_RPA_IMPORT_NOTIFY b on a.H_BL_NO = b.BL_DATE
+
+                where
+                    a.DEL_YN is null
+                    and CONVERT(int, replace (RTRIM(LTRIM(a.BL_SEONJEOG_DT)), '.', '')) > '20190930'
+				group by a.H_BL_NO
+				)
 									
 			AND DEL_YN IS  NULL
 			),
@@ -1858,10 +1865,17 @@
 			),
 			T3 AS (
 			SELECT DISTINCT * FROM IMS_RPA_FORWARDER
-			WHERE H_BL_NO+IN_NO IN (SELECT DISTINCT H_BL_NO + MAX(IN_NO) FROM  IMS_RPA_FORWARDER
-									WHERE  DEL_YN IS  NULL
-									AND CONVERT(INT,REPLACE(RTRIM(LTRIM(BL_SEONJEOG_DT)),'.','')) > '20190930'
-									GROUP BY H_BL_NO)
+			WHERE H_BL_NO+IN_NO IN (select distinct
+                    a.H_BL_NO + case when max(b.IV_NO) is null then max(a.IN_NO) else max(b.IV_NO) end
+                from
+                    IMS_RPA_FORWARDER a
+					left outer join IMS_RPA_IMPORT_NOTIFY b on a.H_BL_NO = b.BL_DATE
+
+                where
+                    a.DEL_YN is null
+                    and CONVERT(int, replace (RTRIM(LTRIM(a.BL_SEONJEOG_DT)), '.', '')) > '20190930'
+				group by a.H_BL_NO
+			)
 									
 			AND DEL_YN IS  NULL
 			),
