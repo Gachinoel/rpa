@@ -1535,7 +1535,7 @@
 			                    d.NAME1 as CUSTOM_NAME,
 			                    a.MWSKZ,
 			                    e.ZFCDNM,
-			                    case when left(a.BUDAT,6) > '202001' and a.LIFNR = 'B1661A01' and a.MWSKZ = 'VZ' then
+			                    case when left(a.BUDAT,6) in('202002','202003','202004','202005') and a.LIFNR = 'B1661A01' and a.MWSKZ = 'VZ' then
 									sum(FLOOR(b.WRBTR * 100)) + 2000
 								else
 									sum(FLOOR(b.WRBTR * 100)) end WRBTR,
@@ -1580,6 +1580,14 @@
 			                    a.MWSKZ,
 			                    b.COND_TYPE,
 								left(a.BUDAT,6)
+		]]>
+		<isEqual property="searchBgnDe" compareValue="20200501">
+			<![CDATA[			                    
+			            union all
+				 		select '관세법인 더블유','B1594A01','관세법인 더블유','VZ','보험료',2000,0,'FR09'
+			]]>
+		</isEqual>
+		<![CDATA[			                    
 			            ) main
 			        where
 			            not exists (

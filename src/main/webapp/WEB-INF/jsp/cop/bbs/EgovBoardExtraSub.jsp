@@ -468,7 +468,7 @@
 	                                <label style="background-color:#E4F7BA;width:60px;display: inline-block;text-align:center;font-size:12px;">확인</label>
 	                                </div>  
                                 </li>
-								 <% if (userId.equals("admin") || userId.equals("99000303")) {%>
+								 <% if (userId.equals("admin") || userId.equals("99000303") || userId.equals("20170034")) {%>
                                 <li>
                                  	<div class="buttons" style="position:absolute;left:1450px;top:180px;">
                                        <a href="#" onclick="fn_excel_down(); return false;">월부가세액다운</a>
