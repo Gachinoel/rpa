@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="BatchProperly">
+
+	<insert id="BatchDAO.insertCargo" parameterClass="java.util.HashMap">
+		<![CDATA[
+			INSERT INTO IMS_RPA_CARGO_INSURANCE (
+				TRANS_GB
+				, STOCK_NO
+				, CHAMJO_MUNSEO_NO1
+				, CHAMJO_MUNSEO_NO2
+				, GAAEG_HWAPYE_CD
+				, NUJEOG_AMT
+				, GAIB_AMT_HWAPYE_CD
+				, GAIB_AMT
+				, KRW_EXCH_GAIB_AMT
+				, JEOGYONG_RT
+				, CO_KRW_EXCH_INSR_FEE
+				, ACNT_DT
+				, START_AREA_CD
+				, UNSONG_YONG_GU
+				, UNSONG_YONG_GU_NM
+				, CHULBALJI_NM
+				, DOCHAGJI_CD
+				, DOCHAGJI_NM
+				, END_YN
+				, SAP_REG_YN
+				, IMPORT_DCL_NO
+				, IV_NO_1
+				, IV_NO_2
+				, IV_NO_3
+				, IV_NO_4
+				, IV_NO_5
+				, IV_NO_6
+				, IV_NO_7
+				, IV_NO_8
+				, IV_NO_9
+				, IV_NO_10
+				, REMARK
+				, UPLOAD_DT
+			) 
+		]]>
+		<dynamic>
+			<iterate prepend="VALUES" conjunction=", " property="List">
+				<![CDATA[
+				( 
+					#List[].TRANS_GB#
+					, #List[].STOCK_NO#
+					, #List[].CHAMJO_MUNSEO_NO1#
+					, #List[].CHAMJO_MUNSEO_NO2#
+					, #List[].GAAEG_HWAPYE_CD#
+					, #List[].NUJEOG_AMT#
+					, #List[].GAIB_AMT_HWAPYE_CD#
+					, #List[].GAIB_AMT#
+					, #List[].KRW_EXCH_GAIB_AMT#
+					, #List[].JEOGYONG_RT#
+					, #List[].CO_KRW_EXCH_INSR_FEE#
+					, #List[].ACNT_DT#
+					, #List[].START_AREA_CD#
+					, #List[].UNSONG_YONG_GU#
+					, #List[].UNSONG_YONG_GU_NM#
+					, #List[].CHULBALJI_NM#
+					, #List[].DOCHAGJI_CD#
+					, #List[].DOCHAGJI_NM#
+					, #List[].END_YN#
+					, #List[].SAP_REG_YN#
+					, #List[].IMPORT_DCL_NO#
+					, #List[].IV_NO_1#
+					, #List[].IV_NO_2#
+					, #List[].IV_NO_3#
+					, #List[].IV_NO_4#
+					, #List[].IV_NO_5#
+					, #List[].IV_NO_6#
+					, #List[].IV_NO_7#
+					, #List[].IV_NO_8#
+					, #List[].IV_NO_9#
+					, #List[].IV_NO_10#
+					, #REMARK#
+					, Replace(Convert(varchar(30),Getdate(),120),'-','-')
+				)
+				]]>
+			</iterate>
+		</dynamic>
+	</insert>
+	
+	<update id="BatchDAO.updateCargoFile" parameterClass="java.util.HashMap">
+		<![CDATA[
+			UPDATE IMS_RPA_CARGO_INSURANCE 
+			SET DEL_YN = 'Y'
+				, UPDATE_DT = Replace(Convert(varchar(30),Getdate(),120),'-','-')
+			WHERE DEL_YN IS NULL and REMARK = #REMARK#
+		]]>
+	</update>
+	
+	<update id="BatchDAO.updateCargo" parameterClass="java.util.HashMap">
+		<![CDATA[
+			UPDATE IMS_RPA_CARGO_INSURANCE 
+			SET DEL_YN = 'Y'
+				, UPDATE_DT = Replace(Convert(varchar(30),Getdate(),120),'-','-')
+			WHERE DEL_YN IS NULL and 
+		]]>
+		<iterate property="List" open="concat(CHAMJO_MUNSEO_NO1,CHAMJO_MUNSEO_NO2) in (" conjunction="," close=")">
+			<![CDATA[
+				concat(#List[].CHAMJO_MUNSEO_NO1#, #List[].CHAMJO_MUNSEO_NO2#) 
+			]]>
+		</iterate>
+	</update>
+	
+	<insert id="BatchDAO.insertForward" parameterClass="java.util.HashMap">
+		<![CDATA[
+			INSERT INTO IMS_RPA_FORWARDER (
+				IN_NO
+				, H_BL_NO
+				, BL_SEONJEOG_DT
+				, ETD_DT
+				, ETA_DT
+				, SEONJEOG_GUG_CD
+				, DOCHAG_GUG_CD
+				, SEONJEOG_HANG_CD
+				, DOCHAG_HANG_CD
+				, FLT_VSSL_NM
+				, C_20FT_QT
+				, C_40FT_QT
+				, UNSONG_GB
+				, CHONG_POJANG_EA
+				, NET_WG
+				, GROSS_WG
+				, SEOLYU_SONGBU_DT
+				, SEONJEOG_SEOLYU_SONGBUCHEO_CD
+				, SIL_IBHANG_DT
+				, IBGO_YEJEONG_DT
+				, H_BL_NO_1
+				, BIYONG_GEULUB_1
+				, JEUNGBING_DT_1
+				, JEONGI_DT_1
+				, BL_DT_1
+				, SAEOBJANG_CD_1
+				, JEONPYO_TOT_AMT_1
+				, TOT_SE_AMT_1
+				, BIYONG_CD_1
+				, GONGGEUB_CO_CD_1
+				, JEONPYO_JEMOG_1
+				, BIYONG_GEULUB_2
+				, JEUNGBING_DT_2
+				, JEONGI_DT_2
+				, BL_DT_2
+				, SAEOBJANG_CD_2
+				, JEONPYO_TOT_AMT_2
+				, TOT_SE_AMT_2
+				, BIYONG_CD_2
+				, GONGGEUB_CO_CD_2
+				, JEONPYO_JEMOG_2
+				, UPLOAD_DT
+				, REMARK
+			) 
+		]]>
+		<dynamic>
+			<iterate prepend="VALUES" conjunction=", " property="List">
+				<![CDATA[
+				( 
+					#List[].IN_NO#
+					, #List[].H_BL_NO#
+					, #List[].BL_SEONJEOG_DT#
+					, #List[].ETD_DT#
+					, #List[].ETA_DT#
+					, #List[].SEONJEOG_GUG_CD#
+					, #List[].DOCHAG_GUG_CD#
+					, #List[].SEONJEOG_HANG_CD#
+					, #List[].DOCHAG_HANG_CD#
+					, #List[].FLT_VSSL_NM#
+					, #List[].C_20FT_QT#
+					, #List[].C_40FT_QT#
+					, #List[].UNSONG_GB#
+					, #List[].CHONG_POJANG_EA#
+					, #List[].NET_WG#
+					, #List[].GROSS_WG#
+					, #List[].SEOLYU_SONGBU_DT#
+					, #List[].SEONJEOG_SEOLYU_SONGBUCHEO_CD#
+					, #List[].SIL_IBHANG_DT#
+					, #List[].IBGO_YEJEONG_DT#
+					, #List[].H_BL_NO_1#
+					, #List[].BIYONG_GEULUB_1#
+					, #List[].JEUNGBING_DT_1#
+					, #List[].JEONGI_DT_1#
+					, #List[].BL_DT_1#
+					, #List[].SAEOBJANG_CD_1#
+					, #List[].JEONPYO_TOT_AMT_1#
+					, #List[].TOT_SE_AMT_1#
+					, #List[].BIYONG_CD_1#
+					, #List[].GONGGEUB_CO_CD_1#
+					, #List[].JEONPYO_JEMOG_1#
+					, #List[].BIYONG_GEULUB_2#
+					, #List[].JEUNGBING_DT_2#
+					, #List[].JEONGI_DT_2#
+					, #List[].BL_DT_2#
+					, #List[].SAEOBJANG_CD_2#
+					, #List[].JEONPYO_TOT_AMT_2#
+					, #List[].TOT_SE_AMT_2#
+					, #List[].BIYONG_CD_2#
+					, #List[].GONGGEUB_CO_CD_2#
+					, #List[].JEONPYO_JEMOG_2#
+					, Replace(Convert(varchar(30),Getdate(),120),'-','-')
+					, #REMARK#
+				)
+				]]>
+			</iterate>
+		</dynamic>
+	</insert>
+	
+	<update id="BatchDAO.updateForwardFile" parameterClass="java.util.HashMap">
+		<![CDATA[
+			UPDATE IMS_RPA_FORWARDER 
+			SET DEL_YN = 'Y'
+				, UPDATE_DT = Replace(Convert(varchar(30),Getdate(),120),'-','-')
+			WHERE DEL_YN IS NULL and REMARK = #REMARK#
+		]]>
+	</update>
+	
+	<update id="BatchDAO.updateForward" parameterClass="java.util.HashMap">
+		<![CDATA[
+			UPDATE IMS_RPA_FORWARDER 
+			SET DEL_YN = 'Y'
+				, UPDATE_DT = Replace(Convert(varchar(30),Getdate(),120),'-','-')
+			WHERE DEL_YN IS NULL and 
+		]]>
+		<iterate property="List" open="concat(IN_NO,H_BL_NO,BL_DT_2) in (" conjunction="," close=")">
+			<![CDATA[
+				concat(#List[].IN_NO#, #List[].H_BL_NO#, #List[].BL_DT_2#) 
+			]]>
+		</iterate>
+	</update>
+	
+	<insert id="BatchDAO.insertImport" parameterClass="java.util.HashMap">
+		<![CDATA[
+			INSERT INTO IMS_RPA_IMPORT_NOTIFY (
+				ITEM_CD
+				, LOT
+				, QTY
+				, BL_DATE
+				, OUTER_NO
+				, INNER_NO
+				, PO_NO
+				, PO_LINE_NO
+				, IV_NO
+				, ETD
+				, CARRY
+				, UPLOAD_DT
+				, REMARK
+			) 
+		]]>
+		<dynamic>
+			<iterate prepend="VALUES" conjunction=", " property="List">
+				<![CDATA[
+				( 
+					#List[].ITEM_CD#
+					, #List[].LOT#
+					, #List[].QTY#
+					, #List[].BL_DATE#
+					, #List[].OUTER_NO#
+					, #List[].INNER_NO#
+					, #List[].PO_NO#
+					, #List[].PO_LINE_NO#
+					, #List[].IV_NO#
+					, #List[].ETD#
+					, #List[].CARRY#
+					, Replace(Convert(varchar(30),Getdate(),120),'-','-')
+					, #REMARK#
+				)
+				]]>
+			</iterate>
+		</dynamic>
+	</insert>
+	
+	<update id="BatchDAO.updateImportFile" parameterClass="java.util.HashMap">
+		<![CDATA[
+			UPDATE IMS_RPA_IMPORT_NOTIFY 
+			SET DEL_YN = 'Y'
+				, UPDATE_DT = Replace(Convert(varchar(30),Getdate(),120),'-','-')
+			WHERE DEL_YN IS NULL and REMARK = #REMARK#
+		]]>
+	</update>
+	
+	<update id="BatchDAO.updateImport" parameterClass="java.util.HashMap">
+		<![CDATA[
+			UPDATE IMS_RPA_IMPORT_NOTIFY 
+			SET DEL_YN = 'Y'
+				, UPDATE_DT = Replace(Convert(varchar(30),Getdate(),120),'-','-')
+			WHERE DEL_YN IS NULL and 
+		]]>
+		<iterate property="List" open="concat(ITEM_CD,PO_NO,LOT,IV_NO) in (" conjunction="," close=")">
+			<![CDATA[
+				concat(#List[].ITEM_CD#, #List[].PO_NO#, #List[].LOT#, #List[].IV_NO#) 
+			]]>
+		</iterate>
+	</update>
+	
+	
+	<insert id="BatchDAO.insertCustom" parameterClass="java.util.HashMap">
+		<![CDATA[
+			INSERT INTO IMS_RPA_CUSTOMS_AGENT (
+				[d0]
+				, [d1]
+				, [d2]
+				, [d3]
+				, [d4]
+				, [d5]
+				, [d6]
+				, [d7]
+				, [d8]
+				, [d9]
+				, [d10]
+				, [d11]
+				, [d12]
+				, [d13]
+				, [d14]
+				, [d15]
+				, [d16]
+				, [d17]
+				, [d18]
+				, [d19]
+				, [d20]
+				, [d21]
+				, [d22]
+				, [d23]
+				, [d24]
+				, [d25]
+				, [d26]
+				, [d27]
+				, [d28]
+				, [d29]
+				, [d30]
+				, [d31]
+				, [d32]
+				, [d33]
+				, [d34]
+				, [d35]
+				, [d36]
+				, [d37]
+				, [d38]
+				, [d39]
+				, [d40]
+				, [d41]
+				, [d42]
+				, [d43]
+				, [d44]
+				, [d45]
+				, [d46]
+				, [d47]
+				, [d48]
+				, [d49]
+				, [d50]
+				, [d51]
+				, [d52]
+				, [d53]
+				, [d54]
+				, [d55]
+				, [d56]
+				, [d57]
+				, [d58]
+				, [d59]
+				, [d60]
+				, [d61]
+				, [d62]
+				, [d63]
+				, [d64]
+				, [d65]
+				, [d66]
+				, [d67]
+				, [d68]
+				, [d69]
+				, [d70]
+				, [d71]
+				, [d72]
+				, [d73]
+				, [d74]
+				, [d75]
+				, [d76]
+				, [d77]
+				, [d78]
+				, [d79]
+				, [d80]
+				, [d81]
+				, [d82]
+				, [d83]
+				, [d84]
+				, [d85]
+				, [d86]
+				, [d87]
+				, [d88]
+				, [d89]
+				, [d90]
+				, [d91]
+				, [d92]
+				, [d93]
+				, [d94]
+				, [d95]
+				, [d96]
+				, [d97]
+				, [d98]
+				, [d99]
+				, [d100]
+				, [d101]
+				, [d102]
+				, [d103]
+				, [d104]
+				, [d105]
+				, [d106]
+				, [d107]
+				, [d108]
+				, [d109]
+				, [d110]
+				, [d111]
+				, [d112]
+				, [d113]
+				, [d114]
+				, [d115]
+				, [d116]
+				, [d117]
+				, [d118]
+				, [d119]
+				, [d120]
+				, [d121]
+				, [d122]
+				, [d123]
+				, [d124]
+				, [d125]
+				, [d126]
+				, [d127]
+				, [d128]
+				, [d129]
+				, [d130]
+				, [d131]
+				, [d132]
+				, [d133]
+				, [d134]
+				, [d135]
+				, [d136]
+				, [d137]
+				, [d138]
+				, [d139]
+				, [d140]
+				, [d141]
+				, [d142]
+				, [d143]
+				, [d144]
+				, [d145]
+				, [d146]
+				, [d147]
+				, [d148]
+				, [d149]
+				, [d150]
+				, [d151]
+				, [d152]
+				, [d153]
+				, [d154]
+				, [d155]
+				, [d156]
+				, [d157]
+				, [d158]
+				, [d159]
+				, [d160]
+				, [d161]
+				, [d162]
+				, [d163]
+				, [d164]
+				, [d165]
+				, [d166]
+				, [d167]
+				, [d168]
+				, [d169]
+				, [d170]
+				, [d171]
+				, [d172]
+				, [d173]
+				, [d174]
+				, [d175]
+				, [d176]
+				, [d177]
+				, [d178]
+				, [d179]
+				, [d180]
+				, [d181]
+				, [d182]
+				, [d183]
+				, [d184]
+				, [d185]
+				, [d186]
+				, [d187]
+				, [d188]
+				, [d189]
+				, [d190]
+				, [d191]
+				, [d192]
+				, [d193]
+				, [d194]
+				, [d195]
+				, [d196]
+				, [d197]
+				, [d198]
+				, [d199]
+				, [d200]
+				, [d201]
+				, [d202]
+				, [d203]
+				, [d204]
+				, [d205]
+				, [d206]
+				, [d207]
+				, [d208]
+				, [d209]
+				, [d210]
+				, [d211]
+				, [d212]
+				, [d213]
+				, [d214]
+				, [d215]
+				, [d216]
+				, [d217]
+				, [d218]
+				, [d219]
+				, [d220]
+				, [d221]
+				, [d222]
+				, [d223]
+				, [d224]
+				, [d225]
+				, [d226]
+				, [d227]
+				, [d228]
+				, [d229]
+				, [d230]
+				, [d231]
+				, [d232]
+				, [d233]
+				, [d234]
+				, [d235]
+				, [d236]
+				, [d237]
+				, [d238]
+				, [d239]
+				, [d240]
+				, [d241]
+				, [d242]
+				, [d243]
+				, [d244]
+				, [d245]
+				, [d246]
+				, [d247]
+				, [d248]
+				, [d249]
+				, [d250]
+				, [d251]
+				, [d252]
+				, [d253]
+				, [d254]
+				, [d255]
+				, [d256]
+				, [d257]
+				, [d258]
+				, [d259]
+				, [d260]
+				, [d261]
+				, [d262]
+				, [d263]
+				, [d264]
+				, [d265]
+				, [d266]
+				, [d267]
+				, [d268]
+				, [d269]
+				, [d270]
+				, [d271]
+				, [d272]
+				, [d273]
+				, [d274]
+				, [d275]
+				, [d276]
+				, [d277]
+				, [d278]
+				, [d279]
+				, [d280]
+				, [d281]
+				, [d282]
+				, REMARK
+				, UPLOAD_DT
+			) 
+		]]>
+		<dynamic>
+			<iterate prepend="VALUES" conjunction=", " property="List">
+				<![CDATA[
+				( 
+					#List[].d0#
+					, #List[].d1#
+					, #List[].d2#
+					, #List[].d3#
+					, #List[].d4#
+					, #List[].d5#
+					, #List[].d6#
+					, #List[].d7#
+					, #List[].d8#
+					, #List[].d9#
+					, #List[].d10#
+					, #List[].d11#
+					, #List[].d12#
+					, #List[].d13#
+					, #List[].d14#
+					, #List[].d15#
+					, #List[].d16#
+					, #List[].d17#
+					, #List[].d18#
+					, #List[].d19#
+					, #List[].d20#
+					, #List[].d21#
+					, #List[].d22#
+					, #List[].d23#
+					, #List[].d24#
+					, #List[].d25#
+					, #List[].d26#
+					, #List[].d27#
+					, #List[].d28#
+					, #List[].d29#
+					, #List[].d30#
+					, #List[].d31#
+					, #List[].d32#
+					, #List[].d33#
+					, #List[].d34#
+					, #List[].d35#
+					, #List[].d36#
+					, #List[].d37#
+					, #List[].d38#
+					, #List[].d39#
+					, #List[].d40#
+					, #List[].d41#
+					, #List[].d42#
+					, #List[].d43#
+					, #List[].d44#
+					, #List[].d45#
+					, #List[].d46#
+					, #List[].d47#
+					, #List[].d48#
+					, #List[].d49#
+					, #List[].d50#
+					, #List[].d51#
+					, #List[].d52#
+					, #List[].d53#
+					, #List[].d54#
+					, #List[].d55#
+					, #List[].d56#
+					, #List[].d57#
+					, #List[].d58#
+					, #List[].d59#
+					, #List[].d60#
+					, #List[].d61#
+					, #List[].d62#
+					, #List[].d63#
+					, #List[].d64#
+					, #List[].d65#
+					, #List[].d66#
+					, #List[].d67#
+					, #List[].d68#
+					, #List[].d69#
+					, #List[].d70#
+					, #List[].d71#
+					, #List[].d72#
+					, #List[].d73#
+					, #List[].d74#
+					, #List[].d75#
+					, #List[].d76#
+					, #List[].d77#
+					, #List[].d78#
+					, #List[].d79#
+					, #List[].d80#
+					, #List[].d81#
+					, #List[].d82#
+					, #List[].d83#
+					, #List[].d84#
+					, #List[].d85#
+					, #List[].d86#
+					, #List[].d87#
+					, #List[].d88#
+					, #List[].d89#
+					, #List[].d90#
+					, #List[].d91#
+					, #List[].d92#
+					, #List[].d93#
+					, #List[].d94#
+					, #List[].d95#
+					, #List[].d96#
+					, #List[].d97#
+					, #List[].d98#
+					, #List[].d99#
+					, #List[].d100#
+					, #List[].d101#
+					, #List[].d102#
+					, #List[].d103#
+					, #List[].d104#
+					, #List[].d105#
+					, #List[].d106#
+					, #List[].d107#
+					, #List[].d108#
+					, #List[].d109#
+					, #List[].d110#
+					, #List[].d111#
+					, #List[].d112#
+					, #List[].d113#
+					, #List[].d114#
+					, #List[].d115#
+					, #List[].d116#
+					, #List[].d117#
+					, #List[].d118#
+					, #List[].d119#
+					, #List[].d120#
+					, #List[].d121#
+					, #List[].d122#
+					, #List[].d123#
+					, #List[].d124#
+					, #List[].d125#
+					, #List[].d126#
+					, #List[].d127#
+					, #List[].d128#
+					, #List[].d129#
+					, #List[].d130#
+					, #List[].d131#
+					, #List[].d132#
+					, #List[].d133#
+					, #List[].d134#
+					, #List[].d135#
+					, #List[].d136#
+					, #List[].d137#
+					, #List[].d138#
+					, #List[].d139#
+					, #List[].d140#
+					, #List[].d141#
+					, #List[].d142#
+					, #List[].d143#
+					, #List[].d144#
+					, #List[].d145#
+					, #List[].d146#
+					, #List[].d147#
+					, #List[].d148#
+					, #List[].d149#
+					, #List[].d150#
+					, #List[].d151#
+					, #List[].d152#
+					, #List[].d153#
+					, #List[].d154#
+					, #List[].d155#
+					, #List[].d156#
+					, #List[].d157#
+					, #List[].d158#
+					, #List[].d159#
+					, #List[].d160#
+					, #List[].d161#
+					, #List[].d162#
+					, #List[].d163#
+					, #List[].d164#
+					, #List[].d165#
+					, #List[].d166#
+					, #List[].d167#
+					, #List[].d168#
+					, #List[].d169#
+					, #List[].d170#
+					, #List[].d171#
+					, #List[].d172#
+					, #List[].d173#
+					, #List[].d174#
+					, #List[].d175#
+					, #List[].d176#
+					, #List[].d177#
+					, #List[].d178#
+					, #List[].d179#
+					, #List[].d180#
+					, #List[].d181#
+					, #List[].d182#
+					, #List[].d183#
+					, #List[].d184#
+					, #List[].d185#
+					, #List[].d186#
+					, #List[].d187#
+					, #List[].d188#
+					, #List[].d189#
+					, #List[].d190#
+					, #List[].d191#
+					, #List[].d192#
+					, #List[].d193#
+					, #List[].d194#
+					, #List[].d195#
+					, #List[].d196#
+					, #List[].d197#
+					, #List[].d198#
+					, #List[].d199#
+					, #List[].d200#
+					, #List[].d201#
+					, #List[].d202#
+					, #List[].d203#
+					, #List[].d204#
+					, #List[].d205#
+					, #List[].d206#
+					, #List[].d207#
+					, #List[].d208#
+					, #List[].d209#
+					, #List[].d210#
+					, #List[].d211#
+					, #List[].d212#
+					, #List[].d213#
+					, #List[].d214#
+					, #List[].d215#
+					, #List[].d216#
+					, #List[].d217#
+					, #List[].d218#
+					, #List[].d219#
+					, #List[].d220#
+					, #List[].d221#
+					, #List[].d222#
+					, #List[].d223#
+					, #List[].d224#
+					, #List[].d225#
+					, #List[].d226#
+					, #List[].d227#
+					, #List[].d228#
+					, #List[].d229#
+					, #List[].d230#
+					, #List[].d231#
+					, #List[].d232#
+					, #List[].d233#
+					, #List[].d234#
+					, #List[].d235#
+					, #List[].d236#
+					, #List[].d237#
+					, #List[].d238#
+					, #List[].d239#
+					, #List[].d240#
+					, #List[].d241#
+					, #List[].d242#
+					, #List[].d243#
+					, #List[].d244#
+					, #List[].d245#
+					, #List[].d246#
+					, #List[].d247#
+					, #List[].d248#
+					, #List[].d249#
+					, #List[].d250#
+					, #List[].d251#
+					, #List[].d252#
+					, #List[].d253#
+					, #List[].d254#
+					, #List[].d255#
+					, #List[].d256#
+					, #List[].d257#
+					, #List[].d258#
+					, #List[].d259#
+					, #List[].d260#
+					, #List[].d261#
+					, #List[].d262#
+					, #List[].d263#
+					, #List[].d264#
+					, #List[].d265#
+					, #List[].d266#
+					, #List[].d267#
+					, #List[].d268#
+					, #List[].d269#
+					, #List[].d270#
+					, #List[].d271#
+					, #List[].d272#
+					, #List[].d273#
+					, #List[].d274#
+					, #List[].d275#
+					, #List[].d276#
+					, #List[].d277#
+					, #List[].d278#
+					, #List[].d279#
+					, #List[].d280#
+					, #List[].d281#
+					, #List[].d282#
+					, #REMARK#
+					, Replace(Convert(varchar(30),Getdate(),120),'-','-')
+				)
+				]]>
+			</iterate>
+		</dynamic>
+	</insert>
+	
+	<update id="BatchDAO.updateCustomFile" parameterClass="java.util.HashMap">
+		<![CDATA[
+			UPDATE IMS_RPA_CUSTOMS_AGENT 
+			SET DEL_YN = 'Y'
+				, UPDATE_DT = Replace(Convert(varchar(30),Getdate(),120),'-','-')
+			WHERE DEL_YN IS NULL and REMARK = #REMARK#
+		]]>
+	</update>
+	
+	<update id="BatchDAO.updateCustom" parameterClass="java.util.HashMap">
+		<![CDATA[
+			UPDATE IMS_RPA_CUSTOMS_AGENT 
+			SET DEL_YN = 'Y'
+				, UPDATE_DT = Replace(Convert(varchar(30),Getdate(),120),'-','-')
+			WHERE DEL_YN IS NULL and 
+		]]>
+		<iterate property="List" open="concat(d52,d267,d268,d269,d270) in (" conjunction="," close=")">
+			<![CDATA[
+				concat(#List[].d52#, #List[].d267#, #List[].d268#, #List[].d269#, #List[].d270#) 
+			]]>
+		</iterate>
+	</update>
+		
+</sqlMap>

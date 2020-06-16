@@ -477,7 +477,7 @@
                                 
                                 <li>
                                 <label for="searchBl" >BL번호</label>
-                                <input maxlength="11" type="text" id="searchBl" name="searchBl"   size="13" value='<c:out value="${searchVO.searchBl}"/>' >
+                                <input maxlength="20" type="text" id="searchBl" name="searchBl"   size="13" value='<c:out value="${searchVO.searchBl}"/>' >
                                 </li>
                             	
                                 <li>
