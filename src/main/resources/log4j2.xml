@@ -5,7 +5,7 @@
     <!-- Logging Properties -->
     <Properties>
         <Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n</Property>
-        <Property name="APP_LOG_ROOT">D:/IdeaProjects/project/logs</Property>
+        <Property name="APP_LOG_ROOT">D:/homepage/web/logs/rpasystem</Property>
     </Properties>
      
     <Appenders>
@@ -115,6 +115,8 @@
   		
         <Root level="OFF">
             <AppenderRef ref="console" />
+            <AppenderRef ref="infoLog" />
+            <AppenderRef ref="errorLog" />
         </Root>
 
 
