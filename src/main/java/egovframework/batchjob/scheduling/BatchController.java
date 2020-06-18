@@ -1,11 +1,13 @@
 package egovframework.batchjob.scheduling;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -16,82 +18,97 @@ public class BatchController {
     BatchService batchService;
     
 	@RequestMapping(value = "/excel/processCargo.do", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView processCargo() throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/excelresult");
+	@ResponseBody
+    public Map<String, Object> processCargo() throws Exception {
+		Map<String, Object> msgMap = new HashMap<String, Object>();
         try {
         	Map<String, Object> resultMap = batchService.processCargo();
         	
         	if (Integer.parseInt(resultMap.get("result").toString()) < 0) {
-    			mv.addObject("pageMessage", resultMap.get("resultMessage")); //변수값
-    			mv.setViewName("/error");
+        		msgMap.put("status", 0);
+        		msgMap.put("msg", resultMap.get("resultMessage"));
+        	}
+        	else {
+        		msgMap.put("status", 1);
+        		msgMap.put("msg", resultMap.get("resultMessage"));
         	}
         } catch (Exception e) {
             e.printStackTrace();
-			mv.addObject("pageMessage", "오류"); //변수값
-			mv.setViewName("/error");
+            msgMap.put("status", 0);
+            msgMap.put("msg", "오류 : " + e.toString());
         }
-        return mv;
+        return msgMap;
 
     }
 	
 	@RequestMapping(value = "/excel/processForward.do", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView processForward() throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/excelresult");
+	@ResponseBody
+    public Map<String, Object> processForward() throws Exception {
+		Map<String, Object> msgMap = new HashMap<String, Object>();
         try {
         	Map<String, Object> resultMap = batchService.processForward();
         	
         	if (Integer.parseInt(resultMap.get("result").toString()) < 0) {
-    			mv.addObject("pageMessage", resultMap.get("resultMessage")); //변수값
-    			mv.setViewName("/error");
+        		msgMap.put("status", 0);
+        		msgMap.put("msg", resultMap.get("resultMessage"));
+        	}
+        	else {
+        		msgMap.put("status", 1);
+        		msgMap.put("msg", resultMap.get("resultMessage"));
         	}
         } catch (Exception e) {
             e.printStackTrace();
-			mv.addObject("pageMessage", "오류"); //변수값
-			mv.setViewName("/error");
+            msgMap.put("status", 0);
+            msgMap.put("msg", "오류 : " + e.toString());
         }
-        return mv;
+        return msgMap;
 
     }
 	
 	@RequestMapping(value = "/excel/processImport.do", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView processImport() throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/excelresult");
+	@ResponseBody
+    public Map<String, Object> processImport() throws Exception {
+		Map<String, Object> msgMap = new HashMap<String, Object>();
         try {
         	Map<String, Object> resultMap = batchService.processImport();
         	
         	if (Integer.parseInt(resultMap.get("result").toString()) < 0) {
-    			mv.addObject("pageMessage", resultMap.get("resultMessage")); //변수값
-    			mv.setViewName("/error");
+        		msgMap.put("status", 0);
+        		msgMap.put("msg", resultMap.get("resultMessage"));
+        	}
+        	else {
+        		msgMap.put("status", 1);
+        		msgMap.put("msg", resultMap.get("resultMessage"));
         	}
         } catch (Exception e) {
             e.printStackTrace();
-			mv.addObject("pageMessage", "오류"); //변수값
-			mv.setViewName("/error");
+            msgMap.put("status", 0);
+            msgMap.put("msg", "오류 : " + e.toString());
         }
-        return mv;
-
+        return msgMap;
     }
 	
 	@RequestMapping(value = "/excel/processCustom.do", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView processCustom() throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/excelresult");
+	@ResponseBody
+    public Map<String, Object> processCustom() throws Exception {
+		Map<String, Object> msgMap = new HashMap<String, Object>();
         try {
         	Map<String, Object> resultMap = batchService.processCustom();
         	
         	if (Integer.parseInt(resultMap.get("result").toString()) < 0) {
-    			mv.addObject("pageMessage", resultMap.get("resultMessage")); //변수값
-    			mv.setViewName("/error");
+        		msgMap.put("status", 0);
+        		msgMap.put("msg", resultMap.get("resultMessage"));
+        	}
+        	else {
+        		msgMap.put("status", 1);
+        		msgMap.put("msg", resultMap.get("resultMessage"));
         	}
         } catch (Exception e) {
             e.printStackTrace();
-			mv.addObject("pageMessage", "오류"); //변수값
-			mv.setViewName("/error");
+            msgMap.put("status", 0);
+            msgMap.put("msg", "오류 : " + e.toString());
         }
-        return mv;
+        return msgMap;
 
     }
 }

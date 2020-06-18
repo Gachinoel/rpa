@@ -87,10 +87,10 @@ public class BatchServiceImpl implements BatchService {
 		    	                	returnValue += batchDAO.updateImport(arrParam);
     			    	            returnValue += batchDAO.insertImport(arrParam);
     			    	            resultMap.put("result", returnValue); //변수값
-    			    	            resultMap.put("resultMessage", ""); //변수값
+    			    	            resultMap.put("resultMessage", "엑셀파일이 정상적으로 처리되었습니다."); //변수값
     			                } else {
     			    	            resultMap.put("result", -1); //변수값
-    			    	            resultMap.put("resultMessage", "데이타가 존재하지 않습니다."); //변수값
+    			    	            resultMap.put("resultMessage", "엑셀데이타가 존재하지 않습니다."); //변수값
     			                }
     			            }
     			            
@@ -99,7 +99,7 @@ public class BatchServiceImpl implements BatchService {
             				}
             				else {
             					resultMap.put("result", -1); //변수값
-                	            resultMap.put("resultMessage", "저장 오류."); //변수값
+                	            resultMap.put("resultMessage", "DB저장 중 오류가 발생했습니다."); //변수값
             				}
     			            filecnt++;
     					}
@@ -256,17 +256,17 @@ public class BatchServiceImpl implements BatchService {
 		    	                	returnValue += batchDAO.updateCargo(arrParam);
     			    	            returnValue += batchDAO.insertCargo(arrParam);
     			    	            resultMap.put("result", returnValue); //변수값
-    			    	            resultMap.put("resultMessage", ""); //변수값
+    			    	            resultMap.put("resultMessage", "엑셀파일이 정상적으로 처리되었습니다."); //변수값
     			                } else {
     			    	            resultMap.put("result", -1); //변수값
-    			    	            resultMap.put("resultMessage", "데이타가 존재하지 않습니다."); //변수값
+    			    	            resultMap.put("resultMessage", "엑셀데이타가 존재하지 않습니다."); //변수값
     			                }
     			            	if (returnValue > 0) {
                 					FileUtil.fileMove(path,copypath, tempFileName);
                 				}
                 				else {
                 					resultMap.put("result", -1); //변수값
-                    	            resultMap.put("resultMessage", "저장 오류."); //변수값
+                    	            resultMap.put("resultMessage", "DB저장 중 오류가 발생했습니다."); //변수값
                 				}
         			            filecnt++;
         					}
@@ -399,10 +399,10 @@ public class BatchServiceImpl implements BatchService {
 		    	                	returnValue += batchDAO.updateForward(arrParam);
     			    	            returnValue += batchDAO.insertForward(arrParam);
     			    	            resultMap.put("result", returnValue); //변수값
-    			    	            resultMap.put("resultMessage", ""); //변수값
+    			    	            resultMap.put("resultMessage", "엑셀파일이 정상적으로 처리되었습니다."); //변수값
     			                } else {
     			    	            resultMap.put("result", -1); //변수값
-    			    	            resultMap.put("resultMessage", "데이타가 존재하지 않습니다."); //변수값
+    			    	            resultMap.put("resultMessage", "엑셀데이타가 존재하지 않습니다."); //변수값
     			                }
     			            }
     			            if (returnValue > 0) {
@@ -410,7 +410,7 @@ public class BatchServiceImpl implements BatchService {
             				}
             				else {
             					resultMap.put("result", -1); //변수값
-                	            resultMap.put("resultMessage", "저장 오류."); //변수값
+                	            resultMap.put("resultMessage", "DB저장 중 오류가 발생했습니다."); //변수값
             				}
     			            filecnt++;
     					}
@@ -541,10 +541,10 @@ public class BatchServiceImpl implements BatchService {
 		    	                	returnValue += batchDAO.updateCustom(arrParam);
     			    	            returnValue += batchDAO.insertCustom(arrParam);
     			    	            resultMap.put("result", returnValue); //변수값
-    			    	            resultMap.put("resultMessage", ""); //변수값
+    			    	            resultMap.put("resultMessage", "엑셀파일이 정상적으로 처리되었습니다."); //변수값
     			                } else {
     			    	            resultMap.put("result", -1); //변수값
-    			    	            resultMap.put("resultMessage", "데이타가 존재하지 않습니다."); //변수값
+    			    	            resultMap.put("resultMessage", "엑셀데이타가 존재하지 않습니다."); //변수값
     			                }
     			            }
     			            if (returnValue > 0) {
@@ -552,7 +552,7 @@ public class BatchServiceImpl implements BatchService {
             				}
             				else {
             					resultMap.put("result", -1); //변수값
-                	            resultMap.put("resultMessage", "저장 오류."); //변수값
+                	            resultMap.put("resultMessage", "DB저장 중 오류가 발생했습니다."); //변수값
             				}
     			            filecnt++;
     					}

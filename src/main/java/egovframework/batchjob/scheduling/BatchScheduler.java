@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class BatchScheduler {
 	@Autowired
     BatchService batchService;
-	/*
+	
 	@Scheduled(cron = "0 5,35 * * * MON-FRI")
 	public void schedulerImport() throws Exception {
         try {
@@ -92,5 +92,5 @@ public class BatchScheduler {
             e.printStackTrace();
         }
     }
-    */
+    
 }

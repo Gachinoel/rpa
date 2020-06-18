@@ -36,6 +36,7 @@
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <style>
 /*datepicer 버튼 롤오버 시 손가락 모양 표시*/
@@ -576,10 +577,10 @@
                         <th colspan ="11"style="width:55%"><div class="th-text3">전표</div></th>
                     </tr>
                     <tr>    
-                        <th scope="col" style="width:5%"><div class="th-text1">INVOICE</div></th>
-                        <th scope="col" style="width:5%"><div class="th-text1">적하보험</div></th>
-                        <th scope="col" style="width:5%"><div class="th-text1">BL</div></th>
-                        <th scope="col" style="width:8%"><div class="th-text1">수입신고필증</div></th>
+                        <th scope="col" style="width:5%"><div class="th-text1" id="import" style="cursor:pointer">INVOICE</div></th>
+                        <th scope="col" style="width:5%"><div class="th-text1" id="cargo" style="cursor:pointer">적하보험</div></th>
+                        <th scope="col" style="width:5%"><div class="th-text1" id="forward" style="cursor:pointer">BL</div></th>
+                        <th scope="col" style="width:8%"><div class="th-text1" id="custom" style="cursor:pointer">수입신고필증</div></th>
                     
                         <th scope="col" style="width:5%"><div class="th-text1">물대</div></th>
                         <th scope="col" style="width:5%"><div class="th-text1">적하보험</div></th>
@@ -757,6 +758,7 @@
 	  <!-- 
 	  <div id="footer"><c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" /></div>  
        -->
+       <form id="batchForm" name="batchForm" enctype="multipart/form-data"></form>
        
     </div>
     <!-- //전체 레이어 끝 -->
@@ -774,6 +776,150 @@
 	    	$(window).resize(function() {
 	    		$('.fixed-table-container').css('height', $(window).height() - 300 );
 	    	});
+	    	
+	    	
+	    	$("#import").on('click', function() {
+	            if (window.confirm("수입신고 엑셀(*.xls)을 업로드하시겠습니까?")){
+	            	$("#batchForm").ajaxForm({
+	                    type: 'POST',
+	                    url: "/excel/processImport.do",
+	                    dataType: "json",
+	                    enctype: "multipart/form-data",
+	                    contentType: false,
+	                    processData: false,
+	                    timeout: 30000,
+	                    success: function(result) {
+	                        if (result.status == 1) {
+	                            alert(result.msg);
+	                            document.frm.action = "<c:url value='/cop/bbs/SelectBBSMasterInfs.do'/>";
+	                			document.frm.submit();
+
+	                        }
+	                        else if (result.status == 0) {
+	                            alert(result.msg);
+	                        }
+	                    },
+	                    error: function(data, status, err) {
+	                        alert("서버가 응답하지 않습니다." + "\n" + "다시 시도해주시기 바랍니다." + "\n"
+	                            + "code: " + data.status + "\n"
+	                            + "message :" + data.responseText + "\n"
+	                            + "message1 : " + status + "\n"
+	                            + "error: " + err);
+	                    }
+	                }).submit();
+	            }
+	            else{
+	            	return;
+	            }
+
+	        });
+	    	
+	    	$("#cargo").on('click', function() {
+				if (window.confirm("적화보험 엑셀(*.xls)을 업로드하시겠습니까?")){
+					$("#batchForm").ajaxForm({
+	                    type: 'POST',
+	                    url: "/excel/processCargo.do",
+	                    dataType: "json",
+	                    enctype: "multipart/form-data",
+	                    contentType: false,
+	                    processData: false,
+	                    timeout: 30000,
+	                    success: function(result) {
+	                        if (result.status == 1) {
+	                            alert(result.msg);
+	                            document.frm.action = "<c:url value='/cop/bbs/SelectBBSMasterInfs.do'/>";
+	                			document.frm.submit();
+
+	                        }
+	                        else if (result.status == 0) {
+	                            alert(result.msg);
+	                        }
+	                    },
+	                    error: function(data, status, err) {
+	                        alert("서버가 응답하지 않습니다." + "\n" + "다시 시도해주시기 바랍니다." + "\n"
+	                            + "code: " + data.status + "\n"
+	                            + "message :" + data.responseText + "\n"
+	                            + "message1 : " + status + "\n"
+	                            + "error: " + err);
+	                    }
+	                }).submit();
+	            }
+	            else{
+	            	return;
+	            }
+
+	        });
+	    	
+	    	$("#forward").on('click', function() {
+				if (window.confirm("포워더 엑셀(*.xls)을 업로드하시겠습니까?")){
+					$("#batchForm").ajaxForm({
+	                    type: 'POST',
+	                    url: "/excel/processForward.do",
+	                    dataType: "json",
+	                    enctype: "multipart/form-data",
+	                    contentType: false,
+	                    processData: false,
+	                    timeout: 30000,
+	                    success: function(result) {
+	                        if (result.status == 1) {
+	                            alert(result.msg);
+	                            document.frm.action = "<c:url value='/cop/bbs/SelectBBSMasterInfs.do'/>";
+	                			document.frm.submit();
+
+	                        }
+	                        else if (result.status == 0) {
+	                            alert(result.msg);
+	                        }
+	                    },
+	                    error: function(data, status, err) {
+	                        alert("서버가 응답하지 않습니다." + "\n" + "다시 시도해주시기 바랍니다." + "\n"
+	                            + "code: " + data.status + "\n"
+	                            + "message :" + data.responseText + "\n"
+	                            + "message1 : " + status + "\n"
+	                            + "error: " + err);
+	                    }
+	                }).submit();
+	            }
+	            else{
+	            	return;
+	            }
+
+	        });
+	    	
+	    	$("#custom").on('click', function() {
+				if (window.confirm("관세사 엑셀(*.xlsx)을 업로드하시겠습니까?")){
+					$("#batchForm").ajaxForm({
+	                    type: 'POST',
+	                    url: "/excel/processCustom.do",
+	                    dataType: "json",
+	                    enctype: "multipart/form-data",
+	                    contentType: false,
+	                    processData: false,
+	                    timeout: 30000,
+	                    success: function(result) {
+	                        if (result.status == 1) {
+	                            alert(result.msg);
+	                            document.frm.action = "<c:url value='/cop/bbs/SelectBBSMasterInfs.do'/>";
+	                			document.frm.submit();
+
+	                        }
+	                        else if (result.status == 0) {
+	                            alert(result.msg);
+	                        }
+	                    },
+	                    error: function(data, status, err) {
+	                        alert("서버가 응답하지 않습니다." + "\n" + "다시 시도해주시기 바랍니다." + "\n"
+	                            + "code: " + data.status + "\n"
+	                            + "message :" + data.responseText + "\n"
+	                            + "message1 : " + status + "\n"
+	                            + "error: " + err);
+	                    }
+	                }).submit();
+	            }
+	            else{
+	            	return;
+	            }
+	        });
 	    });	
 	    
 	    // always overwrite window.name, in case users try to set it manually
